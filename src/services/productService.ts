@@ -142,3 +142,4 @@ export function resetProductPrices(): void {
 export function formatINR(price: number): string {
   return '₹' + price.toLocaleString('en-IN');
 }
+
