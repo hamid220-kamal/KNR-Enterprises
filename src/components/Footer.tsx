@@ -100,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
           <div className="lg:col-span-4 space-y-4">
             <div className="bg-white/95 p-2.5 rounded-xl inline-block shadow-sm">
               <img
-                src="/logo.png"
+                src="/logo.svg"
                 alt="KNR Enterprises"
                 className="h-8 sm:h-9 md:h-10 w-auto object-contain"
               />

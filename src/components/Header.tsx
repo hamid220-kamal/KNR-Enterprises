@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center cursor-pointer select-none group py-0.5 shrink-0"
           >
             <img
-              src="/logo.png"
+              src="/logo.svg"
               alt="KNR Enterprises - We Supply"
               className="h-8 sm:h-9 md:h-11 w-auto max-w-[140px] sm:max-w-[160px] md:max-w-[210px] object-contain transition-transform group-hover:scale-105"
             />
