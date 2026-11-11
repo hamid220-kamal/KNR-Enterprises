@@ -76,9 +76,9 @@ export const Header: React.FC<HeaderProps> = ({
               {/* About */}
               <button
                 onClick={() => handleNavClick('about')}
-                className={`py-1 transition-colors cursor-pointer ${
+                className={`relative py-1 transition-colors cursor-pointer ${
                   currentScreen === 'about'
-                    ? 'text-orange-500 font-bold'
+                    ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                     : 'text-slate-300 hover:text-white'
                 }`}
               >
@@ -93,9 +93,9 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <button
                   onClick={() => handleNavClick('products')}
-                  className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
+                  className={`relative flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
                     currentScreen === 'products'
-                      ? 'text-orange-500 font-bold'
+                      ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                       : 'text-slate-300 hover:text-white'
                   }`}
                 >
@@ -152,9 +152,9 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Contact */}
               <button
                 onClick={() => handleNavClick('contact')}
-                className={`py-1 transition-colors cursor-pointer ${
+                className={`relative py-1 transition-colors cursor-pointer ${
                   currentScreen === 'contact'
-                    ? 'text-orange-500 font-bold'
+                    ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                     : 'text-slate-300 hover:text-white'
                 }`}
               >
