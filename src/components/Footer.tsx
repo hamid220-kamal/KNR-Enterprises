@@ -38,20 +38,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
   };
 
   return (
-    <footer className="hidden md:block bg-navy text-slate-300 pt-14 pb-8 border-t-4 border-primary print:hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <footer className="hidden md:block bg-navy text-slate-300 pt-12 md:pt-14 pb-6 md:pb-8 border-t-4 border-primary print:hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
         {/* Municipal Procurement Bulletins Subscription Card */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-navy-light to-slate-900 p-6 md:p-8 mb-14 border border-slate-700/60 shadow-xl">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-navy-light to-slate-900 p-4 sm:p-6 md:p-8 mb-12 border border-slate-700/60 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6">
             <div className="max-w-xl text-center lg:text-left">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/20 text-orange-400 border border-primary/30 mb-2">
                 <FileCheck className="w-3.5 h-3.5" />
                 <span>BULLETIN & TENDER NOTICES</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight">
                 {t.subscribeTitle}
               </h3>
-              <p className="text-sm text-slate-300 mt-1">
+              <p className="text-xs sm:text-sm text-slate-300 mt-1">
                 {t.subscribeSubtitle}
               </p>
             </div>
@@ -96,14 +96,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
         </div>
 
         {/* 4 Main Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-12 border-b border-slate-700/80">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 pb-10 md:pb-12 border-b border-slate-700/80">
           {/* Col 1: Identity & Statutory (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="bg-white/95 p-2.5 rounded-xl inline-block shadow-sm">
-              <Logo className="h-10 w-auto" />
+              <Logo className="h-8 sm:h-9 md:h-10 w-auto" />
             </div>
 
-            <p className="text-xs leading-relaxed text-slate-300">
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
               {t.footerAbout}
             </p>
 
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
               <p className="text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-2">
                 Institutional Accreditations
               </p>
-              <div className="flex flex-wrap gap-2 text-[11px] text-slate-300">
+              <div className="flex flex-wrap gap-2 text-[11px] sm:text-xs text-slate-300">
                 <span className="bg-slate-800 px-2.5 py-1 rounded border border-slate-700">Telangana Panchayat Vendor</span>
                 <span className="bg-slate-800 px-2.5 py-1 rounded border border-slate-700">GeM Verified Supplier</span>
                 <span className="bg-slate-800 px-2.5 py-1 rounded border border-slate-700">ISI & CIB Formulations</span>
@@ -126,10 +126,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
 
           {/* Col 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-700 pb-2">
+            <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider border-b border-slate-700 pb-2">
               {t.quickLinks}
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <button
                   onClick={() => onNavigate('home')}
@@ -189,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
               <li>
                 <button
                   onClick={onOpenProforma}
-                  className="inline-flex items-center gap-1 text-primary hover:underline font-semibold pt-1 cursor-pointer"
+                  className="inline-flex items-center gap-1 text-primary hover:underline font-semibold pt-1 cursor-pointer text-xs sm:text-sm"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Rate Card (PDF)</span>
@@ -200,10 +200,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
 
           {/* Col 3: Catalog Categories (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-700 pb-2">
+            <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider border-b border-slate-700 pb-2">
               {t.catalogCategories}
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <button
                   onClick={() => onNavigate('products')}
@@ -265,10 +265,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
 
           {/* Col 4: Depot & Procurement (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-700 pb-2">
+            <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider border-b border-slate-700 pb-2">
               {t.depotAndProcurement}
             </h4>
-            <div className="space-y-2.5 text-xs">
+            <div className="space-y-2.5 text-xs sm:text-sm">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
@@ -286,7 +286,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
                   <Phone className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <span className="text-[11px] text-slate-400 block">{t.managingPartner}:</span>
-                    <a href="tel:8886175855" className="font-semibold text-white hover:text-primary">
+                    <a href="tel:8886175855" className="font-semibold text-white hover:text-primary text-xs sm:text-sm">
                       K. Narendar Reddy (+91 8886175855)
                     </a>
                   </div>
@@ -296,7 +296,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
                   <Phone className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <span className="text-[11px] text-slate-400 block">{t.logisticsIncharge}:</span>
-                    <a href="tel:9640195798" className="font-semibold text-white hover:text-primary">
+                    <a href="tel:9640195798" className="font-semibold text-white hover:text-primary text-xs sm:text-sm">
                       G. Siva (+91 9640195798)
                     </a>
                   </div>
@@ -306,7 +306,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
                   <Mail className="w-3.5 h-3.5 text-primary shrink-0" />
                   <a
                     href="mailto:knrenterprises679@gmail.com"
-                    className="text-slate-300 hover:text-primary truncate"
+                    className="text-slate-300 hover:text-primary truncate text-xs sm:text-sm"
                   >
                     knrenterprises679@gmail.com
                   </a>
@@ -328,15 +328,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
         </div>
 
         {/* Bottom Bar: Copyright & Compliance */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-6 md:pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            <p>{t.copyright}</p>
+            <p className="text-xs sm:text-sm">{t.copyright}</p>
             <p className="text-[11px] text-slate-300 mt-0.5">
               • {t.govtAuthorizedVendor}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 text-[11px]">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] w-full sm:w-auto">
             <span className="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">UPI</span>
             <span className="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">NEFT / RTGS</span>
             <span className="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">RuPay</span>
@@ -344,7 +344,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
             <span className="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Treasury Challans</span>
           </div>
 
-          <div className="flex items-center space-x-4 text-[11px]">
+          <div className="flex flex-wrap items-center space-x-3 sm:space-x-4 text-[11px] w-full sm:w-auto">
             <button onClick={() => onNavigate('about')} className="hover:text-primary transition-colors cursor-pointer">
               Privacy Policy
             </button>
