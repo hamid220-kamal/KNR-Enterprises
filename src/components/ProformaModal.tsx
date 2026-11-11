@@ -127,16 +127,16 @@ export const ProformaModal: React.FC<ProformaModalProps> = ({
         </div>
 
         {/* Scrollable Container (Printable Area) */}
-        <div className="overflow-y-auto flex-1 p-4 sm:p-8 space-y-6 text-slate-800 printable-document">
+        <div id="printable-proforma" className="overflow-y-auto flex-1 p-4 sm:p-8 space-y-6 text-slate-800 printable-document">
           {/* Document Header */}
           <div className="border-b-2 border-slate-900 pb-5">
             <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3">
                   <img
-                    src="/public/assets/aistudio/image_ccd6c0ac.png"
-                    alt="KNR Enterprises"
-                    className="h-11 sm:h-12 w-auto object-contain"
+                    src="/logo.png"
+                    alt="KNR Enterprises - We Supply"
+                    className="h-11 sm:h-12 w-auto max-w-[200px] object-contain"
                   />
                   <div className="border-l border-slate-300 pl-3">
                     <p className="text-[10px] font-bold tracking-widest text-primary uppercase">
@@ -191,7 +191,7 @@ export const ProformaModal: React.FC<ProformaModalProps> = ({
                   placeholder="Gram Panchayat / Department Name"
                   className="w-full bg-white font-bold text-slate-900 px-2.5 py-1.5 rounded border border-slate-200 text-xs focus:border-primary focus:outline-none"
                 />
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input
                     type="text"
                     value={formData.officerName}
@@ -207,7 +207,7 @@ export const ProformaModal: React.FC<ProformaModalProps> = ({
                     className="w-full bg-white px-2.5 py-1.5 rounded border border-slate-200 text-xs focus:border-primary focus:outline-none"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input
                     type="text"
                     value={formData.mandal}
@@ -232,7 +232,7 @@ export const ProformaModal: React.FC<ProformaModalProps> = ({
                 <span>Contact & Dispatch Terms:</span>
               </h4>
               <div className="space-y-1.5 text-xs">
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input
                     type="text"
                     value={formData.phone}
@@ -267,8 +267,8 @@ export const ProformaModal: React.FC<ProformaModalProps> = ({
           </div>
 
           {/* Itemized Table */}
-          <div className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs">
-            <table className="w-full text-left text-xs">
+          <div className="border border-slate-200 rounded-xl overflow-x-auto shadow-2xs">
+            <table className="w-full min-w-[640px] text-left text-xs">
               <thead className="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider text-[11px] border-b border-slate-200">
                 <tr>
                   <th className="py-2.5 px-3 w-10 text-center">#</th>

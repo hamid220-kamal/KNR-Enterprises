@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Screen, Language } from '../types';
-import { TRANSLATIONS } from '../data/translations';
-import { Phone, MapPin, Search, ShoppingCart, ArrowRight, Menu, X, FileText, CheckCircle2 } from 'lucide-react';
+import { Logo } from './Logo';
+import { Lock, ChevronDown, ShoppingCart, Menu, X, Phone, FileText } from 'lucide-react';
+import { AdminLoginModal } from './AdminLoginModal';
 
 interface HeaderProps {
   currentScreen: Screen;
@@ -11,8 +12,8 @@ interface HeaderProps {
   onOpenProforma: () => void;
   language: Language;
   onToggleLanguage: () => void;
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -23,237 +24,275 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenProforma,
   language,
   onToggleLanguage,
-  searchQuery,
-  onSearchChange,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const t = TRANSLATIONS[language];
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
 
-  const navLinks: { id: Screen; label: string }[] = [
-    { id: 'home', label: t.navHome },
-    { id: 'products', label: t.navProducts },
-    { id: 'services', label: t.navServices },
-    { id: 'about', label: t.navAbout },
-    { id: 'contact', label: t.navContact },
+  const productCategories = [
+    { id: 'Disinfectants & Chemicals', label: 'Disinfectants & Chemicals' },
+    { id: 'Waste Management', label: 'Commercial Waste Bins' },
+    { id: 'Pest & Vector Control', label: 'Pest & Vector Foggers' },
+    { id: 'Municipal Infrastructure', label: 'Civic Smart LED Lighting' },
+    { id: 'Civic Landscaping', label: 'Artificial Green Turf' },
+    { id: 'Sanitization Tools', label: 'Sanitization Tools & PPE' },
   ];
 
   const handleNavClick = (screen: Screen) => {
     onNavigate(screen);
     setMobileMenuOpen(false);
+    setProductsDropdownOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (currentScreen !== 'products') {
-      onNavigate('products');
-    }
-  };
-
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs print:hidden">
-      {/* Top Banner (Orange Bar) */}
-      <div className="bg-primary text-white text-xs font-medium py-1.5 px-3 sm:px-4 md:px-6">
-        <div className="max-w-7xl mx-auto px-2 sm:px-3 flex flex-wrap items-center justify-between gap-2">
-          {/* Left: Contact Info */}
-          <div className="flex items-center space-x-2 sm:space-x-4 text-[11px] sm:text-xs">
-            <a
-              href="tel:8886175855"
-              className="flex items-center space-x-1 hover:text-amber-100 transition-colors"
-            >
-              <Phone className="w-3 h-3 sm:w-3.5 h-3.5 flex-shrink-0" />
-              <span className="hidden sm:inline">{t.callHotline}</span>
-              <span className="sm:hidden">Call</span>
-            </a>
-            <span className="hidden md:inline-block text-orange-200">•</span>
-            <span className="hidden md:flex items-center space-x-1">
-              <MapPin className="w-3.5 h-3.5 text-orange-200" />
-              <span>{t.location}</span>
-            </span>
-          </div>
+    <>
+      <header className="sticky top-0 z-40 bg-[#0a0e17]/95 backdrop-blur-md border-b border-slate-800/80 text-white transition-all print:hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* 1. Left: Brand Logo matching the reference image */}
+            <div className="flex items-center">
+              <Logo
+                variant="dark"
+                className="h-8 sm:h-9 w-auto"
+                onClick={() => handleNavClick('home')}
+              />
+            </div>
 
-          {/* Right: Badges & Bilingual Switcher */}
-          <div className="flex items-center space-x-2 text-[10px] sm:text-xs">
-            <span className="hidden xs:inline-flex items-center gap-1 bg-orange-700/50 px-1.5 sm:px-2 py-0.5 rounded text-white font-semibold text-[10px]">
-              <CheckCircle2 className="w-2.5 h-2.5 text-emerald-300 flex-shrink-0" />
-              Bulk
-            </span>
-            <span className="hidden lg:inline text-orange-200 font-mono text-[10px]">
-              GST
-            </span>
-
-            {/* Language Switcher Button */}
-            <button
-              onClick={onToggleLanguage}
-              className="ml-1 inline-flex items-center gap-0.5 bg-white/20 hover:bg-white/30 text-white font-bold px-1.5 sm:px-2 py-0.5 rounded transition-colors text-[10px] sm:text-xs border border-white/30 cursor-pointer"
-              title="Toggle English / Telugu"
-            >
-              <span className={language === 'en' ? 'underline font-extrabold' : 'opacity-80'}>EN</span>
-              <span className="hidden sm:inline">|</span>
-              <span className={`${language === 'te' ? 'underline font-extrabold' : 'opacity-80'} hidden sm:inline`}>తెలుగు</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-2 sm:py-3">
-        <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4">
-          {/* Official Logo */}
-          <div
-            onClick={() => handleNavClick('home')}
-            className="flex items-center cursor-pointer select-none group py-0.5 shrink-0"
-          >
-            <img
-              src="/logo.png"
-              alt="KNR Enterprises - We Supply"
-              className="h-8 sm:h-9 md:h-11 w-auto max-w-[140px] sm:max-w-[160px] md:max-w-[210px] object-contain transition-transform group-hover:scale-105"
-            />
-          </div>
-
-          {/* Desktop Search */}
-          <form
-            onSubmit={handleSearchSubmit}
-            className="hidden xl:flex items-center flex-1 max-w-xs relative mx-2"
-          >
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => {
-                onSearchChange(e.target.value);
-                if (currentScreen !== 'products' && e.target.value.length > 1) {
-                  onNavigate('products');
-                }
-              }}
-              placeholder={t.searchPlaceholder}
-              className="w-full bg-slate-100 hover:bg-slate-50 focus:bg-white text-xs pl-9 pr-3 py-2 rounded-full border border-slate-200 focus:border-primary focus:outline-none transition-all placeholder:text-slate-400"
-            />
-          </form>
-
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-1 text-sm font-semibold">
-            {navLinks.map((link) => {
-              const isActive = currentScreen === link.id;
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)}
-                  className={`px-2.5 py-1.5 rounded-md transition-all cursor-pointer text-sm ${
-                    isActive
-                      ? 'text-primary bg-orange-50 font-bold'
-                      : 'text-slate-700 hover:text-primary hover:bg-slate-50'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* Right Action Icons & Buttons */}
-          <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
-            {/* Cart Button */}
-            <button
-              onClick={onOpenCart}
-              className="relative p-1.5 sm:p-2 text-slate-700 hover:text-primary rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
-              aria-label="View Cart"
-            >
-              <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-xs animate-bounce-short">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-
-            {/* Quick Proforma Icon */}
-            <button
-              onClick={onOpenProforma}
-              className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-slate-700 hover:text-primary border border-slate-200 hover:border-primary/40 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white shadow-2xs hover:bg-orange-50/50 transition-all cursor-pointer"
-              title="Open Proforma Invoice Generator"
-            >
-              <FileText className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-primary flex-shrink-0" />
-              <span className="hidden md:inline">Proforma</span>
-            </button>
-
-            {/* Primary Get Quote CTA */}
-            <button
-              onClick={() => {
-                if (cartCount > 0) {
-                  onOpenCart();
-                } else {
-                  handleNavClick('contact');
-                }
-              }}
-              className="inline-flex items-center gap-1 bg-primary hover:bg-orange-600 active:bg-orange-700 text-white font-bold text-xs sm:text-sm px-2.5 sm:px-3.5 md:px-4 py-1.5 sm:py-2 rounded-lg shadow-sm hover:shadow transition-all cursor-pointer whitespace-nowrap"
-            >
-              <span className="hidden sm:inline">{t.getQuoteBtn}</span>
-              <span className="sm:hidden">Quote</span>
-              <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4 flex-shrink-0" />
-            </button>
-
-            {/* Mobile Menu Hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 sm:p-2 text-slate-700 hover:text-primary rounded-lg focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 sm:w-6 h-5 sm:h-6" /> : <Menu className="w-5 sm:w-6 h-5 sm:h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Search Bar */}
-        <div className="mt-2 xl:hidden">
-          <form onSubmit={handleSearchSubmit} className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => {
-                onSearchChange(e.target.value);
-                if (currentScreen !== 'products' && e.target.value.length > 1) {
-                  onNavigate('products');
-                }
-              }}
-              placeholder={t.searchPlaceholder}
-              className="w-full bg-slate-100 focus:bg-white text-xs pl-9 pr-3 py-2 rounded-full border border-slate-200 focus:border-primary focus:outline-none transition-all"
-            />
-          </form>
-        </div>
-      </div>
-
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-3 sm:px-4 py-3 space-y-2 shadow-lg">
-          {navLinks.map((link) => {
-            const isActive = currentScreen === link.id;
-            return (
+            {/* 2. Center: Navigation Links */}
+            <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium">
+              {/* Home */}
               <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`w-full text-left px-3 py-2 rounded-lg font-semibold text-sm transition-colors cursor-pointer ${
-                  isActive
-                    ? 'bg-primary text-white'
-                    : 'text-slate-800 hover:bg-slate-100'
+                onClick={() => handleNavClick('home')}
+                className={`relative py-1 transition-colors cursor-pointer ${
+                  currentScreen === 'home'
+                    ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
+                    : 'text-slate-300 hover:text-white'
                 }`}
               >
-                {link.label}
+                Home
               </button>
-            );
-          })}
-          <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-slate-600">
-            <span>GST: 36CUHPK5939D1ZG</span>
-            <button
-              onClick={onToggleLanguage}
-              className="text-primary font-bold hover:underline cursor-pointer text-xs"
-            >
-              {language === 'en' ? 'తెలుగు' : 'English'}
-            </button>
+
+              {/* About */}
+              <button
+                onClick={() => handleNavClick('about')}
+                className={`py-1 transition-colors cursor-pointer ${
+                  currentScreen === 'about'
+                    ? 'text-orange-500 font-bold'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                About
+              </button>
+
+              {/* Products with Dropdown Arrow */}
+              <div
+                className="relative"
+                onMouseEnter={() => setProductsDropdownOpen(true)}
+                onMouseLeave={() => setProductsDropdownOpen(false)}
+              >
+                <button
+                  onClick={() => handleNavClick('products')}
+                  className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
+                    currentScreen === 'products'
+                      ? 'text-orange-500 font-bold'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  <span>Products</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      productsDropdownOpen ? 'rotate-180 text-orange-500' : 'text-slate-400'
+                    }`}
+                  />
+                </button>
+
+                {/* Dropdown Menu */}
+                {productsDropdownOpen && (
+                  <div className="absolute top-full left-0 w-64 pt-2 z-50 animate-fadeIn">
+                    <div className="bg-[#0f172a] border border-slate-700 rounded-xl shadow-2xl py-2 overflow-hidden">
+                      <div className="px-3 py-1.5 text-[11px] font-bold tracking-wider uppercase text-orange-400 border-b border-slate-800">
+                        Product Categories
+                      </div>
+                      {productCategories.map((cat) => (
+                        <button
+                          key={cat.id}
+                          onClick={() => {
+                            setProductsDropdownOpen(false);
+                            handleNavClick('products');
+                          }}
+                          className="w-full text-left px-3.5 py-2 text-xs text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors flex items-center justify-between cursor-pointer"
+                        >
+                          <span>{cat.label}</span>
+                          <span className="text-[10px] text-orange-400 font-mono">→</span>
+                        </button>
+                      ))}
+                      <div className="p-2 border-t border-slate-800">
+                        <button
+                          onClick={() => handleNavClick('products')}
+                          className="w-full text-center py-1.5 bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 text-xs font-bold rounded-lg transition-colors cursor-pointer"
+                        >
+                          View All Products →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Enquiry */}
+              <button
+                onClick={onOpenProforma}
+                className="text-slate-300 hover:text-white py-1 transition-colors cursor-pointer flex items-center gap-1"
+                title="Open Quotation / Proforma Invoice Generator"
+              >
+                <span>Enquiry</span>
+              </button>
+
+              {/* Contact */}
+              <button
+                onClick={() => handleNavClick('contact')}
+                className={`py-1 transition-colors cursor-pointer ${
+                  currentScreen === 'contact'
+                    ? 'text-orange-500 font-bold'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                Contact
+              </button>
+            </nav>
+
+            {/* 3. Right: Admin Login + Cart & Switcher */}
+            <div className="flex items-center space-x-2.5 sm:space-x-3">
+              {/* Language Switcher */}
+              <button
+                onClick={onToggleLanguage}
+                className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-white px-2 py-1 rounded-md border border-slate-800 hover:border-slate-700 transition-colors cursor-pointer"
+                title="Toggle English / Telugu"
+              >
+                <span className={language === 'en' ? 'text-orange-400 font-bold' : ''}>EN</span>
+                <span className="opacity-40">|</span>
+                <span className={language === 'te' ? 'text-orange-400 font-bold' : ''}>తెలుగు</span>
+              </button>
+
+              {/* Cart Drawer Button */}
+              <button
+                onClick={onOpenCart}
+                className="relative p-2 text-slate-300 hover:text-orange-400 rounded-full hover:bg-slate-800/80 transition-colors cursor-pointer"
+                title="View RFQ Cart"
+                aria-label="View RFQ Cart"
+              >
+                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-md animate-bounce-short">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+
+              {/* Admin Login Button matching reference design */}
+              <button
+                onClick={() => setIsAdminModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-slate-700/80 bg-slate-900/80 hover:bg-slate-800 hover:border-slate-500 text-slate-200 hover:text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
+                title="Administrator Login"
+              >
+                <Lock className="w-3.5 h-3.5 text-slate-400" />
+                <span>Admin Login</span>
+              </button>
+
+              {/* Mobile Hamburger Menu Toggle */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 text-slate-300 hover:text-white rounded-lg focus:outline-none"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
-      )}
-    </header>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#0c121e] border-t border-slate-800 px-4 py-4 space-y-2 shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => handleNavClick('home')}
+              className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                currentScreen === 'home'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-300 hover:bg-slate-800'
+              }`}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => handleNavClick('about')}
+              className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                currentScreen === 'about'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-300 hover:bg-slate-800'
+              }`}
+            >
+              About
+            </button>
+            <button
+              onClick={() => handleNavClick('products')}
+              className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                currentScreen === 'products'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-300 hover:bg-slate-800'
+              }`}
+            >
+              Products Catalog
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenProforma();
+              }}
+              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800 transition-colors flex items-center justify-between"
+            >
+              <span>Enquiry / Proforma</span>
+              <FileText className="w-4 h-4 text-orange-400" />
+            </button>
+            <button
+              onClick={() => handleNavClick('contact')}
+              className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                currentScreen === 'contact'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-300 hover:bg-slate-800'
+              }`}
+            >
+              Contact
+            </button>
+
+            <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+              <button
+                onClick={onToggleLanguage}
+                className="text-xs text-orange-400 font-bold hover:underline"
+              >
+                {language === 'en' ? 'తెలుగు వెర్షన్' : 'English Version'}
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setIsAdminModalOpen(true);
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900 text-xs text-slate-300"
+              >
+                <Lock className="w-3 h-3 text-orange-400" />
+                <span>Admin Login</span>
+              </button>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Interactive Admin Login Modal */}
+      <AdminLoginModal
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
+      />
+    </>
   );
 };

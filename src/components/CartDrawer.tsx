@@ -63,7 +63,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     message += `Please provide formal GST proforma quote and delivery dispatch time to our mandal.`;
 
     const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/918886175855?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/918886175855?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -74,7 +74,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col">
           {/* Header */}
           <div className="px-5 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">

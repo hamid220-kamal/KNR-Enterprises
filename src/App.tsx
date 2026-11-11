@@ -22,13 +22,29 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Initial cart with 3 items matching mockups
+  // Initial cart with items validated from localStorage or default mockups
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
       const saved = localStorage.getItem('knr_cart_items');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const validated = parsed.filter(
+            (item): item is CartItem =>
+              Boolean(
+                item &&
+                item.product &&
+                typeof item.product.id === 'string' &&
+                typeof item.product.price === 'number' &&
+                typeof item.quantity === 'number' &&
+                item.quantity > 0
+              )
+          );
+          if (validated.length > 0) return validated;
+        }
+      }
     } catch {
-      // fallback
+      // fallback to defaults on corrupt storage
     }
     return [
       { product: PRODUCTS[0], quantity: 5 },
@@ -230,10 +246,11 @@ export default function App() {
         <button
           onClick={() => setIsCartOpen(true)}
           className="relative flex flex-col items-center justify-center p-1 cursor-pointer text-slate-500 hover:text-primary transition-colors"
+          aria-label="View RFQ Cart"
         >
           <ShoppingCart className="w-5 h-5" />
           {cartItems.length > 0 && (
-            <span className="absolute 0 -top-0.5 right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+            <span className="absolute -top-0.5 right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               {cartItems.length}
             </span>
           )}

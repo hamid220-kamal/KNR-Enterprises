@@ -51,10 +51,16 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onNavigate, langua
       setSubmitted(true);
 
       if (whatsappCopy) {
-        const text = `*KNR Enterprises - New Inquiry*\nFrom: ${fullName}\nPhone: ${mobileNumber}\nEmail: ${emailAddress}\nCategory: ${category}\nDetails: ${message}`;
-        window.open(`https://wa.me/918886175855?text=${encodeURIComponent(text)}`, '_blank');
+        const text = `*KNR Enterprises - New Inquiry*\nFrom: ${fullName.trim()}\nPhone: ${mobileNumber.trim()}\nEmail: ${emailAddress.trim()}\nCategory: ${category}\nDetails: ${message.trim()}`;
+        window.open(`https://wa.me/918886175855?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+      } else {
+        const subject = encodeURIComponent(`KNR RFQ: ${category} - ${fullName.trim()}`);
+        const body = encodeURIComponent(
+          `Officer Name: ${fullName.trim()}\nPhone: ${mobileNumber.trim()}\nEmail: ${emailAddress.trim()}\nCategory: ${category}\nRequirement Details:\n${message.trim()}`
+        );
+        window.location.href = `mailto:knrenterprises679@gmail.com?subject=${subject}&body=${body}`;
       }
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -433,7 +439,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onNavigate, langua
               referrerPolicy="no-referrer-when-downgrade"
             />
             {/* Map Overlay Badge */}
-            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs p-3 rounded-xl border border-slate-200 shadow-md max-w-xs text-xs pointer-events-none">
+            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs p-3 rounded-xl border border-slate-200 shadow-md max-w-[calc(100%-2rem)] sm:max-w-xs text-xs pointer-events-none">
               <div className="flex items-center gap-1.5 font-bold text-slate-900">
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Chevella Central Hub Active</span>

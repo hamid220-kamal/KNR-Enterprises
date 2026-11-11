@@ -75,6 +75,14 @@
   animation: cartBounce 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+@keyframes bounceShort {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-bounce-short {
+  animation: bounceShort 1.4s ease-in-out infinite;
+}
+
 /* Wiggle on hover */
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
@@ -85,8 +93,28 @@
   animation: wiggle 0.4s ease-in-out;
 }
 
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .cart-bounce-anim,
+  .animate-bounce-short,
+  .wiggle-hover:hover .wiggle-icon {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Print Styles for Proforma Invoice */
 @media print {
+  html, body {
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
   body * {
     visibility: hidden;
   }
@@ -94,15 +122,21 @@
     visibility: visible;
   }
   #printable-proforma {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 20px;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 16px !important;
     background: white !important;
     color: black !important;
     box-shadow: none !important;
+    overflow: visible !important;
+  }
+  .fixed, .overflow-y-auto, .overflow-hidden {
+    position: static !important;
+    overflow: visible !important;
+    max-height: none !important;
   }
   .no-print {
     display: none !important;

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Screen, Language, Product, CatalogFilterState } from '../../types';
 import { PRODUCTS, CATEGORIES } from '../../data/products';
 import { TRANSLATIONS } from '../../data/translations';
@@ -48,6 +48,13 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
   const [selectedMoqTier, setSelectedMoqTier] = useState<string>('all');
   const [minRating, setMinRating] = useState<number>(0);
   const [sortBy, setSortBy] = useState<'popularity' | 'price-asc' | 'price-desc' | 'rating'>('popularity');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSize = 6;
+
+  // Whenever filters change, reset to page 1
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery, maxPrice, inStockOnly, minRating, sortBy]);
 
   const handleResetFilters = () => {
     onSelectCategory('all');
@@ -57,6 +64,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
     setSelectedMoqTier('all');
     setMinRating(0);
     setSortBy('popularity');
+    setCurrentPage(1);
   };
 
   // Filter products
@@ -98,6 +106,12 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
       return b.reviewCount - a.reviewCount; // popularity
     });
   }, [selectedCategory, searchQuery, maxPrice, inStockOnly, minRating, sortBy]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / pageSize));
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return filteredProducts.slice(start, start + pageSize);
+  }, [filteredProducts, currentPage, pageSize]);
 
   const categoryPills = [
     { id: 'all', label: 'All Products (12)' },
@@ -249,6 +263,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
                 step="500"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
+                aria-label="Filter by maximum price"
                 className="w-full accent-primary cursor-pointer"
               />
               <div className="flex justify-between text-[11px] text-slate-400 font-mono">
@@ -376,6 +391,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
                   placeholder="Search by product, ISI standard, HSN..."
+                  aria-label="Search by product, ISI standard, HSN"
                   className="w-full pl-10 pr-4 py-2 bg-slate-50 focus:bg-white border border-slate-200 focus:border-primary rounded-xl text-xs focus:outline-none transition-colors"
                 />
               </div>
@@ -387,6 +403,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
+                    aria-label="Sort products by"
                     className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-semibold focus:outline-none focus:border-primary cursor-pointer"
                   >
                     <option value="popularity">Popularity / Best Match</option>
@@ -481,7 +498,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
                     : 'space-y-4'
                 }
               >
-                {filteredProducts.map((product) => (
+                {paginatedProducts.map((product) => (
                   <div
                     key={product.id}
                     className={`bg-white rounded-2xl border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-lg transition-all flex overflow-hidden group ${
@@ -582,41 +599,50 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
             )}
 
             {/* Pagination Controls */}
-            <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-              <p>
-                Showing <strong className="text-slate-900">1-{filteredProducts.length}</strong> of{' '}
-                <strong className="text-slate-900">{PRODUCTS.length}</strong> certified catalog items
-              </p>
-              <div className="flex items-center space-x-1">
-                <button
-                  disabled
-                  className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-400 cursor-not-allowed"
-                >
-                  Prev
-                </button>
-                <button className="px-3 py-1.5 rounded-md bg-primary text-white font-bold">
-                  1
-                </button>
-                <button
-                  disabled
-                  className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-400 cursor-not-allowed"
-                >
-                  2
-                </button>
-                <button
-                  disabled
-                  className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-400 cursor-not-allowed"
-                >
-                  3
-                </button>
-                <button
-                  disabled
-                  className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-400 cursor-not-allowed"
-                >
-                  Next
-                </button>
+            {filteredProducts.length > 0 && (
+              <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>
+                  Showing{' '}
+                  <strong className="text-slate-900">
+                    {Math.min((currentPage - 1) * pageSize + 1, filteredProducts.length)}-{Math.min(currentPage * pageSize, filteredProducts.length)}
+                  </strong>{' '}
+                  of <strong className="text-slate-900">{filteredProducts.length}</strong> filtered items ({PRODUCTS.length} total)
+                </p>
+                <div className="flex items-center space-x-1">
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:text-slate-300 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed transition-colors"
+                    aria-label="Previous page"
+                  >
+                    Prev
+                  </button>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`px-3 py-1.5 rounded-md font-bold transition-colors cursor-pointer ${
+                        currentPage === page
+                          ? 'bg-primary text-white shadow-xs'
+                          : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
+                      }`}
+                      aria-label={`Page ${page}`}
+                      aria-current={currentPage === page ? 'page' : undefined}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:text-slate-300 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed transition-colors"
+                    aria-label="Next page"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

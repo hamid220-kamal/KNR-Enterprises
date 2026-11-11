@@ -98,6 +98,7 @@ export const FaqsScreen: React.FC<FaqsScreenProps> = ({ onNavigate, language }) 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search questions or keywords (e.g. GST, MOQ, Tenders, Bleaching, Delivery)..."
+                  aria-label="Search frequently asked questions"
                   className="w-full pl-11 pr-4 py-3 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-2xs transition-all"
                 />
               </div>
@@ -165,6 +166,8 @@ export const FaqsScreen: React.FC<FaqsScreenProps> = ({ onNavigate, language }) 
                 >
                   <button
                     onClick={() => toggleAccordion(faq.id)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${faq.id}`}
                     className="w-full text-left p-5 sm:p-6 flex items-start justify-between gap-4 cursor-pointer"
                   >
                     <div className="flex items-start gap-4">
@@ -187,7 +190,10 @@ export const FaqsScreen: React.FC<FaqsScreenProps> = ({ onNavigate, language }) 
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-0 border-t border-slate-100 mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <div
+                      id={`faq-answer-${faq.id}`}
+                      className="px-6 pb-6 pt-0 border-t border-slate-100 mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed"
+                    >
                       <p className="pt-3">{faq.answer}</p>
 
                       {faq.tags && faq.tags.length > 0 && (

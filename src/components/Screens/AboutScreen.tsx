@@ -498,7 +498,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({
                   HUB COORDINATES
                 </span>
                 <span className="text-xs font-mono font-bold text-slate-900">
-                  12.9270° N, 78.1364° E (Chevella)
+                  17.3095° N, 78.1343° E (Chevella)
                 </span>
               </div>
 
