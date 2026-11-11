@@ -7,11 +7,9 @@ import { CartDrawer } from './components/CartDrawer';
 import { ProformaModal } from './components/ProformaModal';
 import { HomeScreen } from './components/Screens/HomeScreen';
 import { CatalogScreen } from './components/Screens/CatalogScreen';
-import { ServicesScreen } from './components/Screens/ServicesScreen';
 import { AboutScreen } from './components/Screens/AboutScreen';
-import { FaqsScreen } from './components/Screens/FaqsScreen';
 import { ContactScreen } from './components/Screens/ContactScreen';
-import { MessageCircle, ArrowUp, Home, Package, Truck, ShoppingCart, PhoneCall } from 'lucide-react';
+import { MessageCircle, ArrowUp, Home, Package, Info, ShoppingCart, PhoneCall } from 'lucide-react';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('home');
@@ -71,24 +69,37 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Listen to hash changes if user uses back/forward or direct hash links
+  // Listen to hash and pathname changes (Only 4 public pages: home, about, products, contact)
+  // Automatically redirects /enquiry or #enquiry to #contact
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash.replace('#', '') as Screen;
-      if (['home', 'products', 'services', 'about', 'faqs', 'contact'].includes(hash)) {
-        setCurrentScreen(hash);
+    const resolveScreen = (target: string): Screen => {
+      const clean = target.replace(/^#|\//g, '').toLowerCase();
+      if (clean === 'enquiry') {
+        window.location.hash = 'contact';
+        return 'contact';
       }
+      if (['home', 'about', 'products', 'contact'].includes(clean)) {
+        return clean as Screen;
+      }
+      return 'home';
     };
-    if (window.location.hash) {
-      handleHash();
-    }
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+
+    const handleRoute = () => {
+      const target = window.location.hash || window.location.pathname;
+      const screen = resolveScreen(target);
+      setCurrentScreen(screen);
+    };
+
+    handleRoute();
+    window.addEventListener('hashchange', handleRoute);
+    return () => window.removeEventListener('hashchange', handleRoute);
   }, []);
 
   const handleNavigate = (screen: Screen) => {
-    setCurrentScreen(screen);
-    window.location.hash = screen;
+    // If navigating to legacy enquiry, redirect directly to contact
+    const targetScreen = (screen as string) === 'enquiry' ? 'contact' : screen;
+    setCurrentScreen(targetScreen);
+    window.location.hash = targetScreen;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -132,21 +143,20 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-orange-500/20 selection:text-orange-600">
       {/* Shared Header Navigation */}
       <Header
         currentScreen={currentScreen}
         onNavigate={handleNavigate}
         cartCount={cartItems.length}
         onOpenCart={() => setIsCartOpen(true)}
-        onOpenProforma={() => setIsProformaOpen(true)}
         language={language}
         onToggleLanguage={handleToggleLanguage}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />
 
-      {/* Main Screen Views with bottom spacing for mobile web app bar */}
+      {/* Main Screen Views: Exactly 4 Public Pages */}
       <main className="flex-1 pb-20 md:pb-0">
         {currentScreen === 'home' && (
           <HomeScreen
@@ -160,38 +170,21 @@ export default function App() {
           />
         )}
 
+        {currentScreen === 'about' && (
+          <AboutScreen
+            onNavigate={handleNavigate}
+            language={language}
+          />
+        )}
+
         {currentScreen === 'products' && (
           <CatalogScreen
             onNavigate={handleNavigate}
             onAddToCart={handleAddToCart}
-            onOpenProforma={() => setIsProformaOpen(true)}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
-            language={language}
-          />
-        )}
-
-        {currentScreen === 'services' && (
-          <ServicesScreen
-            onNavigate={handleNavigate}
-            onOpenProforma={() => setIsProformaOpen(true)}
-            language={language}
-          />
-        )}
-
-        {currentScreen === 'about' && (
-          <AboutScreen
-            onNavigate={handleNavigate}
-            onOpenProforma={() => setIsProformaOpen(true)}
-            language={language}
-          />
-        )}
-
-        {currentScreen === 'faqs' && (
-          <FaqsScreen
-            onNavigate={handleNavigate}
             language={language}
           />
         )}
@@ -204,67 +197,71 @@ export default function App() {
         )}
       </main>
 
-      {/* Shared Footer (Hidden on mobile phones as requested) */}
+      {/* Shared Footer */}
       <Footer
         onNavigate={handleNavigate}
         language={language}
-        onOpenProforma={() => setIsProformaOpen(true)}
       />
 
-      {/* Mobile Web Application App Bar (Bottom Navigation for mobile) */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 md:hidden py-2 px-3 flex items-center justify-around shadow-2xl print:hidden">
+      {/* Mobile Web Application App Bar (4 Public Pages + Cart) */}
+      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-[#0a0e17]/95 backdrop-blur-md border-t border-slate-800 md:hidden py-2 px-3 flex items-center justify-around shadow-2xl print:hidden text-white">
+        {/* Home */}
         <button
           onClick={() => handleNavigate('home')}
           className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
-            currentScreen === 'home' ? 'text-primary font-bold' : 'text-slate-500 hover:text-slate-800'
+            currentScreen === 'home' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
           <Home className="w-5 h-5" />
           <span className="text-[10px] mt-0.5">{language === 'te' ? 'హోమ్' : 'Home'}</span>
         </button>
 
+        {/* About */}
+        <button
+          onClick={() => handleNavigate('about')}
+          className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
+            currentScreen === 'about' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
+          }`}
+        >
+          <Info className="w-5 h-5" />
+          <span className="text-[10px] mt-0.5">{language === 'te' ? 'గురించి' : 'About'}</span>
+        </button>
+
+        {/* Products */}
         <button
           onClick={() => handleNavigate('products')}
           className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
-            currentScreen === 'products' ? 'text-primary font-bold' : 'text-slate-500 hover:text-slate-800'
+            currentScreen === 'products' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
           <Package className="w-5 h-5" />
           <span className="text-[10px] mt-0.5">{language === 'te' ? 'ఉత్పత్తులు' : 'Products'}</span>
         </button>
 
-        <button
-          onClick={() => handleNavigate('services')}
-          className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
-            currentScreen === 'services' ? 'text-primary font-bold' : 'text-slate-500 hover:text-slate-800'
-          }`}
-        >
-          <Truck className="w-5 h-5" />
-          <span className="text-[10px] mt-0.5">{language === 'te' ? 'రవాణా' : 'Services'}</span>
-        </button>
-
-        <button
-          onClick={() => setIsCartOpen(true)}
-          className="relative flex flex-col items-center justify-center p-1 cursor-pointer text-slate-500 hover:text-primary transition-colors"
-          aria-label="View RFQ Cart"
-        >
-          <ShoppingCart className="w-5 h-5" />
-          {cartItems.length > 0 && (
-            <span className="absolute -top-0.5 right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-              {cartItems.length}
-            </span>
-          )}
-          <span className="text-[10px] mt-0.5">{language === 'te' ? 'కార్ట్' : 'RFQ Cart'}</span>
-        </button>
-
+        {/* Contact */}
         <button
           onClick={() => handleNavigate('contact')}
           className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
-            currentScreen === 'contact' ? 'text-primary font-bold' : 'text-slate-500 hover:text-slate-800'
+            currentScreen === 'contact' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
           <PhoneCall className="w-5 h-5" />
           <span className="text-[10px] mt-0.5">{language === 'te' ? 'కాంటాక్ట్' : 'Contact'}</span>
+        </button>
+
+        {/* Cart */}
+        <button
+          onClick={() => setIsCartOpen(true)}
+          className="relative flex flex-col items-center justify-center p-1 cursor-pointer text-slate-400 hover:text-orange-500 transition-colors"
+          aria-label="View RFQ Cart"
+        >
+          <ShoppingCart className="w-5 h-5" />
+          {cartItems.length > 0 && (
+            <span className="absolute -top-0.5 right-1.5 bg-orange-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              {cartItems.length}
+            </span>
+          )}
+          <span className="text-[10px] mt-0.5">{language === 'te' ? 'కార్ట్' : 'Cart'}</span>
         </button>
       </nav>
 
@@ -294,7 +291,7 @@ export default function App() {
 
       {/* Floating WhatsApp Action Button */}
       <a
-        href="https://wa.me/918886175855?text=Hello%20KNR%20Enterprises,%20we%20require%20municipal%20supplies%20quotation"
+        href="https://wa.me/918886175855?text=Hello%20KNR%20Enterprises,%20I%20would%20like%20to%20enquire%20about%20your%20supplies"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 flex items-center justify-center cursor-pointer group print:hidden"

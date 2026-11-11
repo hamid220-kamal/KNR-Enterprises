@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Screen, Language } from '../types';
 import { Logo } from './Logo';
-import { Lock, ChevronDown, ShoppingCart, Menu, X, Phone, FileText } from 'lucide-react';
+import { Lock, ChevronDown, ShoppingCart, Menu, X, MessageCircle } from 'lucide-react';
 import { AdminLoginModal } from './AdminLoginModal';
 
 interface HeaderProps {
@@ -9,7 +9,7 @@ interface HeaderProps {
   onNavigate: (screen: Screen) => void;
   cartCount: number;
   onOpenCart: () => void;
-  onOpenProforma: () => void;
+  onOpenProforma?: () => void;
   language: Language;
   onToggleLanguage: () => void;
   searchQuery?: string;
@@ -21,7 +21,6 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigate,
   cartCount,
   onOpenCart,
-  onOpenProforma,
   language,
   onToggleLanguage,
 }) => {
@@ -45,12 +44,14 @@ export const Header: React.FC<HeaderProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const isActive = (screen: Screen) => currentScreen === screen;
+
   return (
     <>
       <header className="sticky top-0 z-40 bg-[#0a0e17]/95 backdrop-blur-md border-b border-slate-800/80 text-white transition-all print:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* 1. Left: Brand Logo matching the reference image */}
+            {/* 1. Left: Brand Logo */}
             <div className="flex items-center">
               <Logo
                 variant="dark"
@@ -59,13 +60,13 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </div>
 
-            {/* 2. Center: Navigation Links */}
+            {/* 2. Center: 4 Main Public Pages (Home, About, Products, Contact) */}
             <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium">
               {/* Home */}
               <button
                 onClick={() => handleNavClick('home')}
                 className={`relative py-1 transition-colors cursor-pointer ${
-                  currentScreen === 'home'
+                  isActive('home')
                     ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                     : 'text-slate-300 hover:text-white'
                 }`}
@@ -77,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 onClick={() => handleNavClick('about')}
                 className={`relative py-1 transition-colors cursor-pointer ${
-                  currentScreen === 'about'
+                  isActive('about')
                     ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                     : 'text-slate-300 hover:text-white'
                 }`}
@@ -94,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   onClick={() => handleNavClick('products')}
                   className={`relative flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                    currentScreen === 'products'
+                    isActive('products')
                       ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                       : 'text-slate-300 hover:text-white'
                   }`}
@@ -140,20 +141,11 @@ export const Header: React.FC<HeaderProps> = ({
                 )}
               </div>
 
-              {/* Enquiry */}
-              <button
-                onClick={onOpenProforma}
-                className="text-slate-300 hover:text-white py-1 transition-colors cursor-pointer flex items-center gap-1"
-                title="Open Quotation / Proforma Invoice Generator"
-              >
-                <span>Enquiry</span>
-              </button>
-
               {/* Contact */}
               <button
                 onClick={() => handleNavClick('contact')}
                 className={`relative py-1 transition-colors cursor-pointer ${
-                  currentScreen === 'contact'
+                  isActive('contact')
                     ? 'text-orange-500 font-bold after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-[2px] after:bg-orange-500 after:rounded-full'
                     : 'text-slate-300 hover:text-white'
                 }`}
@@ -162,12 +154,24 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             </nav>
 
-            {/* 3. Right: Admin Login + Cart & Switcher */}
+            {/* 3. Right: WhatsApp CTA "Contact Us" + Admin & Cart Controls */}
             <div className="flex items-center space-x-2.5 sm:space-x-3">
+              {/* WhatsApp CTA Button: "Contact Us" */}
+              <a
+                href="https://wa.me/918886175855?text=Hello%20KNR%20Enterprises,%20I%20would%20like%20to%20enquire%20about%20your%20products%20and%20supplies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm px-3.5 sm:px-5 py-2 rounded-full shadow-md shadow-orange-500/25 flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
+                title="Chat with KNR Enterprises on WhatsApp"
+              >
+                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+                <span>Contact Us</span>
+              </a>
+
               {/* Language Switcher */}
               <button
                 onClick={onToggleLanguage}
-                className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-white px-2 py-1 rounded-md border border-slate-800 hover:border-slate-700 transition-colors cursor-pointer"
+                className="hidden lg:inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-white px-2 py-1 rounded-md border border-slate-800 hover:border-slate-700 transition-colors cursor-pointer"
                 title="Toggle English / Telugu"
               >
                 <span className={language === 'en' ? 'text-orange-400 font-bold' : ''}>EN</span>
@@ -190,14 +194,14 @@ export const Header: React.FC<HeaderProps> = ({
                 )}
               </button>
 
-              {/* Admin Login Button matching reference design */}
+              {/* Admin Portal Button */}
               <button
                 onClick={() => setIsAdminModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-slate-700/80 bg-slate-900/80 hover:bg-slate-800 hover:border-slate-500 text-slate-200 hover:text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
+                className="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800/80 transition-colors cursor-pointer"
                 title="Administrator Login"
+                aria-label="Admin Login"
               >
-                <Lock className="w-3.5 h-3.5 text-slate-400" />
-                <span>Admin Login</span>
+                <Lock className="w-4 h-4" />
               </button>
 
               {/* Mobile Hamburger Menu Toggle */}
@@ -218,7 +222,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => handleNavClick('home')}
               className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                currentScreen === 'home'
+                isActive('home')
                   ? 'bg-orange-500 text-white'
                   : 'text-slate-300 hover:bg-slate-800'
               }`}
@@ -228,7 +232,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => handleNavClick('about')}
               className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                currentScreen === 'about'
+                isActive('about')
                   ? 'bg-orange-500 text-white'
                   : 'text-slate-300 hover:bg-slate-800'
               }`}
@@ -238,33 +242,36 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => handleNavClick('products')}
               className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                currentScreen === 'products'
+                isActive('products')
                   ? 'bg-orange-500 text-white'
                   : 'text-slate-300 hover:bg-slate-800'
               }`}
             >
-              Products Catalog
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenProforma();
-              }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-300 hover:bg-slate-800 transition-colors flex items-center justify-between"
-            >
-              <span>Enquiry / Proforma</span>
-              <FileText className="w-4 h-4 text-orange-400" />
+              Products
             </button>
             <button
               onClick={() => handleNavClick('contact')}
               className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                currentScreen === 'contact'
+                isActive('contact')
                   ? 'bg-orange-500 text-white'
                   : 'text-slate-300 hover:bg-slate-800'
               }`}
             >
               Contact
             </button>
+
+            {/* Mobile WhatsApp CTA */}
+            <div className="pt-2">
+              <a
+                href="https://wa.me/918886175855?text=Hello%20KNR%20Enterprises,%20I%20would%20like%20to%20enquire%20about%20your%20products%20and%20supplies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Contact Us on WhatsApp</span>
+              </a>
+            </div>
 
             <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
               <button

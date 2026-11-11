@@ -79,26 +79,15 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
     });
   }, [products, searchTerm, categoryFilter]);
 
-  // Handle Enquiry on WhatsApp
+  // Handle Enquiry on WhatsApp directly using configured KNR contact number
   const handleEnquire = (product: CatalogItem) => {
-    const message = `Hello KNR Enterprises, I would like to enquire about the following product:%0A%0AProduct: ${encodeURIComponent(
-      product.name
-    )}%0APrice: ${encodeURIComponent(formatINR(product.price) + ' ' + product.unit)}%0ACategory: ${encodeURIComponent(
-      product.category
-    )}%0A%0APlease provide commercial quotation and delivery schedule for our requirements.`;
-
-    window.open(`https://wa.me/918886175855?text=${message}`, '_blank');
-
-    // Also link with the shopping cart if available
-    if (onAddToCart) {
-      const match = PRODUCTS.find((p) =>
-        p.name.toLowerCase().includes(product.name.toLowerCase()) ||
-        product.name.toLowerCase().includes(p.name.toLowerCase())
-      );
-      if (match) {
-        onAddToCart(match);
-      }
-    }
+    const formattedPrice = `${formatINR(product.price)} ${product.unit}`;
+    const text = `Hello KNR Enterprises,\nI am interested in the following product:\nProduct: ${product.name}\nDisplayed Price: ${formattedPrice}\nPlease share more details and availability.`;
+    window.open(
+      `https://wa.me/918886175855?text=${encodeURIComponent(text)}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   return (
