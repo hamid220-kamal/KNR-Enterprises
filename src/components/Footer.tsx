@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Screen, Language } from '../types';
 import { TRANSLATIONS } from '../data/translations';
-import { Logo } from './Logo';
 import {
   MapPin,
   Clock,
@@ -100,7 +99,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenProf
           {/* Col 1: Identity & Statutory (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="bg-white/95 p-2.5 rounded-xl inline-block shadow-sm">
-              <Logo className="h-8 sm:h-9 md:h-10 w-auto" />
+              <img
+                src="/logo.png"
+                alt="KNR Enterprises"
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+              />
             </div>
 
             <p className="text-xs sm:text-sm leading-relaxed text-slate-300">

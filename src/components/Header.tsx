@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Screen, Language } from '../types';
 import { TRANSLATIONS } from '../data/translations';
-import { Logo } from './Logo';
 import { Phone, MapPin, Search, ShoppingCart, ArrowRight, Menu, X, FileText, CheckCircle2 } from 'lucide-react';
 
 interface HeaderProps {
@@ -105,7 +104,11 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('home')}
             className="flex items-center cursor-pointer select-none group py-0.5 shrink-0"
           >
-            <Logo className="h-8 sm:h-9 md:h-11 w-auto max-w-[140px] sm:max-w-[160px] md:max-w-[210px] transition-transform group-hover:scale-105" />
+            <img
+              src="/logo.png"
+              alt="KNR Enterprises - We Supply"
+              className="h-8 sm:h-9 md:h-11 w-auto max-w-[140px] sm:max-w-[160px] md:max-w-[210px] object-contain transition-transform group-hover:scale-105"
+            />
           </div>
 
           {/* Desktop Search */}
