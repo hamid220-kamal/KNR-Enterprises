@@ -1,648 +1,328 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Screen, Language, Product, CatalogFilterState } from '../../types';
-import { PRODUCTS, CATEGORIES } from '../../data/products';
-import { TRANSLATIONS } from '../../data/translations';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Screen, Language, Product } from '../../types';
 import {
   Search,
-  SlidersHorizontal,
-  RotateCcw,
-  Star,
-  CheckCircle2,
-  Clock,
-  FileText,
-  Phone,
-  MessageCircle,
-  Download,
-  Grid,
-  List,
   ChevronDown,
-  ShieldCheck,
-  Check
+  Mail,
+  CheckCircle2,
+  Handshake,
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
+import {
+  getCatalogProducts,
+  formatINR,
+  CatalogItem
+} from '../../services/productService';
+import { PRODUCTS } from '../../data/products';
 
 interface CatalogScreenProps {
   onNavigate: (screen: Screen) => void;
-  onAddToCart: (product: Product) => void;
-  onOpenProforma: () => void;
-  selectedCategory: string;
-  onSelectCategory: (category: string) => void;
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
-  language: Language;
+  onAddToCart?: (product: Product) => void;
+  onOpenProforma?: () => void;
+  selectedCategory?: string;
+  onSelectCategory?: (category: string) => void;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
+  language?: Language;
 }
 
 export const CatalogScreen: React.FC<CatalogScreenProps> = ({
   onNavigate,
   onAddToCart,
-  onOpenProforma,
-  selectedCategory,
-  onSelectCategory,
-  searchQuery,
-  onSearchChange,
-  language,
+  selectedCategory: initialCategory = 'all',
+  searchQuery: initialSearch = ''
 }) => {
-  const t = TRANSLATIONS[language];
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [maxPrice, setMaxPrice] = useState<number>(35000);
-  const [inStockOnly, setInStockOnly] = useState<boolean>(true);
-  const [selectedMoqTier, setSelectedMoqTier] = useState<string>('all');
-  const [minRating, setMinRating] = useState<number>(0);
-  const [sortBy, setSortBy] = useState<'popularity' | 'price-asc' | 'price-desc' | 'rating'>('popularity');
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageSize = 6;
+  const [products, setProducts] = useState<CatalogItem[]>(getCatalogProducts());
+  const [searchTerm, setSearchTerm] = useState<string>(initialSearch);
+  const [categoryFilter, setCategoryFilter] = useState<string>(
+    initialCategory === 'all' ? 'All Products' : initialCategory
+  );
 
-  // Whenever filters change, reset to page 1
+  // Listen for admin live price updates via custom event
   useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedCategory, searchQuery, maxPrice, inStockOnly, minRating, sortBy]);
+    const handlePriceUpdate = () => {
+      setProducts(getCatalogProducts());
+    };
+    window.addEventListener('knr_product_price_updated', handlePriceUpdate);
+    return () => {
+      window.removeEventListener('knr_product_price_updated', handlePriceUpdate);
+    };
+  }, []);
 
-  const handleResetFilters = () => {
-    onSelectCategory('all');
-    onSearchChange('');
-    setMaxPrice(35000);
-    setInStockOnly(false);
-    setSelectedMoqTier('all');
-    setMinRating(0);
-    setSortBy('popularity');
-    setCurrentPage(1);
-  };
-
-  // Filter products
-  const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((product) => {
-      // Category filter
-      if (selectedCategory !== 'all' && product.category !== selectedCategory) {
-        return false;
-      }
-      // Search query
-      if (searchQuery.trim() !== '') {
-        const query = searchQuery.toLowerCase();
-        const matchesName = product.name.toLowerCase().includes(query);
-        const matchesTelugu = product.teluguName.toLowerCase().includes(query);
-        const matchesCategory = product.category.toLowerCase().includes(query);
-        const matchesHsn = product.hsnCode.toLowerCase().includes(query);
-        const matchesBadge = product.badge?.toLowerCase().includes(query);
-        if (!matchesName && !matchesTelugu && !matchesCategory && !matchesHsn && !matchesBadge) {
-          return false;
-        }
-      }
-      // Price filter
-      if (product.price > maxPrice) {
-        return false;
-      }
-      // Stock
-      if (inStockOnly && !product.inStock) {
-        return false;
-      }
-      // Rating
-      if (minRating > 0 && product.rating < minRating) {
-        return false;
-      }
-      return true;
-    }).sort((a, b) => {
-      if (sortBy === 'price-asc') return a.price - b.price;
-      if (sortBy === 'price-desc') return b.price - a.price;
-      if (sortBy === 'rating') return b.rating - a.rating;
-      return b.reviewCount - a.reviewCount; // popularity
-    });
-  }, [selectedCategory, searchQuery, maxPrice, inStockOnly, minRating, sortBy]);
-
-  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / pageSize));
-  const paginatedProducts = useMemo(() => {
-    const start = (currentPage - 1) * pageSize;
-    return filteredProducts.slice(start, start + pageSize);
-  }, [filteredProducts, currentPage, pageSize]);
-
-  const categoryPills = [
-    { id: 'all', label: 'All Products (12)' },
-    { id: 'Disinfectants & Chemicals', label: 'Disinfectants & Chemicals (2)' },
-    { id: 'Pest & Vector Control', label: 'Pest & Vector Control (3)' },
-    { id: 'Waste Management', label: 'Waste Management (2)' },
-    { id: 'Municipal Infrastructure', label: 'Municipal Infrastructure (1)' },
-    { id: 'Sanitization Tools', label: 'Sanitization Tools (3)' },
-    { id: 'Civic Landscaping', label: 'Civic Landscaping (1)' },
+  const categories = [
+    'All Products',
+    'Disinfectants & Chemicals',
+    'Pest & Vector Control',
+    'Municipal Infrastructure',
+    'Waste Management',
+    'Civic Landscaping',
+    'Sanitization Tools'
   ];
 
+  // Filter products based on search and category
+  const filteredProducts = useMemo(() => {
+    return products.filter((prod) => {
+      // Category check
+      if (categoryFilter !== 'All Products' && prod.category !== categoryFilter) {
+        return false;
+      }
+      // Search term check
+      if (searchTerm.trim() !== '') {
+        const query = searchTerm.toLowerCase();
+        const matchesName = prod.name.toLowerCase().includes(query);
+        const matchesDesc = prod.description.toLowerCase().includes(query);
+        const matchesCat = prod.category.toLowerCase().includes(query);
+        return matchesName || matchesDesc || matchesCat;
+      }
+      return true;
+    });
+  }, [products, searchTerm, categoryFilter]);
+
+  // Handle Enquiry on WhatsApp
+  const handleEnquire = (product: CatalogItem) => {
+    const message = `Hello KNR Enterprises, I would like to enquire about the following product:%0A%0AProduct: ${encodeURIComponent(
+      product.name
+    )}%0APrice: ${encodeURIComponent(formatINR(product.price) + ' ' + product.unit)}%0ACategory: ${encodeURIComponent(
+      product.category
+    )}%0A%0APlease provide commercial quotation and delivery schedule for our requirements.`;
+
+    window.open(`https://wa.me/918886175855?text=${message}`, '_blank');
+
+    // Also link with the shopping cart if available
+    if (onAddToCart) {
+      const match = PRODUCTS.find((p) =>
+        p.name.toLowerCase().includes(product.name.toLowerCase()) ||
+        product.name.toLowerCase().includes(p.name.toLowerCase())
+      );
+      if (match) {
+        onAddToCart(match);
+      }
+    }
+  };
+
   return (
-    <div className="space-y-8 pb-16">
-      {/* 1. TOP HEADER & BREADCRUMB */}
-      <section className="bg-slate-50 border-b border-slate-200 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-xs text-slate-500 mb-3">
-            <button
-              onClick={() => onNavigate('home')}
-              className="hover:text-primary transition-colors cursor-pointer"
-            >
-              Home
-            </button>
-            <span>/</span>
-            <span className="text-slate-900 font-semibold">
-              Municipal Sanitation & Civil Supplies Catalog
-            </span>
-          </nav>
+    <div className="w-full bg-[#f8f9fc] text-slate-900 selection:bg-orange-500/20 selection:text-orange-600">
+      {/* =========================================================================
+          1. PRODUCTS HERO SECTION (Dark theme matching reference image)
+         ========================================================================= */}
+      <section className="relative bg-[#0a0e17] text-white pt-8 sm:pt-12 pb-16 sm:pb-20 border-b border-slate-800/80 overflow-hidden">
+        {/* Ambient subtle warm glow */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-primary mb-2">
-                <FileText className="w-3.5 h-3.5" />
-                <span>12 Certified Products Available</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column (7 cols) */}
+            <div className="lg:col-span-7 space-y-4 text-left">
+              {/* Overline Badge */}
+              <div className="inline-block bg-orange-500 text-white font-bold text-[10px] sm:text-xs px-3.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                OUR CATALOGUE
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                Municipal & Institutional Catalog
+
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
+                Products That Support<br />
+                <span className="text-orange-500">Better Communities.</span>
               </h1>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl leading-relaxed">
-                Contractor-grade wholesale pricing for Gram Panchayats, Municipal Corporations, and civil infrastructure EPC projects across all 33 Telangana districts.
+
+              {/* Description */}
+              <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg">
+                Explore our range of industrial, sanitation, chemical and infrastructure supplies for diverse operational requirements.
               </p>
-              <div className="flex items-center gap-2 mt-2 text-xs font-semibold text-emerald-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>GST-3B Compliant • Direct Chevella Depot Dispatch</span>
+
+              {/* Small Orange Underline Accent Bar */}
+              <div className="w-16 h-1 bg-orange-500 rounded-full mt-4" />
+            </div>
+
+            {/* Right Column: Hero Products Composition Visual (5 cols) */}
+            <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 bg-slate-900 group">
+                <img
+                  src="/products-hero-composition.jpg"
+                  alt="KNR Enterprises Flagship Supplies"
+                  className="w-full h-auto aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (target.src.indexOf('hero-knr-products.jpg') === -1) {
+                      target.src = '/hero-knr-products.jpg';
+                    }
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e17]/50 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
-
-            {/* Quick Action Cards */}
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                onClick={onOpenProforma}
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-2xs transition-colors cursor-pointer"
-              >
-                <Download className="w-4 h-4 text-primary" />
-                <span>Download Rate Card</span>
-              </button>
-
-              <a
-                href="tel:8886175855"
-                className="inline-flex items-center gap-2 bg-primary hover:bg-orange-600 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-xs transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Depot Hotline: 8886175855</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Category Filter Horizontal Pills */}
-          <div className="mt-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {categoryPills.map((pill) => {
-              const isActive = selectedCategory === pill.id;
-              return (
-                <button
-                  key={pill.id}
-                  onClick={() => onSelectCategory(pill.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                    isActive
-                      ? 'bg-slate-900 text-white shadow-xs'
-                      : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-slate-100'
-                  }`}
-                >
-                  {pill.label}
-                </button>
-              );
-            })}
           </div>
         </div>
       </section>
 
-      {/* 2. MAIN CATALOG BODY (SIDEBAR + PRODUCT GRID) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Sticky Filter Sidebar (3 cols) */}
-          <div className="lg:col-span-3 bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2 font-bold text-sm text-slate-900">
-                <SlidersHorizontal className="w-4 h-4 text-primary" />
-                <span>Filter Supplies</span>
-              </div>
+      {/* =========================================================================
+          2. FLOATING SEARCH & FILTER TOOLBAR
+         ========================================================================= */}
+      <div className="relative -mt-6 sm:-mt-7 z-20 max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl border border-slate-200/90 p-2 sm:p-2.5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          {/* Search Input Bar */}
+          <div className="flex items-center gap-2.5 flex-1 px-2">
+            <Search className="w-4 sm:w-5 h-4 sm:h-5 text-slate-400 shrink-0" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search products..."
+              aria-label="Search products"
+              className="w-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none"
+            />
+            {searchTerm && (
               <button
-                onClick={handleResetFilters}
-                className="text-xs text-primary hover:underline font-bold flex items-center gap-1 cursor-pointer"
+                onClick={() => setSearchTerm('')}
+                className="text-xs text-slate-400 hover:text-slate-600 font-bold px-1"
+                title="Clear search"
               >
-                <RotateCcw className="w-3 h-3" />
-                <span>RESET ALL</span>
+                ✕
               </button>
-            </div>
-
-            {/* Category Select Radio/Check */}
-            <div className="space-y-2.5">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Catalog Category
-              </h4>
-              <div className="space-y-2 text-xs">
-                {CATEGORIES.map((c) => (
-                  <label
-                    key={c.id}
-                    className="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name="catalogCat"
-                        checked={selectedCategory === c.id}
-                        onChange={() => onSelectCategory(c.id)}
-                        className="text-primary focus:ring-primary"
-                      />
-                      <span className="text-slate-700 group-hover:text-primary transition-colors">
-                        {c.name}
-                      </span>
-                    </div>
-                    <span className="text-slate-400 font-mono text-[11px]">{c.count}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Max Price Range Slider */}
-            <div className="space-y-2 pt-4 border-t border-slate-100">
-              <div className="flex justify-between items-center text-xs font-bold text-slate-900">
-                <span>Max Price (₹)</span>
-                <span className="text-primary font-mono">₹{maxPrice.toLocaleString('en-IN')}</span>
-              </div>
-              <input
-                type="range"
-                min="500"
-                max="35000"
-                step="500"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Number(e.target.value))}
-                aria-label="Filter by maximum price"
-                className="w-full accent-primary cursor-pointer"
-              />
-              <div className="flex justify-between text-[11px] text-slate-400 font-mono">
-                <span>₹500</span>
-                <span>₹18,000</span>
-                <span>₹35,000+</span>
-              </div>
-            </div>
-
-            {/* Depot Stock Status */}
-            <div className="space-y-2 pt-4 border-t border-slate-100">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Depot Stock Status
-              </h4>
-              <div className="space-y-2 text-xs">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={inStockOnly}
-                    onChange={(e) => setInStockOnly(e.target.checked)}
-                    className="rounded text-primary focus:ring-primary"
-                  />
-                  <span className="text-slate-700 font-semibold">In Stock (Immediate Dispatch)</span>
-                </label>
-              </div>
-            </div>
-
-            {/* Minimum Rating Filter */}
-            <div className="space-y-2 pt-4 border-t border-slate-100">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Contractor Rating
-              </h4>
-              <div className="space-y-1.5 text-xs">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="minRating"
-                    checked={minRating === 4.5}
-                    onChange={() => setMinRating(4.5)}
-                    className="text-primary focus:ring-primary"
-                  />
-                  <div className="flex items-center gap-1 text-amber-500">
-                    <Star className="w-3.5 h-3.5 fill-current" />
-                    <span className="text-slate-700">4.5 & above</span>
-                  </div>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="minRating"
-                    checked={minRating === 4.0}
-                    onChange={() => setMinRating(4.0)}
-                    className="text-primary focus:ring-primary"
-                  />
-                  <div className="flex items-center gap-1 text-amber-500">
-                    <Star className="w-3.5 h-3.5 fill-current" />
-                    <span className="text-slate-700">4.0 & above</span>
-                  </div>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="minRating"
-                    checked={minRating === 0}
-                    onChange={() => setMinRating(0)}
-                    className="text-primary focus:ring-primary"
-                  />
-                  <span className="text-slate-700">All Ratings</span>
-                </label>
-              </div>
-            </div>
-
-            {/* Standards & Certifications Badges */}
-            <div className="space-y-2 pt-4 border-t border-slate-100">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Standards & Regulatory
-              </h4>
-              <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-600">
-                <span className="bg-slate-100 px-2 py-1 rounded">ISI Certified</span>
-                <span className="bg-slate-100 px-2 py-1 rounded">CIB Registered</span>
-                <span className="bg-slate-100 px-2 py-1 rounded">Swachh Bharat Std</span>
-                <span className="bg-slate-100 px-2 py-1 rounded">IP66 Weatherproof</span>
-              </div>
-            </div>
-
-            {/* Custom G.O. Estimates Help Card */}
-            <div className="p-3.5 rounded-xl bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 text-xs space-y-2">
-              <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                <ShieldCheck className="w-4 h-4 text-primary" />
-                <span>Custom G.O. Estimates?</span>
-              </div>
-              <p className="text-[11px] text-slate-600 leading-relaxed">
-                Need special council approval specs or formal Panchayat Quotation format? Contact our Managing Partner directly.
-              </p>
-              <div className="pt-1 space-y-1">
-                <p className="font-semibold text-slate-800">K. Narendar Reddy</p>
-                <a
-                  href="tel:8886175855"
-                  className="font-mono text-primary font-bold hover:underline block"
-                >
-                  8886175855
-                </a>
-                <a
-                  href="https://wa.me/918886175855?text=Hello%20KNR%20Enterprises,%20we%20need%20custom%20estimates"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-emerald-700 hover:underline font-semibold pt-1"
-                >
-                  <MessageCircle className="w-3.5 h-3.5" />
-                  <span>WhatsApp Quotation</span>
-                </a>
-              </div>
-            </div>
+            )}
           </div>
 
-          {/* Right Product Grid Area (9 cols) */}
-          <div className="lg:col-span-9 space-y-6">
-            {/* Top Toolbar (Search, Sort, View Toggle) */}
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              {/* Product Search Input */}
-              <div className="relative flex-1">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => onSearchChange(e.target.value)}
-                  placeholder="Search by product, ISI standard, HSN..."
-                  aria-label="Search by product, ISI standard, HSN"
-                  className="w-full pl-10 pr-4 py-2 bg-slate-50 focus:bg-white border border-slate-200 focus:border-primary rounded-xl text-xs focus:outline-none transition-colors"
-                />
+          {/* Vertical Divider */}
+          <div className="h-6 w-[1px] bg-slate-200 hidden sm:block" />
+
+          {/* Category Dropdown */}
+          <div className="relative min-w-[180px] sm:min-w-[200px] border-t sm:border-t-0 pt-2 sm:pt-0">
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              aria-label="Filter by product category"
+              className="w-full text-xs sm:text-sm font-semibold text-slate-700 bg-transparent py-1 pl-2 pr-8 focus:outline-none cursor-pointer appearance-none"
+            >
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="w-4 h-4 text-slate-500 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+      </div>
+
+      {/* =========================================================================
+          3. PRODUCT GRID (Desktop 4 cols x 2 rows, Tablet 2 cols, Mobile 1-2 cols)
+         ========================================================================= */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-16">
+        {filteredProducts.length === 0 ? (
+          <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center my-8 shadow-sm">
+            <div className="w-14 h-14 mx-auto mb-3 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center">
+              <Search className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-bold text-slate-900">
+              No products found matching "{searchTerm}"
+            </h3>
+            <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+              Try adjusting your search keywords or resetting the category filter to view all products.
+            </p>
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setCategoryFilter('All Products');
+              }}
+              className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-5 py-2.5 rounded-full shadow-sm cursor-pointer transition-all"
+            >
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between p-4 group"
+              >
+                {/* Product Card Top: Image & Details */}
+                <div>
+                  {/* Image Container with 4:3 Aspect Ratio */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 mb-3.5 border border-slate-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        // Fallback placeholder if image not found
+                        target.src = '/hero-knr-products.jpg';
+                      }}
+                    />
+                  </div>
+
+                  {/* Product Title */}
+                  <h3 className="text-sm sm:text-base font-bold text-[#0f172a] tracking-tight leading-snug">
+                    {product.name}
+                  </h3>
+
+                  {/* Product Description */}
+                  <p className="text-xs text-slate-500 line-clamp-2 mt-1 min-h-[32px] leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  {/* Dynamic Price in INR with Unit */}
+                  <div className="mt-2.5 flex items-baseline gap-1">
+                    <span className="text-base sm:text-lg font-black text-[#0f172a]">
+                      {formatINR(product.price)}
+                    </span>
+                    <span className="text-xs font-semibold text-slate-500">
+                      {product.unit}
+                    </span>
+                  </div>
+
+                  {/* Availability Indicator */}
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 mt-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 fill-emerald-100" />
+                    <span>In Stock</span>
+                  </div>
+                </div>
+
+                {/* Enquire Now Action Button */}
+                <button
+                  onClick={() => handleEnquire(product)}
+                  className="w-full mt-3.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Enquire Now</span>
+                </button>
               </div>
+            ))}
+          </div>
+        )}
+      </section>
 
-              {/* Sort By & View Toggle */}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2 text-xs">
-                  <span className="text-slate-500 font-semibold whitespace-nowrap">Sort By:</span>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
-                    aria-label="Sort products by"
-                    className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-semibold focus:outline-none focus:border-primary cursor-pointer"
-                  >
-                    <option value="popularity">Popularity / Best Match</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="rating">Highest Rated</option>
-                  </select>
-                </div>
-
-                <div className="hidden sm:flex items-center border border-slate-200 rounded-lg overflow-hidden">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-1.5 ${viewMode === 'grid' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-100'} cursor-pointer`}
-                    title="Grid View"
-                  >
-                    <Grid className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-1.5 ${viewMode === 'list' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-100'} cursor-pointer`}
-                    title="List View"
-                  >
-                    <List className="w-4 h-4" />
-                  </button>
-                </div>
+      {/* =========================================================================
+          4. BULK ENQUIRY CTA SECTION (matching reference image)
+         ========================================================================= */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 my-10 sm:my-14">
+        <div className="bg-[#0c1322] text-white rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-slate-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
+            {/* Left Content with Handshake Icon */}
+            <div className="flex items-center gap-4 sm:gap-5">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                <Handshake className="w-6 h-6 sm:w-7 sm:h-7 text-orange-500" />
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight">
+                  Need <span className="text-orange-500">Bulk Orders</span> or{' '}
+                  <span className="text-orange-500">Custom Requirements</span>?
+                </h3>
+                <p className="text-slate-400 text-xs sm:text-sm mt-1">
+                  Get in touch with KNR Enterprises to discuss your requirements.
+                </p>
               </div>
             </div>
 
-            {/* Active Filter Chips */}
-            {(selectedCategory !== 'all' || searchQuery || maxPrice < 35000 || inStockOnly || minRating > 0) && (
-              <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="font-semibold text-slate-500">Active Filters:</span>
-                {selectedCategory !== 'all' && (
-                  <span className="bg-orange-100 text-primary px-2.5 py-1 rounded-md font-medium">
-                    Category: {selectedCategory}
-                  </span>
-                )}
-                {searchQuery && (
-                  <span className="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md font-medium">
-                    Query: "{searchQuery}"
-                  </span>
-                )}
-                {maxPrice < 35000 && (
-                  <span className="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md font-medium">
-                    Max ₹{maxPrice.toLocaleString('en-IN')}
-                  </span>
-                )}
-                {inStockOnly && (
-                  <span className="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md font-medium">
-                    In Stock Only
-                  </span>
-                )}
-                {minRating > 0 && (
-                  <span className="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-md font-medium">
-                    Rating ≥ {minRating}
-                  </span>
-                )}
-                <button
-                  onClick={handleResetFilters}
-                  className="text-primary hover:underline font-bold ml-2 cursor-pointer"
-                >
-                  Clear All
-                </button>
-              </div>
-            )}
-
-            {/* Empty State */}
-            {filteredProducts.length === 0 ? (
-              <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-orange-50 text-primary rounded-full flex items-center justify-center">
-                  <Search className="w-8 h-8 opacity-60" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900">
-                  No matching municipal supplies found
-                </h3>
-                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-                  Try adjusting your price range, clearing category filters, or search for broader keywords like "bleaching", "dustbin", or "light".
-                </p>
-                <button
-                  onClick={handleResetFilters}
-                  className="mt-5 bg-primary hover:bg-orange-600 text-white font-bold text-xs px-5 py-2.5 rounded-lg shadow-xs cursor-pointer"
-                >
-                  Reset All Filters
-                </button>
-              </div>
-            ) : (
-              /* Product Listing (Grid / List) */
-              <div
-                className={
-                  viewMode === 'grid'
-                    ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
-                    : 'space-y-4'
-                }
-              >
-                {paginatedProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className={`bg-white rounded-2xl border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-lg transition-all flex overflow-hidden group ${
-                      viewMode === 'grid' ? 'flex-col justify-between' : 'flex-col sm:flex-row items-center p-4 gap-4'
-                    }`}
-                  >
-                    {/* Media */}
-                    <div
-                      className={
-                        viewMode === 'grid'
-                          ? 'relative aspect-4/3 overflow-hidden bg-slate-100 m-3 rounded-xl'
-                          : 'relative w-full sm:w-44 h-40 overflow-hidden bg-slate-100 rounded-xl shrink-0'
-                      }
-                    >
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {product.badge && (
-                        <div className="absolute top-2.5 left-2.5 bg-slate-900/80 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-xs">
-                          {product.badge}
-                        </div>
-                      )}
-                      <div className="absolute bottom-2.5 left-2.5 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-xs">
-                        {t.inStock}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className={viewMode === 'grid' ? 'p-4 pt-0 flex-1 flex flex-col justify-between' : 'flex-1 min-w-0'}>
-                      <div>
-                        {/* Rating */}
-                        <div className="flex items-center gap-1.5 text-xs text-slate-600 mb-1.5">
-                          <div className="flex text-amber-400">
-                            <Star className="w-3.5 h-3.5 fill-current" />
-                          </div>
-                          <span className="font-bold text-slate-800">{product.rating}</span>
-                          <span className="text-slate-400">({product.reviewCount})</span>
-                          <span className="text-slate-300">•</span>
-                          <span className="font-mono text-[11px] text-slate-500">HSN {product.hsnCode}</span>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                          {language === 'te' ? product.teluguName : product.name}
-                        </h3>
-
-                        {/* Description in List mode */}
-                        {viewMode === 'list' && (
-                          <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                            {product.description}
-                          </p>
-                        )}
-
-                        {/* Price & MOQ */}
-                        <div className="mt-3 pt-2 border-t border-slate-100">
-                          <div className="flex items-baseline gap-2">
-                            <span className="text-lg font-black text-slate-900">
-                              ₹{product.price.toLocaleString('en-IN')}
-                            </span>
-                            <span className="text-xs text-slate-400 line-through">
-                              ₹{product.originalPrice.toLocaleString('en-IN')}
-                            </span>
-                            <span className="text-[11px] font-bold text-emerald-600">
-                              {product.discountPercent}% OFF
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                            <Clock className="w-3 h-3 text-primary shrink-0" />
-                            <span>MOQ: {product.moqDescription}</span>
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
-                        <button
-                          onClick={() => onAddToCart(product)}
-                          className="bg-primary hover:bg-orange-600 active:bg-orange-700 text-white font-bold text-xs py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-2xs"
-                        >
-                          <span>{t.addToCart}</span>
-                        </button>
-                        <button
-                          onClick={() => {
-                            onAddToCart(product);
-                            onOpenProforma();
-                          }}
-                          className="border border-slate-200 hover:border-primary text-slate-700 hover:text-primary font-semibold text-xs py-2 px-3 rounded-lg transition-colors flex items-center justify-center cursor-pointer"
-                        >
-                          <span>{t.quoteOnly}</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Pagination Controls */}
-            {filteredProducts.length > 0 && (
-              <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                <p>
-                  Showing{' '}
-                  <strong className="text-slate-900">
-                    {Math.min((currentPage - 1) * pageSize + 1, filteredProducts.length)}-{Math.min(currentPage * pageSize, filteredProducts.length)}
-                  </strong>{' '}
-                  of <strong className="text-slate-900">{filteredProducts.length}</strong> filtered items ({PRODUCTS.length} total)
-                </p>
-                <div className="flex items-center space-x-1">
-                  <button
-                    onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-                    disabled={currentPage === 1}
-                    className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:text-slate-300 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed transition-colors"
-                    aria-label="Previous page"
-                  >
-                    Prev
-                  </button>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <button
-                      key={page}
-                      onClick={() => setCurrentPage(page)}
-                      className={`px-3 py-1.5 rounded-md font-bold transition-colors cursor-pointer ${
-                        currentPage === page
-                          ? 'bg-primary text-white shadow-xs'
-                          : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
-                      }`}
-                      aria-label={`Page ${page}`}
-                      aria-current={currentPage === page ? 'page' : undefined}
-                    >
-                      {page}
-                    </button>
-                  ))}
-                  <button
-                    onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
-                    disabled={currentPage === totalPages}
-                    className="px-3 py-1.5 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:text-slate-300 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed transition-colors"
-                    aria-label="Next page"
-                  >
-                    Next
-                  </button>
-                </div>
-              </div>
-            )}
+            {/* Right Action Button */}
+            <button
+              onClick={() => onNavigate('contact')}
+              className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-3 rounded-full shadow-lg shadow-orange-500/25 flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap self-start sm:self-auto"
+            >
+              <span>Contact Us</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </section>
