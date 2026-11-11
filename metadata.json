@@ -1,0 +1,6 @@
+{
+  "name": "KNR Enterprises - Municipal & Sanitation Wholesale",
+  "description": "Wholesale municipal, sanitation, and civil infrastructure supply partner for Gram Panchayats, Municipal Corporations, and EPC contractors across Telangana.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

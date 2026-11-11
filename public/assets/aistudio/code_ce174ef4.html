@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KNR Enterprises - We Supply | Municipal &amp; Sanitation Wholesale</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#F57C00",
+            "primary-hover": "#e65100",
+            "primary-light": "#FFF3E0",
+            navy: "#0D2B5B",
+            "navy-dark": "#071A38",
+            "navy-light": "#E8EDF5",
+            accent: "#2E9E5B",
+            "accent-light": "#E8F5E9",
+            surface: "#F5F7FA",
+            dark: "#1A1A1A",
+            muted: "#666666",
+            border: "#E2E8F0"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Poppins", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', sans-serif; color: #1A1A1A; background-color: #FFFFFF; }
+    }
+    .carousel-track {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-slide {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    .cart-bounce-anim {
+      animation: cartPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes cartPop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+    }
+    .group:hover .trust-icon-wiggle {
+      animation: wiggle 0.4s ease-in-out;
+    }
+    .heart-active {
+      color: #E11D48 !important;
+      font-variation-settings: 'FILL' 1 !important;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="bg-surface antialiased text-dark">
+<!-- Top Announcement Bar -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300" id="main-header">
+<div class="bg-primary text-white text-xs py-2 px-4 sm:px-8">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4 sm:gap-6 flex-wrap">
+<span class="flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[15px]">call</span>
+            Call: <a class="hover:underline" href="tel:8886175855">8886175855</a> | <a class="hover:underline" href="tel:9640195798">9640195798</a>
+</span>
+<span class="hidden md:inline text-white/60">|</span>
+<span class="hidden md:flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">location_on</span> Chevella, Telangana 501503
+          </span>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:inline font-semibold">Bulk Orders Welcome</span>
+<span class="hidden sm:inline text-white/60">•</span>
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[15px]">verified</span> GST: 36CUHPK5939D1ZG
+          </span>
+</div>
+</div>
+</div>
+<!-- Main Navigation Bar -->
+<div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-display font-extrabold text-lg shadow-md shadow-primary/30">
+          KNR
+        </div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-lg leading-tight tracking-tight text-navy">KNR ENTERPRISES</span>
+<span class="text-[11px] font-bold text-primary tracking-widest uppercase -mt-0.5">We Supply</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-dark/80">
+<a class="text-primary hover:text-primary transition-colors" href="#">Home</a>
+<a class="hover:text-primary transition-colors" href="#shop-by-category">Categories</a>
+<a class="hover:text-primary transition-colors" href="#featured-products">Featured Products</a>
+<a class="hover:text-primary transition-colors" href="#telangana-bestsellers">Bestsellers</a><a class="hover:text-primary transition-colors" href="#testimonials-section">Testimonials</a>
+<a class="hover:text-primary transition-colors" href="#">About</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center bg-surface border border-border rounded-xl px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/40">
+<span class="material-symbols-outlined text-muted text-[18px] mr-1.5">search</span>
+<input class="bg-transparent text-xs w-36 lg:w-48 outline-none border-none p-0 focus:ring-0 placeholder:text-muted" placeholder="Search supplies..." type="text"/>
+</div>
+<div class="relative cursor-pointer p-2 rounded-xl hover:bg-surface transition-colors" id="cart-btn">
+<span class="material-symbols-outlined text-[24px] text-navy">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm" id="cart-badge">3</span>
+</div>
+<a class="hidden md:inline-flex items-center gap-1.5 bg-primary hover:bg-primary-hover text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md shadow-primary/20 transition-all active:scale-95" href="#rfq-section">
+<span>Get Quote</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<main><div class="flex flex-col w-full">
+<!-- Top Visual Accent / Breadcrumb Header Section -->
+<section class="w-full bg-surface-container-low px-4 sm:px-8 py-10 lg:py-16">
+<div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumbs" class="flex items-center gap-2 mb-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span>
+          Home
+        </a>
+<span class="text-outline-variant font-label-md">/</span>
+<span class="font-label-md text-label-md text-primary font-bold">FAQs</span>
+</nav>
+<!-- Badge Indicator -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant shadow-sm mb-5">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-bold">DEPOT HELP &amp; PROCUREMENT KNOWLEDGE BASE</span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight max-w-4xl mb-4">
+        Frequently Asked <span class="text-primary-container">Questions</span>
+</h1>
+<!-- Subtitle Description -->
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed mb-8">
+        Clear, transparent answers regarding government tenders, bulk municipal pricing, GST invoices, logistics delivery schedules, and payment terms for institutional buyers across Telangana.
+      </p>
+<!-- Real-time Filter Search Box -->
+<div class="w-full max-w-2xl relative shadow-md rounded-xl bg-surface-container-lowest">
+<div class="flex items-center px-4 py-3.5 gap-3">
+<span class="material-symbols-outlined text-outline text-[24px]">search</span>
+<input aria-label="Search frequently asked questions" class="w-full bg-transparent outline-none border-none p-0 text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:ring-0" id="faq-search" placeholder="Search questions or keywords (e.g. GST, MOQ, Tenders, Bleaching, Delivery)..." type="text"/>
+<button aria-label="Clear search input" class="hidden text-outline hover:text-on-surface transition-colors" id="clear-search">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Quick Filter Category Tabs -->
+<div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="faq-categories">
+<button class="cat-pill active-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all duration-200 bg-primary-container text-on-primary shadow-sm font-bold" data-cat="all">
+          All Questions (8)
+        </button>
+<button class="cat-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all duration-200 bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-semibold" data-cat="moq">
+          Bulk Orders &amp; MOQ
+        </button>
+<button class="cat-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all duration-200 bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-semibold" data-cat="tenders">
+          Tenders &amp; Billing
+        </button>
+<button class="cat-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all duration-200 bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-semibold" data-cat="logistics">
+          Delivery &amp; Logistics
+        </button>
+<button class="cat-pill px-4 py-2 rounded-full font-label-md text-label-md transition-all duration-200 bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-semibold" data-cat="payments">
+          Payments &amp; Support
+        </button>
+</div>
+</div>
+</section>
+<!-- Accordion Core Content -->
+<section class="w-full py-12 lg:py-16 px-4 sm:px-8 bg-surface">
+<div class="max-w-4xl mx-auto flex flex-col gap-4" id="faq-list">
+<!-- Question 1 (Bulk Orders & MOQ) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="moq">
+<button aria-expanded="true" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              01
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Bulk Orders &amp; MOQ</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                Do you supply in bulk for Gram Panchayats and Municipal Corporations?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 rotate-45 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 400px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Yes, absolutely. KNR Enterprises specializes in institutional, bulk, and depot-level supplies. We cater to Gram Panchayats, Municipal Councils (GHMC, HMDA peripheries), Townships, and EPC civil contractors with full truckload (FTL) and less-than-truckload (LTL) deliveries across all 33 Telangana districts.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span> 33 Districts Covered
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">apartment</span> Panchayats &amp; Municipalities
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 2 (Tenders & Billing) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="tenders">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              02
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Tenders &amp; Billing</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                Do you provide official GST invoices for government audit compliance?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Yes. Every order is issued with a 100% compliant GST-3B tax invoice with our registered GSTIN (36CUHPK5939D1ZG). We provide proforma invoices, e-way bills, vendor bank mandate sheets, and duplicate copies required for panchayat treasury bills and municipal audit verifications.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">receipt_long</span> GSTIN: 36CUHPK5939D1ZG
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">assignment_turned_in</span> Treasury Audit Ready
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 3 (Delivery & Logistics) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="logistics">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              03
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Delivery &amp; Logistics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                Which areas do you deliver to and what are the transit timelines?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Our central warehouse depot is strategically situated in Chevella (Ranga Reddy District), right on Chevella Highway. We offer same-day dispatch and 24 to 48-hour delivery across all Telangana districts including Ranga Reddy, Vikarabad, Hyderabad, Sangareddy, Medak, Mahabubnagar, and Nalgonda. Direct depot pickup is also available 6 days a week.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 24–48 Hr Dispatch
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">storefront</span> Chevella Depot Pickup
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 4 (Payments & Support) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="payments">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              04
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Payments &amp; Support</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                What payment methods and credit terms are accepted for institutional orders?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              We accept RTGS / NEFT bank transfers, Cheques, UPI, and net banking. For registered Gram Panchayats, municipal departments, and verified contractors with existing work orders, structured payment terms or advance proforma billing is accommodated.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">account_balance</span> RTGS / NEFT / UPI
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> Institutional Credit Line
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 5 (Bulk Orders & MOQ) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="moq">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              05
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Bulk Orders &amp; MOQ</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                What is the Minimum Order Quantity (MOQ) for different catalog products?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              MOQs are tailored to wholesale requirements: Commercial Bleaching Powder has an MOQ of 5 Bags (125 kg); Hydrated Lime is 10 Bags; Delta Thermal Foggers and Backpack Sprayers have an MOQ of 1 Unit; 240L Swachh Bins is 2 Pieces; and Artificial Turf is 200 Sq.Ft. Sample units can be arranged upon request at depot.
+            </p>
+<div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+<div class="p-3 bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Bleaching Powder</span>
+<span class="font-label-lg text-label-lg text-primary font-bold">5 Bags (125kg)</span>
+</div>
+<div class="p-3 bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Hydrated Lime</span>
+<span class="font-label-lg text-label-lg text-primary font-bold">10 Bags</span>
+</div>
+<div class="p-3 bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Thermal Fogger</span>
+<span class="font-label-lg text-label-lg text-primary font-bold">1 Unit</span>
+</div>
+<div class="p-3 bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">240L Swachh Bins</span>
+<span class="font-label-lg text-label-lg text-primary font-bold">2 Pieces</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 6 (Tenders & Billing) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="tenders">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              06
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Tenders &amp; Billing</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                Do you participate in Government Tenders and e-Procurement bids?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Yes. KNR Enterprises is an authorized vendor for civic sanitation, vector control, and municipal infrastructure. We supply tender-specified brands, provide CIB registrations, ISI test certificates, manufacturer authorization letters, and technical datasheets required for municipal e-procurement tenders.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span> ISI &amp; CIB Certified
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">policy</span> Technical Datasheets Provided
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 7 (Payments & Support) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="payments">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              07
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Payments &amp; Support</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                How can I get an instant bulk quote or proforma invoice?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              You can generate an instant quote online by clicking the "Get Bulk Quote" or "Get Quote" buttons on any product card, or by clicking our direct WhatsApp RFQ Trigger (+91 8886175855 / +91 9640195798). Our Chevella depot team provides official stamped proforma quotes within 15 minutes during working hours.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">timer</span> 15-Minute Turnaround
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">mark_chat_unread</span> WhatsApp RFQ Desk
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Question 8 (Delivery & Logistics) -->
+<article class="faq-item rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden" data-cat="logistics">
+<button aria-expanded="false" class="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none focus-visible:bg-surface-container-low transition-colors faq-trigger">
+<div class="flex items-center gap-4 min-w-0">
+<span class="w-9 h-9 shrink-0 rounded-lg bg-primary-fixed text-primary font-label-lg text-label-lg flex items-center justify-center font-bold">
+              08
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">Delivery &amp; Logistics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">
+                How do I track my dispatched order or schedule depot pickup?
+              </h2>
+</div>
+</div>
+<span class="w-8 h-8 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary-container transition-transform duration-300 faq-icon">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</span>
+</button>
+<div class="faq-content overflow-hidden transition-[max-height] duration-300" style="max-height: 0px;">
+<div class="px-6 pb-6 pt-2 pl-19">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Once dispatched from our Chevella warehouse, you will receive real-time SMS and WhatsApp updates along with the vehicle driver contact number and e-way bill number. For direct self-pickup, our depot operates Monday through Saturday, 8:30 AM to 7:30 PM near HP Petrol Pump, Chevella.
+            </p>
+<div class="mt-4 flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span> Live Driver Updates
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">inventory</span> 8:30 AM - 7:30 PM (Mon-Sat)
+              </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Empty State for Search -->
+<div class="hidden flex flex-col items-center justify-center py-16 px-4 text-center rounded-xl bg-surface-container-low" id="no-results">
+<span class="material-symbols-outlined text-outline text-[48px] mb-3">search_off</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">No matching questions found</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mb-6">
+          We couldn't find any questions matching your query. Contact our Chevella depot desk directly for instant technical or tender support.
+        </p>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-tertiary text-on-tertiary font-label-lg text-label-lg shadow-sm font-bold hover:opacity-90 transition-all" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span> Chat with K. Narendar Reddy
+        </a>
+</div>
+</div>
+</section>
+<!-- Escalation / Help Desk Banner -->
+<section class="w-full px-4 sm:px-8 pb-16 pt-4 bg-surface">
+<div class="max-w-4xl mx-auto rounded-2xl bg-secondary p-8 sm:p-10 text-on-secondary shadow-lg relative overflow-hidden">
+<!-- Decorative Backdrop Graphic -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-on-secondary/5 pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
+<div class="flex flex-col max-w-xl">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-on-secondary/15 font-label-sm text-label-sm mb-3 font-bold w-fit">
+<span class="material-symbols-outlined text-[14px]">support_agent</span> CHEVELLA DIRECT HELPDESK
+          </div>
+<h2 class="font-headline-md text-headline-md text-on-secondary mb-2">
+            Still have questions or need tender documents?
+          </h2>
+<p class="font-body-sm text-body-sm text-on-secondary/80 leading-relaxed mb-4">
+            Direct procurement assistance from Managing Partner <strong>K. Narendar Reddy</strong> (8886175855) and Logistics Incharge <strong>G. Siva</strong> (9640195798). We provide fast turnaround on compliance paperwork.
+          </p>
+<div class="flex items-center gap-4 text-on-secondary/90 font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Chevella Depot, Telangana
+            </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 15-Min Response
+            </span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto shrink-0">
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-tertiary text-on-tertiary font-label-lg text-label-lg font-bold shadow-md hover:opacity-95 transition-all" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span> Chat on WhatsApp
+          </a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg font-bold shadow-md hover:opacity-95 transition-all" href="tel:8886175855">
+<span class="material-symbols-outlined text-[18px]">call</span> Call Depot (+91 8886175855)
+          </a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Schema.org FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you supply in bulk for Gram Panchayats and Municipal Corporations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, absolutely. KNR Enterprises specializes in institutional, bulk, and depot-level supplies. We cater to Gram Panchayats, Municipal Councils (GHMC, HMDA peripheries), Townships, and EPC civil contractors with full truckload (FTL) and less-than-truckload (LTL) deliveries across all 33 Telangana districts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide official GST invoices for government audit compliance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every order is issued with a 100% compliant GST-3B tax invoice with our registered GSTIN (36CUHPK5939D1ZG). We provide proforma invoices, e-way bills, vendor bank mandate sheets, and duplicate copies required for panchayat treasury bills and municipal audit verifications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which areas do you deliver to and what are the transit timelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our central warehouse depot is strategically situated in Chevella (Ranga Reddy District), right on Chevella Highway. We offer same-day dispatch and 24 to 48-hour delivery across all Telangana districts including Ranga Reddy, Vikarabad, Hyderabad, Sangareddy, Medak, Mahabubnagar, and Nalgonda. Direct depot pickup is also available 6 days a week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What payment methods and credit terms are accepted for institutional orders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We accept RTGS / NEFT bank transfers, Cheques, UPI, and net banking. For registered Gram Panchayats, municipal departments, and verified contractors with existing work orders, structured payment terms or advance proforma billing is accommodated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Minimum Order Quantity (MOQ) for different catalog products?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MOQs are tailored to wholesale requirements: Commercial Bleaching Powder has an MOQ of 5 Bags (125 kg); Hydrated Lime is 10 Bags; Delta Thermal Foggers and Backpack Sprayers have an MOQ of 1 Unit; 240L Swachh Bins is 2 Pieces; and Artificial Turf is 200 Sq.Ft. Sample units can be arranged upon request at depot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you participate in Government Tenders and e-Procurement bids?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. KNR Enterprises is an authorized vendor for civic sanitation, vector control, and municipal infrastructure. We supply tender-specified brands, provide CIB registrations, ISI test certificates, manufacturer authorization letters, and technical datasheets required for municipal e-procurement tenders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I get an instant bulk quote or proforma invoice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can generate an instant quote online by clicking the \"Get Bulk Quote\" or \"Get Quote\" buttons on any product card, or by clicking our direct WhatsApp RFQ Trigger (+91 8886175855 / +91 9640195798). Our Chevella depot team provides official stamped proforma quotes within 15 minutes during working hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I track my dispatched order or schedule depot pickup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once dispatched from our Chevella warehouse, you will receive real-time SMS and WhatsApp updates along with the vehicle driver contact number and e-way bill number. For direct self-pickup, our depot operates Monday through Saturday, 8:30 AM to 7:30 PM near HP Petrol Pump, Chevella."
+      }
+    }
+  ]
+}
+</script>
+<!-- Interactive Accordion, Filter & Real-Time Search JS -->
+<script>
+  (function initFaqPage() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    const searchInput = document.getElementById('faq-search');
+    const clearBtn = document.getElementById('clear-search');
+    const catPills = document.querySelectorAll('.cat-pill');
+    const noResults = document.getElementById('no-results');
+
+    let activeCategory = 'all';
+
+    // Accordion Toggle
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon');
+
+      trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close other open accordions smoothly
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherTrigger = otherItem.querySelector('.faq-trigger');
+            const otherContent = otherItem.querySelector('.faq-content');
+            const otherIcon = otherItem.querySelector('.faq-icon');
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherContent.style.maxHeight = '0px';
+            otherIcon.classList.remove('rotate-45');
+          }
+        });
+
+        if (isOpen) {
+          trigger.setAttribute('aria-expanded', 'false');
+          content.style.maxHeight = '0px';
+          icon.classList.remove('rotate-45');
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.add('rotate-45');
+        }
+      });
+    });
+
+    // Filtering Functionality
+    function filterFaqs() {
+      const query = (searchInput.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+
+      faqItems.forEach(item => {
+        const itemCat = item.getAttribute('data-cat');
+        const text = item.textContent.toLowerCase();
+        const matchesCategory = (activeCategory === 'all' || itemCat === activeCategory);
+        const matchesSearch = query === '' || text.includes(query);
+
+        if (matchesCategory && matchesSearch) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    // Category Pill Click
+    catPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        catPills.forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-on-primary', 'font-bold');
+          p.classList.add('bg-surface-container', 'text-on-surface-variant', 'font-semibold');
+        });
+        pill.classList.remove('bg-surface-container', 'text-on-surface-variant', 'font-semibold');
+        pill.classList.add('bg-primary-container', 'text-on-primary', 'font-bold');
+
+        activeCategory = pill.getAttribute('data-cat');
+        filterFaqs();
+      });
+    });
+
+    // Real-time Search Input Listener
+    searchInput.addEventListener('input', () => {
+      if (searchInput.value.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      filterFaqs();
+    });
+
+    // Clear Search Field
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearBtn.classList.add('hidden');
+      filterFaqs();
+      searchInput.focus();
+    });
+  })();
+</script></main>
+<!-- FOOTER -->
+<footer class="bg-white border-t border-border pt-12 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-display font-extrabold text-sm">KNR</div>
+<span class="font-display font-bold text-base text-navy">KNR Enterprises</span>
+</div>
+<p class="text-xs text-muted mb-3">"We Supply" — Premier wholesale partner for municipal corporations, gram panchayats, and civic contractors across Telangana.</p>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-accent-light text-accent text-[11px] font-bold">
+<span class="material-symbols-outlined text-[13px]">verified</span> GST: 36CUHPK5939D1ZG
+        </div>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark mb-3">Catalog Categories</h4>
+<ul class="space-y-1.5 text-xs text-muted">
+<li><a class="hover:text-primary" href="#">Commercial Dustbins &amp; Compactors</a></li>
+<li><a class="hover:text-primary" href="#">Sanitation Bleaching &amp; Lime</a></li>
+<li><a class="hover:text-primary" href="#">Thermal Vector Foggers</a></li>
+<li><a class="hover:text-primary" href="#">Civic LED Streetlights</a></li>
+<li><a class="hover:text-primary" href="#">Protective Gear &amp; Sprayers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark mb-3">Chevella Depot</h4>
+<p class="text-xs text-muted mb-2 leading-relaxed">
+          🏢 H.No: 1-77/6, Near HP Petrol Pump, Chevella Mandal, Ranga Reddy District, Telangana - 501503
+        </p>
+<p class="text-xs text-muted font-medium">Depot Hours: 8:30 AM - 7:30 PM (Mon-Sat)</p>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark mb-3">Direct Procurement Lines</h4>
+<p class="text-xs text-muted mb-1">Managing Partner: <strong class="text-dark">K. Narendar Reddy (<a class="hover:text-primary" href="tel:8886175855">8886175855</a>)</strong></p>
+<p class="text-xs text-muted mb-3">Logistics Incharge: <strong class="text-dark">G. Siva (<a class="hover:text-primary" href="tel:9640195798">9640195798</a>)</strong></p>
+<a class="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl transition-all" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span> WhatsApp RFQ Desk
+        </a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+<span>© 2025 KNR Enterprises. All rights reserved. Chevella, Telangana.</span>
+<span class="inline-flex items-center gap-1 text-accent font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span> Govt &amp; Panchayat Tender Authorized Vendor
+      </span>
+</div>
+</footer>
+<!-- Floating WhatsApp FAB Button -->
+<a aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-accent hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-all hover:scale-110 active:scale-95" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[28px]">chat</span>
+</a>
+<!-- Swiper & Carousel Controller JavaScript -->
+<script>
+    (function initCarousels() {
+      // Setup Carousel function
+      function setupCarousel(trackId, prevBtnId, nextBtnId, dotsContainerId, autoplayIntervalMs) {
+        const track = document.getElementById(trackId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+        const dotsContainer = document.getElementById(dotsContainerId);
+        if (!track || !prevBtn || !nextBtn) return;
+
+        let autoPlayTimer = null;
+        let isPaused = false;
+
+        function getSlideWidth() {
+          const firstSlide = track.querySelector('.carousel-slide');
+          return firstSlide ? firstSlide.offsetWidth + 20 : 300;
+        }
+
+        function scrollNext() {
+          const maxScroll = track.scrollWidth - track.clientWidth - 10;
+          if (track.scrollLeft >= maxScroll) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+          }
+        }
+
+        function scrollPrev() {
+          if (track.scrollLeft <= 10) {
+            track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+          }
+        }
+
+        nextBtn.addEventListener('click', () => {
+          scrollNext();
+          resetAutoplay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          scrollPrev();
+          resetAutoplay();
+        });
+
+        // Update Dots on Scroll
+        if (dotsContainer) {
+          const dots = dotsContainer.querySelectorAll('button');
+          track.addEventListener('scroll', () => {
+            const progress = track.scrollLeft / (track.scrollWidth - track.clientWidth || 1);
+            const activeIndex = Math.min(dots.length - 1, Math.round(progress * (dots.length - 1)));
+            dots.forEach((dot, idx) => {
+              if (idx === activeIndex) {
+                dot.classList.remove('w-2', 'bg-border');
+                dot.classList.add('w-6', dot.dataset.activeColor || 'bg-primary');
+              } else {
+                dot.classList.remove('w-6', 'bg-primary', 'bg-navy');
+                dot.classList.add('w-2', 'bg-border');
+              }
+            });
+          });
+
+          dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+              const target = (track.scrollWidth - track.clientWidth) * (idx / (dots.length - 1));
+              track.scrollTo({ left: target, behavior: 'smooth' });
+              resetAutoplay();
+            });
+          });
+        }
+
+        // Autoplay Loop with pause-on-hover
+        function startAutoplay() {
+          if (autoPlayTimer) clearInterval(autoPlayTimer);
+          autoPlayTimer = setInterval(() => {
+            if (!isPaused) {
+              scrollNext();
+            }
+          }, autoplayIntervalMs);
+        }
+
+        function resetAutoplay() {
+          startAutoplay();
+        }
+
+        track.addEventListener('mouseenter', () => { isPaused = true; });
+        track.addEventListener('mouseleave', () => { isPaused = false; });
+        track.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+        track.addEventListener('touchend', () => { isPaused = false; });
+
+        startAutoplay();
+      }
+
+      // Initialize Featured Carousel (Autoplay 4.5s)
+      setupCarousel('feat-track', 'feat-prev', 'feat-next', 'feat-dots', 4500);
+
+      // Initialize Bestsellers Carousel (Autoplay 5.5s)
+      setupCarousel('best-track', 'best-prev', 'best-next', 'best-dots', 5500);
+
+      // Cart Badge Counter & Bounce Animation
+      let cartCount = 3;
+      const cartBadge = document.getElementById('cart-badge');
+      document.querySelectorAll('.add-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          cartCount++;
+          if (cartBadge) {
+            cartBadge.textContent = cartCount;
+            cartBadge.classList.remove('cart-bounce-anim');
+            void cartBadge.offsetWidth; // trigger reflow
+            cartBadge.classList.add('cart-bounce-anim');
+          }
+          // Button feedback
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Added!';
+          this.classList.add('bg-accent');
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('bg-accent');
+          }, 1200);
+        });
+      });
+
+      // Wishlist Heart Toggle
+      document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const icon = this.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.classList.toggle('heart-active');
+          }
+        });
+      });
+    })();
+  </script>
+</body></html>

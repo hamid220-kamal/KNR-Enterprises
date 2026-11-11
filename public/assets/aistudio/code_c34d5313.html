@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KNR Enterprises - We Supply | Municipal &amp; Sanitation Wholesale</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#F57C00",
+            "primary-hover": "#e65100",
+            "primary-light": "#FFF3E0",
+            navy: "#0D2B5B",
+            "navy-dark": "#071A38",
+            "navy-light": "#E8EDF5",
+            accent: "#2E9E5B",
+            "accent-light": "#E8F5E9",
+            surface: "#F5F7FA",
+            dark: "#1A1A1A",
+            muted: "#666666",
+            border: "#E2E8F0"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Poppins", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', sans-serif; color: #1A1A1A; background-color: #FFFFFF; }
+    }
+    .carousel-track {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-slide {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    .cart-bounce-anim {
+      animation: cartPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes cartPop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+    }
+    .group:hover .trust-icon-wiggle {
+      animation: wiggle 0.4s ease-in-out;
+    }
+    .heart-active {
+      color: #E11D48 !important;
+      font-variation-settings: 'FILL' 1 !important;
+    }
+  </style>
+</head>
+<body class="bg-surface antialiased text-dark">
+<!-- Top Announcement Bar -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300" id="main-header">
+<div class="bg-primary text-white text-xs py-2 px-4 sm:px-8">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4 sm:gap-6 flex-wrap">
+<span class="flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[15px]">call</span>
+            Call: <a class="hover:underline" href="tel:8886175855">8886175855</a> | <a class="hover:underline" href="tel:9640195798">9640195798</a>
+</span>
+<span class="hidden md:inline text-white/60">|</span>
+<span class="hidden md:flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">location_on</span> Chevella, Telangana 501503
+          </span>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:inline font-semibold">Bulk Orders Welcome</span>
+<span class="hidden sm:inline text-white/60">•</span>
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[15px]">verified</span> GST: 36CUHPK5939D1ZG
+          </span>
+</div>
+</div>
+</div>
+<!-- Main Navigation Bar -->
+<div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-display font-extrabold text-lg shadow-md shadow-primary/30">
+          KNR
+        </div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-lg leading-tight tracking-tight text-navy">KNR ENTERPRISES</span>
+<span class="text-[11px] font-bold text-primary tracking-widest uppercase -mt-0.5">We Supply</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-dark/80">
+<a class="text-primary hover:text-primary transition-colors" href="#">Home</a>
+<a class="hover:text-primary transition-colors" href="#shop-by-category">Categories</a>
+<a class="hover:text-primary transition-colors" href="#featured-products">Featured Products</a>
+<a class="hover:text-primary transition-colors" href="#telangana-bestsellers">Bestsellers</a><a class="hover:text-primary transition-colors" href="#testimonials-section">Testimonials</a><a class="hover:text-primary transition-colors" href="#faq-section">FAQs</a>
+<a class="hover:text-primary transition-colors" href="#">About</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center bg-surface border border-border rounded-xl px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/40">
+<span class="material-symbols-outlined text-muted text-[18px] mr-1.5">search</span>
+<input class="bg-transparent text-xs w-36 lg:w-48 outline-none border-none p-0 focus:ring-0 placeholder:text-muted" placeholder="Search supplies..." type="text"/>
+</div>
+<div class="relative cursor-pointer p-2 rounded-xl hover:bg-surface transition-colors" id="cart-btn">
+<span class="material-symbols-outlined text-[24px] text-navy">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm" id="cart-badge">3</span>
+</div>
+<a class="hidden md:inline-flex items-center gap-1.5 bg-primary hover:bg-primary-hover text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md shadow-primary/20 transition-all active:scale-95" href="#rfq-section">
+<span>Get Quote</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<main>
+<!-- HERO SECTION -->
+<section class="relative bg-gradient-to-b from-white via-surface to-white pt-10 pb-16 px-4 sm:px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-6 flex flex-col items-start">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-light text-accent text-xs font-bold mb-4">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Trusted Supplier in Telangana • GST Registered</span>
+</div>
+<h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-dark leading-tight tracking-tight mb-4">
+<span class="text-primary">Cleaner</span> Cities Start With Reliable Municipal Supply.
+          </h1>
+<p class="text-muted text-base sm:text-lg mb-6 leading-relaxed">
+            Wholesale bleaching powder, thermal fogging machines, HDPE dustbins &amp; sanitization tools delivered directly from our Chevella warehouse across all Telangana districts.
+          </p>
+<div class="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-8">
+<a class="px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold text-sm shadow-md shadow-primary/25 transition-all flex items-center gap-2" href="#featured-products">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+              Shop Products
+            </a>
+<a class="px-6 py-3 rounded-xl border-2 border-navy text-navy hover:bg-navy hover:text-white font-bold text-sm transition-all flex items-center gap-2" href="#rfq-section">
+<span class="material-symbols-outlined text-[18px]">request_quote</span>
+              Get Bulk Quote
+            </a>
+</div>
+<div class="grid grid-cols-3 gap-6 pt-6 border-t border-border w-full">
+<div>
+<div class="font-display font-bold text-2xl lg:text-3xl text-dark">500<span class="text-primary">+</span></div>
+<div class="text-xs text-muted font-medium mt-0.5">Depot Orders</div>
+</div>
+<div>
+<div class="font-display font-bold text-2xl lg:text-3xl text-dark">100<span class="text-accent">+</span></div>
+<div class="text-xs text-muted font-medium mt-0.5">Active Clients</div>
+</div>
+<div>
+<div class="font-display font-bold text-2xl lg:text-3xl text-dark">8<span class="text-navy">+</span></div>
+<div class="text-xs text-muted font-medium mt-0.5">Product Lines</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-6 relative flex items-center justify-center">
+<div class="w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-primary-light via-orange-100 to-amber-50 absolute -z-0 blur-2xl opacity-70"></div>
+<div class="relative z-10 w-full max-w-md p-6 bg-white/90 backdrop-blur-md rounded-3xl border border-orange-100 shadow-xl grid grid-cols-2 gap-4">
+<div class="bg-surface p-3 rounded-2xl flex flex-col items-center text-center">
+<img alt="Dustbin" class="h-28 object-contain mb-2 rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9KFxiRH-ka_RBlseEmKBvulSvRs6BRIFohiG6_4w7Kr9ssBe9G6bX418IACUm2lbdnQR75juAl2urNsm_yK3HX-4eSVRU5DEi30YbEPSOmXyIQ0cPWPxOxqzR-UUeXTzvc5b5PamOi4YuoTpHOEfYjsXAlutQeyoefoiKCTHI-ASZkp2Iiqt7p5_H1W0Blt-i5o8HXsw-9bkBX2zDPAWkIn5m2gENf5reI7w4Iuk"/>
+<span class="text-xs font-bold text-dark">240L Swachh Bin</span>
+<span class="text-[10px] text-accent font-semibold mt-0.5">UV HDPE</span>
+</div>
+<div class="bg-surface p-3 rounded-2xl flex flex-col items-center text-center">
+<img alt="Fogger" class="h-28 object-contain mb-2 rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5-4mk-wOUWvAx6gRKegd7x-OVjSTbB1LrvNG9jX3SxMNg4gKJLzeiZ0e08BQC5E5oDgHw0nmUqaKpGZhW6Htabgnj7OdhrV_EEj2UOzUzjqxHUMhzbFjIkt2cK36nKeEznZjUEULtzHS8JqXbCYfrEZsghsFi5hwJgVGd2pVLNhVr0WEjA7Kc2ZXUFFwpxbbVZu_qoaQRz38MzAHt2q1d5kVOhx5eFjvt0R9tElU"/>
+<span class="text-xs font-bold text-dark">Delta Thermal Fogger</span>
+<span class="text-[10px] text-primary font-semibold mt-0.5">SS304 Pulse-Jet</span>
+</div>
+<div class="bg-surface p-3 rounded-2xl flex flex-col items-center text-center">
+<img alt="Bleaching Powder" class="h-28 object-contain mb-2 rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX5oNz0Rqou91o1BvGzBrHDN5L2vAQCeGEO4vz_u858W0vTDKi0rWcwisd9Wb7kpdCfK2z_TWwFx7c-xHDokUOs68POakJXn8uQCPnaIslorh-Y-79KQ6TtOEs-qb-MbmAuSwEQ6Vaqy7O1IM6-FhmIK2rigL7aA-uRiX0w1fXX3-OBr6mlFTOhfpviwdvPLOWRELDudDSbpBOQzTzYvVBT9L5n_4uOH-Bmoltog4"/>
+<span class="text-xs font-bold text-dark">Bleaching Powder</span>
+<span class="text-[10px] text-navy font-semibold mt-0.5">33% Chlorine ISI</span>
+</div>
+<div class="bg-surface p-3 rounded-2xl flex flex-col items-center text-center">
+<img alt="Street Light" class="h-28 object-contain mb-2 rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD8kWvwBBW3a-eD58kk7yb8pBYRMANPL5d7Ea1fnSzcsvcbtvUpsdXJEWtaNn5cuO9r66Bqibne3ljruwWdq83KjHxgGhHYzxjhovMP8XG_kkp1JGhd9uAXjgdK3kuF4Bwp34wrVr_KY7XdG8yGDoN5SWJ5LBFmoSoXJIrK17VEBIqCPHqD80Rv3hbXWpMO2BtzqImKZpMQsXG7OpgtKNw1oKUnETAFgargtRHZ6g"/>
+<span class="text-xs font-bold text-dark">Civic LED Luminaire</span>
+<span class="text-[10px] text-accent font-semibold mt-0.5">120W IP66 Surge</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TRUST STRIP -->
+<section class="max-w-7xl mx-auto px-4 sm:px-8 -mt-6 sm:-mt-8 relative z-20 mb-12">
+<div class="bg-white rounded-2xl shadow-xl border border-border p-6 md:p-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:gap-y-6 lg:divide-x divide-border">
+<div class="group flex items-center gap-4 py-2 lg:px-4 cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px] trust-icon-wiggle">receipt_long</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">GST Registered</h4>
+<p class="text-xs text-muted mt-0.5">Proper invoices for every order</p>
+</div>
+</div>
+<div class="group flex items-center gap-4 pt-4 sm:pt-2 lg:pt-2 lg:px-4 cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px] trust-icon-wiggle">domain</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">Bulk Orders Welcome</h4>
+<p class="text-xs text-muted mt-0.5">Special panchayat &amp; corp rates</p>
+</div>
+</div>
+<div class="group flex items-center gap-4 pt-4 sm:pt-2 lg:pt-2 lg:px-4 cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px] trust-icon-wiggle">local_shipping</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">Fast Delivery</h4>
+<p class="text-xs text-muted mt-0.5">Direct across all Telangana</p>
+</div>
+</div>
+<div class="group flex items-center gap-4 pt-4 sm:pt-2 lg:pt-2 lg:px-4 cursor-default">
+<div class="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px] trust-icon-wiggle">verified</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">Quality Assured</h4>
+<p class="text-xs text-muted mt-0.5">Tested &amp; certified products</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SHOP BY CATEGORY SECTION -->
+<section class="py-12 bg-white border-y border-border" id="shop-by-category">
+<div class="max-w-7xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+<div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-primary text-xs font-bold mb-2">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span>Civic Catalog</span>
+</div>
+<h2 class="font-display font-bold text-2xl sm:text-3xl text-dark">Everything You Need to Keep It Clean</h2>
+<p class="text-muted text-sm mt-1">Direct wholesale depot supply for gram panchayats, municipalities, and institutions.</p>
+</div>
+<a class="inline-flex items-center gap-1 text-primary font-bold text-sm hover:underline" href="#">
+            View All 8 Categories <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<a class="p-4 rounded-2xl bg-sky-50 hover:bg-sky-100/80 border border-sky-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Bleaching Powder" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYIf4PI9DI-GOIiU6G-b5VbQFFIN4p75bg2G90e7AF2_tcPuRX6sR-HMAwc6CxKsbcTPiL4vxpGaU-WyQfkRN2SYxExvO332IuhGDYmsGPXl1sSQeOTeAyfJ7Q1yeP-fhIwMbnTnuxv2ThEACCQG4rl6qzjBh7VR5P23JrHDr2nzR4Px2p7Agdy4KrpWLOVHh3GdnVdQA6kJnLS_lUIpzqF8cnNpMOkHDLM8hLxHg"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Bleaching Powder</h3>
+<span class="text-[11px] text-muted">6 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-amber-50 hover:bg-amber-100/80 border border-amber-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Lime Powder" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUB6qHB0LWtJC-B90C6J9ObxwyUrac-DwK37PgVmUsbl-aRK9SwrezTE-Y3EK-0DSuTAmBQmXp4z_0INSft4ssJ_pe8u80CikqIoJA9qc6V9am77ePO_wk0vhTfHbrnDsOW9KorHrhxBzT19yjTXhKNNrNqPTQWhQkd2TpeVaeeMEgPrdTycykKs1LZE6G4A_S6rRIFU547BYJpBR_CmIIPwJu0b3nnUqNljL2eo0"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Lime Powder</h3>
+<span class="text-[11px] text-muted">4 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-rose-50 hover:bg-rose-100/80 border border-rose-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Malathion" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjq-KD163NrvhoSzNQB0SYJTlWYtKRWk1jd45Unzpom7t93XhrMuydF9K_EXB9_HnDYJPEWV5ZcGZBGSzJ8VNXKYAmL3xu0_zvCWAKvYXJRG9LBPr9aDCOB9uxvGQEFUE_8WYBN4XiLWP_CWWJA9rORV5Ce9QNq20N2u_ZDhNlCpptcHfZ_6qgl71PRjSutZQEgp9aDPGhuVNpRX8P4XoycSdwfe9VU-9AsQzi0qM"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Malathion 5% DP</h3>
+<span class="text-[11px] text-muted">5 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-indigo-50 hover:bg-indigo-100/80 border border-indigo-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="LED Street Lights" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEjM2ijP98GKP5_nCWa_0Qt9y4rGozMLQB7vFwQHkTBa8TFJ96AYRtGzgntxxFlrqHGwF6oGk_l2uwLKiNmAhPjXbhMYFOBG71Kn3sNRyHiGHQl0E-htxEWG_jedjKGv8aeL8BujquXwza6kVzs6mWMrgafhpW8Lw8N9spp-TYvHYyaypU-yqElkAyEY3DgmMeRtq9s_ZYHQhrF9VMnEsPqG5fIFto8X-jlumx59Y"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">LED Street Lights</h3>
+<span class="text-[11px] text-muted">8 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-orange-50 hover:bg-orange-100/80 border border-orange-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Delta Fog" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4GQTNJ0EKGx_1bR0Ujt1LgPXTNbHPXHaah9yGbnAQ-rQ23gKOzdrzxtzrCFlMAodLWbLYAzmCytwClq4Ipqioqu_9-W_-GBEbaXmD3YDOXehk9ECImvIBYcJGk1RqyipN5GvCZddIAiZQq1rzjqsL5CkPd1kLIYOziZmGUyat3X5O_UjzI8busVuJ5lgujHpkN0G2e5_nuLU-9fs6nGYxPbWDKE4kymolV0rVBok"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Delta Fog Machines</h3>
+<span class="text-[11px] text-muted">3 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Commercial Dust Bins" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-gmae4TqVX2GU7NdpRhxw5oO2heaocM9jVz3BHWXvCUprIBRkkqzsl3zWBSwS5mWWcV4A3DV_evG7pVBgsmJQD0tM3rGfiSXDEqSauE8QaoY8812fQTfisXtkPunzpMVo_BLuUe719HtFU-UxdbDjd4qnrt3dsiolfIwZPAhxb3FEcT6YKwPnirLzloLN2DZNb44oCaINJpBFzRPEKkLb40eSqbnWprn5SxtJwHo"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Commercial Dust Bins</h3>
+<span class="text-[11px] text-muted">12 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-teal-50 hover:bg-teal-100/80 border border-teal-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Green Mat Turf" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPDu5hPw-LUwFpIGipmt0cggWJteoigXZSyuYDb7SJshZtAN7QYzeki7I6iAQGMDscei586MLnm7SJhdV0zS9PEqHLjpqfmBxG2WqQ_KJ3S-Q1n4lAb0r9aBZ_86UawjpiOjshkZCAGpD-qOiDrItSRCWITeY6xUxHsQMptP_I6QEdJ9QwB_wOy42zfZ0Vje_OhCd5QYD_2nKvVC1gMTGuFORLfJ4NR_i2dqDzbIw"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Green Mat Turf</h3>
+<span class="text-[11px] text-muted">4 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="p-4 rounded-2xl bg-purple-50 hover:bg-purple-100/80 border border-purple-100 hover:shadow-md transition-all group flex flex-col justify-between" href="#">
+<div class="h-28 flex items-center justify-center overflow-hidden rounded-xl bg-white/70 mb-3">
+<img alt="Sanitization Tools" class="h-full object-contain group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDswsBv5ENolqGK7kifkWpEue-UCaqEMTvUSkPvcf-93deH0JdgqSb7uOBgY5X9tlAz-Y6i0GXaZ435yprSSlXdtBzAT1xBbC6QZAs1S8vacUA_QH5fpmIdkImqFVyt3CUDuizc49DhdPCdFR8V0QB0FDq2x1uMzC_fC9XpDjIbMqrd8L_fKwQ5Nbgs9TJZLYCWBpmwK_-C4yGc8J1-5Y3MfP8iJPoQpQn69ucMJXk"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-display font-bold text-sm text-dark group-hover:text-primary">Sanitization Tools</h3>
+<span class="text-[11px] text-muted">14 Products</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 1: FEATURED PRODUCTS CAROUSEL -->
+<section class="py-14 bg-surface select-none" id="featured-products">
+<div class="max-w-7xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-primary text-xs font-bold mb-2">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+<span>Depot Highlights</span>
+</div>
+<h2 class="font-display font-bold text-2xl sm:text-3xl text-dark">Featured Municipal Products</h2>
+<p class="text-muted text-sm mt-1">High-demand institutional and panchayat supplies ready for immediate dispatch.</p>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden sm:inline-flex items-center gap-1 text-primary font-bold text-sm hover:underline" href="#">
+              View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<div class="flex items-center gap-2">
+<button aria-label="Previous Slide" class="w-10 h-10 rounded-full border border-border bg-white text-dark hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center shadow-sm transition-all" id="feat-prev">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next Slide" class="w-10 h-10 rounded-full border border-border bg-white text-dark hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center shadow-sm transition-all" id="feat-next">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Carousel Track Container -->
+<div class="relative w-full overflow-hidden" id="feat-carousel-container">
+<div class="carousel-track py-2" id="feat-track">
+<!-- Card 1 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-surface overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Bleaching Powder" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmGI7RD7QaVgb3EuhnUn26DnUV9K_JZ23-tVWmKR4jxKS8B0cvb5n6LUTeE7XiBUwNRryfKa4t-KXCtq5NH9F1UQ4xSvE62BgGwMPvwfKZMmoUjs3F1d0swPpUjBENnmb44d6sFYYAD35rubFE3G2rLbFjGl9n67f2B7r4sHjUiZjjQcO8vTxlHmrma35aD6Ni-eZOMi70mNHcgKJhloY8L0quDzJ1xsPRWh47w84"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-orange-100 text-primary text-[10px] font-bold uppercase tracking-wider">Disinfectants</span>
+<span class="px-2 py-0.5 rounded-full bg-accent text-white text-[10px] font-bold">Bulk Available</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.9</span>
+<span class="text-xs text-muted">(84 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Commercial Bleaching Powder (Stable Grade)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹1,250</span>
+<span class="text-xs text-muted line-through">₹1,500</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">16% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-surface text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>5 Bags (125 kg)</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-surface overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="HDPE Garbage Bin" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBroMQq9ts1mSAw7Fd_KomiGwBPmZAarBl2dJWhbpryIGE27mWoPZQlDv2SUiB-ETJICSf4AT6hNNVtOrNSlmIQa3I0nfLLVNr-XlxJSHgKMBj1sN1zIeY7stlHI0sMGB4BI2WRiW9dORV6OJgPE-fUjjPD47BAV6q6HPQHenSzHPj3HpeyEAIs7WWvscoysv2Hw1UGoTKuIMrsrFYu2r8fxsNxRKpoyqwozh6uyLM"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider">Waste Mgmt</span>
+<span class="px-2 py-0.5 rounded-full bg-accent text-white text-[10px] font-bold">Bulk Available</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.9</span>
+<span class="text-xs text-muted">(112 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Heavy-Duty HDPE Wheeled Garbage Bin (240L)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹2,650</span>
+<span class="text-xs text-muted line-through">₹3,200</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">17% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-surface text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>2 Pieces</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-surface overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Delta Fog" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4V3x9D72ct-qEY_0TMp-TIs0a5DfksHTD9sF-GchqjWOFV4aOXG50lQAI5qoI9x9EGxZv_QvCn73SIQOhcvAQBLRudNrwMCTeadDO3GZPVHyblbm1elRlT_ElMn8VrkpsJQtQCNVbC-QoTQGT4rZRA-DpVWxkuearsNSGxcr1EQQAbc3zoeQv5AOY_5e2vY4l56yrVfLrXndnOYeDVtovTQhNAEfaBX7hjwcSPf0"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold uppercase tracking-wider">Pest Control</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.9</span>
+<span class="text-xs text-muted">(38 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Commercial Thermal Fogging Machine (Delta Fog)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹28,500</span>
+<span class="text-xs text-muted line-through">₹32,000</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">11% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-surface text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>1 Unit</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-surface overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="LED Street Light" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuCWlq8dLHdLHyDsvTt1ndLpSY9_1_Xc4f2ijrdUvfTJXLmMuqPzBDarqb7eRiyPwMIDy8Yaa2wCSOMuUy2R_LC5Ni3HrMVFFuLYm0qr2kB6u3LjEXvJoF5bqiPp_kcJ6Lw1Cs7dOzhNPQJ9bjq9e82wLYBYwzh0j3Ii_ksVCOAMtUcagmhLNUqE3_3cVvjFpEDHpdOruvwi2BCAzTrlFYdbHn95VM4uPdBkRSA0c"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-900 text-[10px] font-bold uppercase tracking-wider">Infrastructure</span>
+<span class="px-2 py-0.5 rounded-full bg-accent text-white text-[10px] font-bold">Bulk Available</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.9</span>
+<span class="text-xs text-muted">(93 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Smart LED Street Light 60W / 120W IP66</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹1,850</span>
+<span class="text-xs text-muted line-through">₹2,400</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">23% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-surface text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>5 Pieces</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-surface overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Lime Powder" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDscaavvPJu5Whb_XJ33SiXWZ5CfM_7DUjQkdV6MKY9Pv65cpe_dtaJ84Ik8K3bq3yQKdX2Ye4ez4WjcSq5qO8lR2Rrcn91-M6cL2ryyJ9hlyk2ZFBlA6SDk6_Dts11MPvEBEWH1hAF3DMjf2Q5lAUI5VMgy2tA20sDx1BPzrSQzfPbo-DGfWlEcRuZ7xCrcc0UVEoiFBQc65XFq2XwrVwDYcD_jKxgNiOJAmoo5wg"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[10px] font-bold uppercase tracking-wider">Disinfectants</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.8</span>
+<span class="text-xs text-muted">(62 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Hydrated Lime Powder (Slaked Chuna)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹420</span>
+<span class="text-xs text-muted line-through">₹500</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">16% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-surface text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>10 Bags</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-white rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-surface overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Backpack Sprayer" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSvsaczllhH2YKZk0NPVmKi8v8sAG_qdBb3MuTJdy4UOnTUgc4eNXN2JyTxy8ZJAnT29ha_IbA9S3iHyGD4JaLi8T9np15wtARpIzmWTZSehMK4TsK08GsyVZ_wLlLxeAh3krLFRm_C7mYxnTYWLn6jaA3IJVPA2Ch6k2ESNMC204W7GsECmm3U1fwq-Egux5IftM0NUXEBUCcnW87pLXf_6MsJN6vRmsTVRVqwdg"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-900 text-[10px] font-bold uppercase tracking-wider">Sanitization</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.8</span>
+<span class="text-xs text-muted">(54 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Professional Battery Backpack Sprayer (16L)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹3,400</span>
+<span class="text-xs text-muted line-through">₹4,000</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">15% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-surface text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>1 Unit</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination dots -->
+<div class="flex items-center justify-center gap-2 mt-6" id="feat-dots">
+<button aria-label="Slide 1" class="w-6 h-2 rounded-full bg-primary transition-all duration-300" data-index="0"></button>
+<button aria-label="Slide 2" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="1"></button>
+<button aria-label="Slide 3" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="2"></button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: TELANGANA BESTSELLERS CAROUSEL -->
+<section class="py-14 bg-white border-t border-border select-none" id="telangana-bestsellers">
+<div class="max-w-7xl mx-auto px-4 sm:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-accent text-xs font-bold mb-2">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Panchayat &amp; Institutional Favourites</span>
+</div>
+<h2 class="font-display font-bold text-2xl sm:text-3xl text-dark">Top Bestsellers Across Telangana</h2>
+<p class="text-muted text-sm mt-1">The most frequently re-ordered municipal sanitation and civil supplies from Chevella depot.</p>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden sm:inline-flex items-center gap-1 text-navy font-bold text-sm hover:underline" href="#">
+              Explore Full List <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<div class="flex items-center gap-2">
+<button aria-label="Previous Slide" class="w-10 h-10 rounded-full border border-border bg-white text-dark hover:bg-navy hover:text-white hover:border-navy flex items-center justify-center shadow-sm transition-all" id="best-prev">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next Slide" class="w-10 h-10 rounded-full border border-border bg-white text-dark hover:bg-navy hover:text-white hover:border-navy flex items-center justify-center shadow-sm transition-all" id="best-next">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Carousel Track Container -->
+<div class="relative w-full overflow-hidden" id="best-carousel-container">
+<div class="carousel-track py-2" id="best-track">
+<!-- Card 1 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-surface rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-white overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Malathion 5% DP" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgGvNXENNLz4i1LloXDeIgDz5er3D8jsCK46xYVVNSTpG1kPJF3Mi14Wf2l3t5IeBiiqUynC8QlxvTfxazR7NvIDIps1_VXxycNKJ_C88W5suqyDPpkOASbBg7opSgzBA3pnMxWf8M7jyK_S4WOATb7ERzqDSyOqAtNijA1PIAkP8nF44_j6AVLKSUsnYzC0EbaS1BnXC-WS_izNZO41cAYR-ld0AeKyqpn6mlVkM"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold uppercase tracking-wider">Pest Control</span>
+<span class="px-2 py-0.5 rounded-full bg-accent text-white text-[10px] font-bold">Bulk Available</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.7</span>
+<span class="text-xs text-muted">(49 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Malathion 5% DP Vector Insecticide</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹980</span>
+<span class="text-xs text-muted line-through">₹1,200</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">18% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-white text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>4 Bags</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-surface rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-white overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Twin Community Bin" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6mIDA1jq2wEqtvehCWJWU-C1_NYDVUgQ6Fo1WjZCeXVf5KJKD3ANor_viyafTO7HTrJvRE5v1nORfmAMcQAEqTxQ2KVHVzm3425sp8Co2BSl0O29IWmotuv0wIAoBLTDcvvzWDfzJTRnb-JlJ1DzSbDSDd4zZqcH6KCT7pMsvV1kCi9dFWr4jfNp0gHUWXimoscRN3-2DvN073PwnnNZ3kEnKAbrpnXP37MdY99Y"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">Waste Mgmt</span>
+<span class="px-2 py-0.5 rounded-full bg-accent text-white text-[10px] font-bold">Bulk Available</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.8</span>
+<span class="text-xs text-muted">(45 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Twin Wet &amp; Dry Community Dustbin (100L x 2)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹5,800</span>
+<span class="text-xs text-muted line-through">₹6,900</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">16% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-white text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>1 Set</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-surface rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-white overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Safety Kit" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFkRwZsAG3PV-HZoa-t9nHk0UbIRAiVJd-j1Ya1OFGZnJ7EqoemUc4o5DZgXpoT3hgD28vNc4jShYa3haDPv6E-Z7SIx8hPGiKj2v79od4YpJ6sfbR512gdYOvv7E1lEuy1Wp1mf2su1MVmRVxx1HTfjK6DeCIt5aSfnswAaC7evqiNIffRMKEZQOvhKCLT6SFX62XBds0XtXivNoW688rsXEESBv5EZUu9mfhspE"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-900 text-[10px] font-bold uppercase tracking-wider">Safety &amp; PPE</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.9</span>
+<span class="text-xs text-muted">(88 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Sanitation Worker Safety Kit (Boots, Gloves, Mask)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹1,150</span>
+<span class="text-xs text-muted line-through">₹1,450</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">20% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-white text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>5 Kits</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-surface rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-white overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Green Grass Mat" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY-4Ruulipc1x9ISQokph6fSaZjNLMPeOLuxM4ONL4qyXiKuOJUfJrarcrimA0FZ1xBPWwUVulOyyCiABG8Z3Jwe3x4PtEKIT__KmrdhwJnDOw4FKqYy1GKfmGn-pOMe6NOJG1mQZqBIIjguN82ikoWGyVaM-3XpXiODkqlJTaGQ3_J8UWMZCbigeshV8R8XIrTSDW0FVSHIBoYu6yyz3u28wnTBnqHg2lcsW5VRc"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-teal-100 text-teal-900 text-[10px] font-bold uppercase tracking-wider">Landscaping</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.7</span>
+<span class="text-xs text-muted">(77 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">High-Density Artificial Green Grass Mat (35mm)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹38 <span class="text-xs font-normal">/ Sq.Ft</span></span>
+<span class="text-xs text-muted line-through">₹48</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">21% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-white text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>200 Sq.Ft</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-surface rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-white overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Larvicide Canister" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJH69jhUFrtEWGRFCUvnlUghJP2qAVyvzRyhKXAQ0XMcn9z57fER9BzWGopCIuLmRJqctdNqgybXMFVJUekrn_Dtdj93HZCiHRX5Ghj5R3ibjeII-OnNid66Cj92AB_zWjf31z6NS2YvwCwyw5vzxLmSUq1XDix_sWiPudQjdLIoj7-SSgAl3PqXvRG6hhje92h7M459IGgRwnbXYkPxxlT3n3j6nrKP2yV5DK0vU"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold uppercase tracking-wider">Vector Control</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.8</span>
+<span class="text-xs text-muted">(31 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Mosquito Larvicide Granules (Temephos 50%)</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹1,450</span>
+<span class="text-xs text-muted line-through">₹1,750</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">17% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-white text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>2 Cans</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="carousel-slide w-[calc(50%-10px)] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-14px)] lg:w-[calc(25%-15px)] bg-surface rounded-2xl border border-border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="relative w-full h-44 rounded-xl bg-white overflow-hidden flex items-center justify-center p-3 mb-3">
+<img alt="Street Broom" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5MfnSOXr1PSu-DNpkAbcjMDccSAV6MIUldqeseaouWEjvGMEMR51KqCM7qj-UPCruqvPbyUp5LkcdEIns3RGtozpz0PLhVYfm5yOUEMYcZeOQ9RArKI4EkEoMcZiPX3kRYi6JgxpjMF7f6roXdjpW8DVv18FY0Lt5qtXsZP8IlTV210abgHigIuQpGdXIiz09xfby1fG4IdoRXwTaFFv6xGMVZ9NZhd3yJnUKwww"/>
+<button aria-label="Add to Wishlist" class="wishlist-btn absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow hover:bg-white flex items-center justify-center text-muted hover:text-rose-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute top-2 left-2 flex flex-col gap-1">
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[10px] font-bold uppercase tracking-wider">Sanitization</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-dark">4.6</span>
+<span class="text-xs text-muted">(39 reviews)</span>
+</div>
+<h3 class="font-display font-bold text-sm text-dark line-clamp-1 group-hover:text-primary transition-colors">Heavy Steel Street Sweeping Broom &amp; Scraper</h3>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display font-bold text-base text-dark">From ₹380</span>
+<span class="text-xs text-muted line-through">₹480</span>
+<span class="px-1.5 py-0.5 rounded bg-accent-light text-accent text-[10px] font-bold">21% OFF</span>
+</div>
+<div class="mt-2 py-1 px-2 rounded-lg bg-white text-[11px] text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory</span>
+<span>Min. Order (MOQ): <strong>10 Pieces</strong></span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border flex items-center gap-2">
+<button class="add-cart-btn flex-1 py-2 px-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+                  Add to Cart
+                </button>
+<button class="py-2 px-2.5 rounded-xl border border-navy text-navy hover:bg-navy hover:text-white text-xs font-bold transition-all">
+                  Get Quote
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination dots -->
+<div class="flex items-center justify-center gap-2 mt-6" id="best-dots">
+<button aria-label="Slide 1" class="w-6 h-2 rounded-full bg-navy transition-all duration-300" data-index="0"></button>
+<button aria-label="Slide 2" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="1"></button>
+<button aria-label="Slide 3" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="2"></button>
+</div>
+</div>
+</section>
+<!-- B2B Tender / Quick RFQ Banner -->
+<section class="relative py-20 md:py-28 bg-[#0B192C] text-white overflow-hidden" id="why-choose-us"><div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,124,0,0.12),transparent_50%)] pointer-events-none"></div><div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10"><div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"><div class="lg:col-span-5 relative"><div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl"><img alt="KNR Enterprises Chevella Warehouse Depot" class="w-full h-[440px] object-cover hover:scale-105 transition-transform duration-700" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQpCsaGhDRMmBOjqy4sx4oievixlISKiQK64i-eUNCPTn2SWDs4d_RBHXsYYxaswVKVTlpkrkQZCMT00ICGVqhpc2MZwnAwOuLa2-z5Z5QoW-eK8IFjETJUt9aeJwpaKaycqmkEJUNzLgj3NdcU7vszFoAvJFWHVIgF8yIntmnRY1aLZAvUkdzSLXuY0eHSUbgtu_REJ8aht9sQ9eBq5rBVbqhDYH0B1fAi_HWQP8"/><div class="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-transparent"></div></div><div class="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:-right-6 bg-white text-dark p-6 rounded-2xl shadow-2xl border border-orange-100 max-w-sm"><div class="flex items-center gap-3 mb-2"><div class="font-display font-extrabold text-3xl text-primary">10+ Years</div><div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[14px]">verified</span> ISO Certified</div></div><h4 class="font-display font-bold text-sm text-dark mb-1">Trusted Municipal &amp; Institutional Supply</h4><p class="text-xs text-muted leading-relaxed">Serving Gram Panchayats, Municipal Corporations, and EPC civil contractors across Telangana with zero delivery failure.</p></div></div><div class="lg:col-span-7 flex flex-col justify-center"><div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-primary text-xs font-bold mb-4 w-fit"><span class="material-symbols-outlined text-[16px]">stars</span><span>INSTITUTIONAL EXCELLENCE</span></div><h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">Why Choose <span class="text-primary">KNR Enterprises</span></h2><p class="text-white/80 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl">Telangana's premier municipal sanitation, pest vector control, and civil infrastructure wholesale hub located right on Chevella Highway.</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15 transition-all group"><div class="w-10 h-10 rounded-xl bg-orange-100 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[22px]">verified_user</span></div><h3 class="font-display font-bold text-sm text-white mb-1.5">Genuine Products</h3><p class="text-xs text-white/70 leading-relaxed">Verified ISI &amp; CIB registered materials directly sourced from certified manufacturing units.</p></div><div class="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15 transition-all group"><div class="w-10 h-10 rounded-xl bg-orange-100 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[22px]">local_offer</span></div><h3 class="font-display font-bold text-sm text-white mb-1.5">Competitive Bulk Pricing</h3><p class="text-xs text-white/70 leading-relaxed">Tiered wholesale slabs designed specifically for gram panchayat grants and high-volume corporate orders.</p></div><div class="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15 transition-all group"><div class="w-10 h-10 rounded-xl bg-orange-100 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[22px]">local_shipping</span></div><h3 class="font-display font-bold text-sm text-white mb-1.5">On-time Delivery</h3><p class="text-xs text-white/70 leading-relaxed">Dedicated logistics transport fleet ensuring guaranteed 24-48 hr dispatch across all 33 Telangana districts.</p></div><div class="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15 transition-all group"><div class="w-10 h-10 rounded-xl bg-orange-100 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[22px]">receipt_long</span></div><h3 class="font-display font-bold text-sm text-white mb-1.5">GST Invoice</h3><p class="text-xs text-white/70 leading-relaxed">100% compliant GST-3B proforma &amp; tax invoices facilitating streamlined government audit filings.</p></div><div class="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15 transition-all group"><div class="w-10 h-10 rounded-xl bg-orange-100 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[22px]">account_balance</span></div><h3 class="font-display font-bold text-sm text-white mb-1.5">Govt Tender Experience</h3><p class="text-xs text-white/70 leading-relaxed">Decade-long familiarity with municipal procurement norms, e-procurement docs, and department tenders.</p></div><div class="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15 transition-all group"><div class="w-10 h-10 rounded-xl bg-orange-100 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[22px]">support_agent</span></div><h3 class="font-display font-bold text-sm text-white mb-1.5">Dedicated Support</h3><p class="text-xs text-white/70 leading-relaxed">Direct hotline access to Managing Partner K. Narendar Reddy and our Chevella depot logistics desk.</p></div></div></div></div></div></section><section class="py-16 md:py-20 bg-surface border-t border-border select-none relative overflow-hidden" id="testimonials-section"><div class="max-w-7xl mx-auto px-4 sm:px-8"><div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10"><div><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-primary text-xs font-bold mb-2.5"><span class="material-symbols-outlined text-[16px]">grade</span><span>MUNICIPAL TESTIMONIALS &amp; TRUST</span></div><h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-dark tracking-tight leading-tight">Trusted by Panchayats, Municipalities &amp; Contractors Across <span class="text-primary">Telangana</span></h2><p class="text-muted text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">Read how gram panchayats, township administrations, and infrastructure contractors rely on our prompt depot dispatches, certified chemicals, and GST-compliant invoicing.</p></div><div class="flex items-center gap-3"><div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-border text-xs text-muted font-medium"><span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span><span>Auto-sliding</span></div><div class="flex items-center gap-2"><button aria-label="Previous Testimonial" class="w-10 h-10 rounded-full border border-border bg-white text-dark hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center shadow-sm transition-all duration-300 active:scale-95" id="testi-prev"><span class="material-symbols-outlined text-[20px]">chevron_left</span></button><button aria-label="Next Testimonial" class="w-10 h-10 rounded-full border border-border bg-white text-dark hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center shadow-sm transition-all duration-300 active:scale-95" id="testi-next"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button></div></div></div><div class="relative w-full overflow-hidden" id="testi-carousel-container"><div class="carousel-track py-2" id="testi-track"><div class="carousel-slide w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-14px)] bg-white rounded-2xl border border-border p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group"><div class="absolute top-4 right-4 text-orange-100 group-hover:text-orange-200 transition-colors pointer-events-none"><span class="material-symbols-outlined text-5xl opacity-80">format_quote</span></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-0.5 text-amber-500"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span></div><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[13px]">verified</span> Verified Panchayat</span></div><p class="text-dark/80 text-sm leading-relaxed mb-6 font-normal">“KNR Enterprises has been our primary supplier for Swachh Bharat bleaching powder and 240L dustbins for over 3 years. Their 24-hour depot dispatch to our mandal during monsoon sanitization drives was flawless. Proper GST proforma made our panchayat audit effortless.”</p></div><div class="pt-4 border-t border-border flex items-center gap-3.5"><div class="w-11 h-11 rounded-full bg-primary-light text-primary flex items-center justify-center font-display font-bold text-sm shadow-sm flex-shrink-0">MR</div><div class="flex flex-col"><h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">M. Ramachandra Rao</h4><span class="text-xs text-muted font-medium">Sarpanch, Chevella Gram Panchayat</span><span class="text-[11px] text-accent font-semibold mt-0.5">Ranga Reddy Dist.</span></div></div></div><div class="carousel-slide w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-14px)] bg-white rounded-2xl border border-border p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group"><div class="absolute top-4 right-4 text-orange-100 group-hover:text-orange-200 transition-colors pointer-events-none"><span class="material-symbols-outlined text-5xl opacity-80">format_quote</span></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-0.5 text-amber-500"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span></div><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[13px]">verified</span> Verified Municipality</span></div><p class="text-dark/80 text-sm leading-relaxed mb-6 font-normal">“We procured commercial Delta thermal fogging machines and Malathion 5% DP for vector control across 12 municipal wards. The machine build quality (SS304) is exceptional and their team provided on-site operator training.”</p></div><div class="pt-4 border-t border-border flex items-center gap-3.5"><div class="w-11 h-11 rounded-full bg-orange-100 text-primary flex items-center justify-center font-display font-bold text-sm shadow-sm flex-shrink-0">KS</div><div class="flex flex-col"><h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">Dr. K. Srinivasulu</h4><span class="text-xs text-muted font-medium">Sanitary Inspector, Vikarabad Municipality</span><span class="text-[11px] text-accent font-semibold mt-0.5">Vikarabad Urban Dept.</span></div></div></div><div class="carousel-slide w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-14px)] bg-white rounded-2xl border border-border p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group"><div class="absolute top-4 right-4 text-orange-100 group-hover:text-orange-200 transition-colors pointer-events-none"><span class="material-symbols-outlined text-5xl opacity-80">format_quote</span></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-0.5 text-amber-500"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span></div><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[13px]">verified</span> Verified Contractor</span></div><p class="text-dark/80 text-sm leading-relaxed mb-6 font-normal">“As an EPC contractor executing urban civic illumination, sourcing 120W IP66 die-cast LED streetlights with 10kV surge protection at wholesale depot rates with instant GST invoices has given us a major advantage.”</p></div><div class="pt-4 border-t border-border flex items-center gap-3.5"><div class="w-11 h-11 rounded-full bg-indigo-100 text-indigo-900 flex items-center justify-center font-display font-bold text-sm shadow-sm flex-shrink-0">VS</div><div class="flex flex-col"><h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">V. Sudhakar Reddy</h4><span class="text-xs text-muted font-medium">Project Director, Sri Sai Infra &amp; Civil Works</span><span class="text-[11px] text-accent font-semibold mt-0.5">EPC Infrastructure Partner</span></div></div></div><div class="carousel-slide w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-14px)] bg-white rounded-2xl border border-border p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group"><div class="absolute top-4 right-4 text-orange-100 group-hover:text-orange-200 transition-colors pointer-events-none"><span class="material-symbols-outlined text-5xl opacity-80">format_quote</span></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-0.5 text-amber-500"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span></div><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[13px]">verified</span> Verified Township</span></div><p class="text-dark/80 text-sm leading-relaxed mb-6 font-normal">“Procured 500 units of heavy-duty Swachh HDPE bins and sanitation worker PPE kits for our gated township. Outstanding quality, timely doorstep unloading, and immediate billing transparency.”</p></div><div class="pt-4 border-t border-border flex items-center gap-3.5"><div class="w-11 h-11 rounded-full bg-purple-100 text-purple-900 flex items-center justify-center font-display font-bold text-sm shadow-sm flex-shrink-0">AD</div><div class="flex flex-col"><h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">Ananya Deshmukh</h4><span class="text-xs text-muted font-medium">Estate Operations Head, Green Meadows Townships</span><span class="text-[11px] text-accent font-semibold mt-0.5">Moinabad / Shankarpally</span></div></div></div><div class="carousel-slide w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-14px)] bg-white rounded-2xl border border-border p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group"><div class="absolute top-4 right-4 text-orange-100 group-hover:text-orange-200 transition-colors pointer-events-none"><span class="material-symbols-outlined text-5xl opacity-80">format_quote</span></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-0.5 text-amber-500"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span></div><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[13px]">verified</span> Verified Engineer</span></div><p class="text-dark/80 text-sm leading-relaxed mb-6 font-normal">“Consistently supply high-chlorine stable bleaching powder and hydrated lime to our water treatment plants. Zero batch variation, certified ISI test reports provided with every consignment.”</p></div><div class="pt-4 border-t border-border flex items-center gap-3.5"><div class="w-11 h-11 rounded-full bg-teal-100 text-teal-900 flex items-center justify-center font-display font-bold text-sm shadow-sm flex-shrink-0">GM</div><div class="flex flex-col"><h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">G. Mallikarjun</h4><span class="text-xs text-muted font-medium">Executive Engineer, Rural Water Supply Division</span><span class="text-[11px] text-accent font-semibold mt-0.5">Govt Public Health Wing</span></div></div></div><div class="carousel-slide w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-14px)] bg-white rounded-2xl border border-border p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group"><div class="absolute top-4 right-4 text-orange-100 group-hover:text-orange-200 transition-colors pointer-events-none"><span class="material-symbols-outlined text-5xl opacity-80">format_quote</span></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-0.5 text-amber-500"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span></div><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-light text-accent text-[11px] font-bold"><span class="material-symbols-outlined text-[13px]">verified</span> Verified Civic Rep</span></div><p class="text-dark/80 text-sm leading-relaxed mb-6 font-normal">“Their Chevella highway depot is a lifesaver for immediate pickups. Whether we need 20 bags of lime or 2 backpack battery sprayers on short notice, stock is always available.”</p></div><div class="pt-4 border-t border-border flex items-center gap-3.5"><div class="w-11 h-11 rounded-full bg-rose-100 text-rose-800 flex items-center justify-center font-display font-bold text-sm shadow-sm flex-shrink-0">PV</div><div class="flex flex-col"><h4 class="font-display font-bold text-sm text-dark group-hover:text-primary transition-colors">P. Venkat Ramana</h4><span class="text-xs text-muted font-medium">President, Shabad Mandal Farmers &amp; Civic Welfare</span><span class="text-[11px] text-accent font-semibold mt-0.5">Shabad Civic Group</span></div></div></div></div></div><div class="flex items-center justify-center gap-2 mt-6" id="testi-dots"><button aria-label="Slide 1" class="w-6 h-2 rounded-full bg-primary transition-all duration-300" data-index="0"></button><button aria-label="Slide 2" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="1"></button><button aria-label="Slide 3" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="2"></button><button aria-label="Slide 4" class="w-2 h-2 rounded-full bg-border hover:bg-muted transition-all duration-300" data-index="3"></button></div><div class="mt-14 pt-10 border-t border-border"><div class="flex items-center justify-center gap-4 mb-6"><div class="h-px bg-border flex-1 max-w-xs"></div><span class="text-xs font-bold text-muted uppercase tracking-widest text-center">Government Bodies &amp; Institutional Procurement Partners</span><div class="h-px bg-border flex-1 max-w-xs"></div></div><div class="overflow-hidden w-full relative py-2 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]"><div class="marquee-track items-center gap-6"><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-primary">account_balance</span><span class="font-display font-bold text-xs whitespace-nowrap">Telangana Gram Panchayat Raj</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-accent">eco</span><span class="font-display font-bold text-xs whitespace-nowrap">Swachh Telangana Mission</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-navy">location_city</span><span class="font-display font-bold text-xs whitespace-nowrap">Vikarabad Municipal Council</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-amber-500">agriculture</span><span class="font-display font-bold text-xs whitespace-nowrap">Ranga Reddy Rural Dev Agency</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-primary">holiday_village</span><span class="font-display font-bold text-xs whitespace-nowrap">Chevella Mandal Parishad</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-navy">engineering</span><span class="font-display font-bold text-xs whitespace-nowrap">Sri Sai Civil Infrastructure EPC</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-accent">domain_add</span><span class="font-display font-bold text-xs whitespace-nowrap">Green Township Facility Mgmt</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-primary">water_drop</span><span class="font-display font-bold text-xs whitespace-nowrap">Telangana State Rural Water &amp; Sanitation</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-primary">account_balance</span><span class="font-display font-bold text-xs whitespace-nowrap">Telangana Gram Panchayat Raj</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-accent">eco</span><span class="font-display font-bold text-xs whitespace-nowrap">Swachh Telangana Mission</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-navy">location_city</span><span class="font-display font-bold text-xs whitespace-nowrap">Vikarabad Municipal Council</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-amber-500">agriculture</span><span class="font-display font-bold text-xs whitespace-nowrap">Ranga Reddy Rural Dev Agency</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-primary">holiday_village</span><span class="font-display font-bold text-xs whitespace-nowrap">Chevella Mandal Parishad</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-navy">engineering</span><span class="font-display font-bold text-xs whitespace-nowrap">Sri Sai Civil Infrastructure EPC</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-accent">domain_add</span><span class="font-display font-bold text-xs whitespace-nowrap">Green Township Facility Mgmt</span></div><div class="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-border shadow-sm text-dark/70 hover:text-primary hover:border-primary hover:scale-105 transition-all cursor-default"><span class="material-symbols-outlined text-[24px] text-primary">water_drop</span><span class="font-display font-bold text-xs whitespace-nowrap">Telangana State Rural Water &amp; Sanitation</span></div></div></div></div></div></section><section class="py-16 md:py-20 bg-white border-t border-border select-none relative" id="faq-section">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you supply in bulk for Gram Panchayats and Municipal Corporations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely. KNR Enterprises specializes in institutional and municipal wholesale supply. We cater to bulk depot orders, mandal-level grants, full truckloads (FTL/LTL), and government procurement contracts for Gram Panchayats and Municipal Corporations across all 33 Telangana districts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide official GST invoices for government audit compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We provide 100% compliant GST-3B tax invoices with our registered GSTIN (36CUHPK5939D1ZG). Every consignment is accompanied by official proforma invoices, e-way bills, and requisite batch test certificates ensuring effortless Panchayat audit and treasury verification."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which areas do you deliver to across Telangana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "From our central Chevella depot situated right on the highway, we guarantee 24-48 hour prompt dispatch across all 33 Telangana districts including Ranga Reddy, Vikarabad, Hyderabad, Sangareddy, Mahabubnagar, Medak, Nalgonda, and beyond."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I get an instant bulk quote or proforma invoice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can click any 'Get Bulk Quote' or WhatsApp trigger button to share your required bill of quantities directly with Managing Partner K. Narendar Reddy (8886175855) or our logistics desk for an instant proforma invoice and depot rate breakdown."
+        }
+      }
+    ]
+  }
+  </script>
+<div class="max-w-4xl mx-auto px-4 sm:px-8">
+<div class="text-center max-w-2xl mx-auto mb-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-primary text-xs font-bold mb-3">
+<span class="material-symbols-outlined text-[16px]">help</span>
+<span>FREQUENTLY ASKED QUESTIONS</span>
+</div>
+<h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-dark tracking-tight leading-tight mb-3">
+        Got Questions? We Have Answers.
+      </h2>
+<p class="text-muted text-sm sm:text-base leading-relaxed">
+        Everything you need to know about our Chevella depot dispatches, government billing, delivery logistics, and municipal bulk pricing.
+      </p>
+</div>
+<div class="space-y-4" id="faq-accordion-group">
+<!-- FAQ 1 (Open by default) -->
+<div class="border border-border rounded-2xl overflow-hidden bg-surface transition-all duration-300 faq-card" data-state="open">
+<button class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left font-display font-bold text-sm sm:text-base text-dark hover:text-primary transition-colors cursor-pointer gap-4" type="button">
+<span class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-orange-100 text-primary flex items-center justify-center text-xs flex-shrink-0 font-bold">01</span>
+<span>Do you supply in bulk for Gram Panchayats and Municipal Corporations?</span>
+</span>
+<span class="faq-icon material-symbols-outlined text-primary text-[22px] transition-transform duration-300 rotate-45 flex-shrink-0">add</span>
+</button>
+<div class="faq-content px-5 sm:px-6 pb-6 pt-0 text-dark/80 text-xs sm:text-sm leading-relaxed border-t border-border/50 mt-1">
+<div class="pt-3">
+            Yes, absolutely. KNR Enterprises specializes in institutional and municipal wholesale supply. We cater to bulk depot orders, mandal-level grants, full truckloads (FTL/LTL), and government procurement contracts for Gram Panchayats and Municipal Corporations across all 33 Telangana districts.
+          </div>
+</div>
+</div>
+<!-- FAQ 2 -->
+<div class="border border-border rounded-2xl overflow-hidden bg-surface transition-all duration-300 faq-card" data-state="closed">
+<button class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left font-display font-bold text-sm sm:text-base text-dark hover:text-primary transition-colors cursor-pointer gap-4" type="button">
+<span class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-orange-100 text-primary flex items-center justify-center text-xs flex-shrink-0 font-bold">02</span>
+<span>Do you provide official GST invoices for government audit compliance?</span>
+</span>
+<span class="faq-icon material-symbols-outlined text-primary text-[22px] transition-transform duration-300 flex-shrink-0">add</span>
+</button>
+<div class="faq-content px-5 sm:px-6 pb-6 pt-0 text-dark/80 text-xs sm:text-sm leading-relaxed border-t border-border/50 mt-1 hidden">
+<div class="pt-3">
+            Yes. We provide 100% compliant GST-3B tax invoices with our registered GSTIN (<strong>36CUHPK5939D1ZG</strong>). Every consignment is accompanied by official proforma invoices, e-way bills, and requisite batch test certificates ensuring effortless Panchayat audit and treasury verification.
+          </div>
+</div>
+</div>
+<!-- FAQ 3 -->
+<div class="border border-border rounded-2xl overflow-hidden bg-surface transition-all duration-300 faq-card" data-state="closed">
+<button class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left font-display font-bold text-sm sm:text-base text-dark hover:text-primary transition-colors cursor-pointer gap-4" type="button">
+<span class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-orange-100 text-primary flex items-center justify-center text-xs flex-shrink-0 font-bold">03</span>
+<span>Which areas do you deliver to across Telangana?</span>
+</span>
+<span class="faq-icon material-symbols-outlined text-primary text-[22px] transition-transform duration-300 flex-shrink-0">add</span>
+</button>
+<div class="faq-content px-5 sm:px-6 pb-6 pt-0 text-dark/80 text-xs sm:text-sm leading-relaxed border-t border-border/50 mt-1 hidden">
+<div class="pt-3">
+            From our central Chevella depot situated right on the highway, we guarantee 24-48 hour prompt dispatch across all 33 Telangana districts including Ranga Reddy, Vikarabad, Hyderabad, Sangareddy, Mahabubnagar, Medak, Nalgonda, and beyond.
+          </div>
+</div>
+</div>
+<!-- FAQ 4 -->
+<div class="border border-border rounded-2xl overflow-hidden bg-surface transition-all duration-300 faq-card" data-state="closed">
+<button class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left font-display font-bold text-sm sm:text-base text-dark hover:text-primary transition-colors cursor-pointer gap-4" type="button">
+<span class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-orange-100 text-primary flex items-center justify-center text-xs flex-shrink-0 font-bold">04</span>
+<span>How can I get an instant bulk quote or proforma invoice?</span>
+</span>
+<span class="faq-icon material-symbols-outlined text-primary text-[22px] transition-transform duration-300 flex-shrink-0">add</span>
+</button>
+<div class="faq-content px-5 sm:px-6 pb-6 pt-0 text-dark/80 text-xs sm:text-sm leading-relaxed border-t border-border/50 mt-1 hidden">
+<div class="pt-3">
+            You can click any 'Get Bulk Quote' or WhatsApp trigger button to share your required bill of quantities directly with Managing Partner K. Narendar Reddy (<a class="text-primary font-semibold hover:underline" href="tel:8886175855">8886175855</a>) or our logistics desk for an instant proforma invoice and depot rate breakdown.
+          </div>
+</div>
+</div>
+</div>
+<!-- Action bar below FAQ items -->
+<div class="mt-10 p-6 rounded-2xl bg-surface border border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-primary-light text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark">Have more questions about municipal supply?</h4>
+<p class="text-xs text-muted mt-0.5">Our Chevella depot team is available 8:30 AM to 7:30 PM (Mon-Sat).</p>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-wrap justify-center">
+<a class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-all shadow-sm" href="#rfq-section">
+<span>View All FAQs (8 Questions)</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-accent text-accent hover:bg-accent hover:text-white text-xs font-bold transition-all" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>Ask on WhatsApp</span>
+</a>
+</div>
+</div>
+</div>
+</section><section class="py-12 bg-surface" id="rfq-section">
+<div class="max-w-7xl mx-auto px-4 sm:px-8">
+<div class="bg-gradient-to-r from-navy to-navy-dark rounded-3xl p-6 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[32px]">assignment</span>
+</div>
+<div>
+<h3 class="font-display font-bold text-xl sm:text-2xl">Need custom quantities for a Gram Panchayat or Municipal Tender?</h3>
+<p class="text-white/80 text-sm mt-1">Get immediate proforma invoice, GST-3B compliance, and depot rate breakdown on WhatsApp.</p>
+</div>
+</div>
+<a class="flex-shrink-0 inline-flex items-center gap-2 bg-accent hover:bg-emerald-600 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-95" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>WhatsApp RFQ Trigger</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="bg-white border-t border-border pt-12 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-display font-extrabold text-sm">KNR</div>
+<span class="font-display font-bold text-base text-navy">KNR Enterprises</span>
+</div>
+<p class="text-xs text-muted mb-3">"We Supply" — Premier wholesale partner for municipal corporations, gram panchayats, and civic contractors across Telangana.</p>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-accent-light text-accent text-[11px] font-bold">
+<span class="material-symbols-outlined text-[13px]">verified</span> GST: 36CUHPK5939D1ZG
+        </div>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark mb-3">Catalog Categories</h4>
+<ul class="space-y-1.5 text-xs text-muted">
+<li><a class="hover:text-primary" href="#">Commercial Dustbins &amp; Compactors</a></li>
+<li><a class="hover:text-primary" href="#">Sanitation Bleaching &amp; Lime</a></li>
+<li><a class="hover:text-primary" href="#">Thermal Vector Foggers</a></li>
+<li><a class="hover:text-primary" href="#">Civic LED Streetlights</a></li>
+<li><a class="hover:text-primary" href="#">Protective Gear &amp; Sprayers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark mb-3">Chevella Depot</h4>
+<p class="text-xs text-muted mb-2 leading-relaxed">
+          🏢 H.No: 1-77/6, Near HP Petrol Pump, Chevella Mandal, Ranga Reddy District, Telangana - 501503
+        </p>
+<p class="text-xs text-muted font-medium">Depot Hours: 8:30 AM - 7:30 PM (Mon-Sat)</p>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-dark mb-3">Direct Procurement Lines</h4>
+<p class="text-xs text-muted mb-1">Managing Partner: <strong class="text-dark">K. Narendar Reddy (<a class="hover:text-primary" href="tel:8886175855">8886175855</a>)</strong></p>
+<p class="text-xs text-muted mb-3">Logistics Incharge: <strong class="text-dark">G. Siva (<a class="hover:text-primary" href="tel:9640195798">9640195798</a>)</strong></p>
+<a class="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl transition-all" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span> WhatsApp RFQ Desk
+        </a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+<span>© 2025 KNR Enterprises. All rights reserved. Chevella, Telangana.</span>
+<span class="inline-flex items-center gap-1 text-accent font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span> Govt &amp; Panchayat Tender Authorized Vendor
+      </span>
+</div>
+</footer>
+<!-- Floating WhatsApp FAB Button -->
+<a aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-accent hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-all hover:scale-110 active:scale-95" href="https://wa.me/918886175855" target="_blank">
+<span class="material-symbols-outlined text-[28px]">chat</span>
+</a>
+<!-- Swiper & Carousel Controller JavaScript -->
+<script>
+    (function initCarousels() {
+      // Setup Carousel function
+      function setupCarousel(trackId, prevBtnId, nextBtnId, dotsContainerId, autoplayIntervalMs) {
+        const track = document.getElementById(trackId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+        const dotsContainer = document.getElementById(dotsContainerId);
+        if (!track || !prevBtn || !nextBtn) return;
+
+        let autoPlayTimer = null;
+        let isPaused = false;
+
+        function getSlideWidth() {
+          const firstSlide = track.querySelector('.carousel-slide');
+          return firstSlide ? firstSlide.offsetWidth + 20 : 300;
+        }
+
+        function scrollNext() {
+          const maxScroll = track.scrollWidth - track.clientWidth - 10;
+          if (track.scrollLeft >= maxScroll) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+          }
+        }
+
+        function scrollPrev() {
+          if (track.scrollLeft <= 10) {
+            track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+          }
+        }
+
+        nextBtn.addEventListener('click', () => {
+          scrollNext();
+          resetAutoplay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          scrollPrev();
+          resetAutoplay();
+        });
+
+        // Update Dots on Scroll
+        if (dotsContainer) {
+          const dots = dotsContainer.querySelectorAll('button');
+          track.addEventListener('scroll', () => {
+            const progress = track.scrollLeft / (track.scrollWidth - track.clientWidth || 1);
+            const activeIndex = Math.min(dots.length - 1, Math.round(progress * (dots.length - 1)));
+            dots.forEach((dot, idx) => {
+              if (idx === activeIndex) {
+                dot.classList.remove('w-2', 'bg-border');
+                dot.classList.add('w-6', dot.dataset.activeColor || 'bg-primary');
+              } else {
+                dot.classList.remove('w-6', 'bg-primary', 'bg-navy');
+                dot.classList.add('w-2', 'bg-border');
+              }
+            });
+          });
+
+          dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+              const target = (track.scrollWidth - track.clientWidth) * (idx / (dots.length - 1));
+              track.scrollTo({ left: target, behavior: 'smooth' });
+              resetAutoplay();
+            });
+          });
+        }
+
+        // Autoplay Loop with pause-on-hover
+        function startAutoplay() {
+          if (autoPlayTimer) clearInterval(autoPlayTimer);
+          autoPlayTimer = setInterval(() => {
+            if (!isPaused) {
+              scrollNext();
+            }
+          }, autoplayIntervalMs);
+        }
+
+        function resetAutoplay() {
+          startAutoplay();
+        }
+
+        track.addEventListener('mouseenter', () => { isPaused = true; });
+        track.addEventListener('mouseleave', () => { isPaused = false; });
+        track.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+        track.addEventListener('touchend', () => { isPaused = false; });
+
+        startAutoplay();
+      }
+
+      // Initialize Featured Carousel (Autoplay 4.5s)
+      setupCarousel('feat-track', 'feat-prev', 'feat-next', 'feat-dots', 4500);
+
+      // Initialize Bestsellers Carousel (Autoplay 5.5s)
+      setupCarousel('best-track', 'best-prev', 'best-next', 'best-dots', 5500);
+
+      // Cart Badge Counter & Bounce Animation
+      let cartCount = 3;
+      const cartBadge = document.getElementById('cart-badge');
+      document.querySelectorAll('.add-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          cartCount++;
+          if (cartBadge) {
+            cartBadge.textContent = cartCount;
+            cartBadge.classList.remove('cart-bounce-anim');
+            void cartBadge.offsetWidth; // trigger reflow
+            cartBadge.classList.add('cart-bounce-anim');
+          }
+          // Button feedback
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Added!';
+          this.classList.add('bg-accent');
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('bg-accent');
+          }, 1200);
+        });
+      });
+
+      // Wishlist Heart Toggle
+      document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const icon = this.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.classList.toggle('heart-active');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

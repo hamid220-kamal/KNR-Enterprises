@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", "Poppins", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-primary: #F57C00;
+  --color-primary-hover: #E06D00;
+  --color-primary-light: #FFF3E0;
+  --color-navy: #0D2B5B;
+  --color-navy-dark: #071A38;
+  --color-navy-light: #E8EDF5;
+  --color-accent: #2E9E5B;
+  --color-accent-light: #E8F5E9;
+  --color-surface: #FCF9F8;
+  --color-border: #E2E8F0;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: #1C1B1B;
+    background-color: #FCF9F8;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Material Symbols alignment */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+/* Custom Scrollbar for Carousel and Drawers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Cart Bounce Animation */
+@keyframes cartBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+.cart-bounce-anim {
+  animation: cartBounce 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Wiggle on hover */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+.wiggle-hover:hover .wiggle-icon {
+  animation: wiggle 0.4s ease-in-out;
+}
+
+/* Print Styles for Proforma Invoice */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-proforma, #printable-proforma * {
+    visibility: visible;
+  }
+  #printable-proforma {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

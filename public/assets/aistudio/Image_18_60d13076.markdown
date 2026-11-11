@@ -1,0 +1,188 @@
+---
+name: Municipal Commerce & Supply
+colors:
+  surface: '#fcf9f8'
+  surface-dim: '#dcd9d9'
+  surface-bright: '#fcf9f8'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#f6f3f2'
+  surface-container: '#f0eded'
+  surface-container-high: '#eae7e7'
+  surface-container-highest: '#e5e2e1'
+  on-surface: '#1c1b1b'
+  on-surface-variant: '#574235'
+  inverse-surface: '#313030'
+  inverse-on-surface: '#f3f0ef'
+  outline: '#8b7263'
+  outline-variant: '#dec1af'
+  surface-tint: '#964900'
+  primary: '#964900'
+  on-primary: '#ffffff'
+  primary-container: '#f57c00'
+  on-primary-container: '#572800'
+  inverse-primary: '#ffb786'
+  secondary: '#455e90'
+  on-secondary: '#ffffff'
+  secondary-container: '#aec6ff'
+  on-secondary-container: '#395284'
+  tertiary: '#006d38'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#44b16c'
+  on-tertiary-container: '#003e1d'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#ffdcc6'
+  primary-fixed-dim: '#ffb786'
+  on-primary-fixed: '#311300'
+  on-primary-fixed-variant: '#723600'
+  secondary-fixed: '#d8e2ff'
+  secondary-fixed-dim: '#aec6ff'
+  on-secondary-fixed: '#001a42'
+  on-secondary-fixed-variant: '#2c4677'
+  tertiary-fixed: '#8df9ac'
+  tertiary-fixed-dim: '#71dc92'
+  on-tertiary-fixed: '#00210d'
+  on-tertiary-fixed-variant: '#005229'
+  background: '#fcf9f8'
+  on-background: '#1c1b1b'
+  surface-variant: '#e5e2e1'
+typography:
+  headline-xl:
+    fontFamily: Outfit
+    fontSize: 48px
+    fontWeight: '700'
+    lineHeight: 56px
+  headline-xl-mobile:
+    fontFamily: Outfit
+    fontSize: 32px
+    fontWeight: '700'
+    lineHeight: 40px
+  headline-lg:
+    fontFamily: Outfit
+    fontSize: 36px
+    fontWeight: '600'
+    lineHeight: 44px
+  headline-lg-mobile:
+    fontFamily: Outfit
+    fontSize: 26px
+    fontWeight: '600'
+    lineHeight: 34px
+  headline-md:
+    fontFamily: Outfit
+    fontSize: 24px
+    fontWeight: '600'
+    lineHeight: 32px
+  headline-sm:
+    fontFamily: Outfit
+    fontSize: 20px
+    fontWeight: '600'
+    lineHeight: 28px
+  body-lg:
+    fontFamily: Inter
+    fontSize: 18px
+    fontWeight: '400'
+    lineHeight: 28px
+  body-md:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 24px
+  body-sm:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 20px
+  label-lg:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '600'
+    lineHeight: 20px
+    letterSpacing: 0.01em
+  label-md:
+    fontFamily: Inter
+    fontSize: 12px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: 0.02em
+  label-sm:
+    fontFamily: Inter
+    fontSize: 11px
+    fontWeight: '700'
+    lineHeight: 14px
+    letterSpacing: 0.04em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter: 1.5rem
+  gutter-mobile: 1rem
+  margin: 3rem
+  margin-mobile: 1rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 1rem
+  space-lg: 1.5rem
+  space-xl: 2.5rem
+---
+
+## Brand & Style
+The design system serves institutional procurement officers, municipal contractors, and local enterprises requiring sanitation equipment, civic infrastructure goods, and utility supplies. The visual personality balances institutional authority with field-tested durability: dependable, pragmatic, clean, and transparent.
+
+The aesthetic fuses **Corporate/Modern** precision with **Industrial Utility**. Interfaces prioritize structured catalog visibility, regulatory compliance trust markers, and rapid bulk ordering workflows. High-clarity typography, explicit status signifiers, and generous negative space remove cognitive load for public sector tenders and commercial bulk orders alike.
+
+## Colors
+The palette leverages functional industrial color coding:
+- **Primary (#F57C00 - Safety Orange):** Reserved for high-priority calls to action, inventory alerts, bulk quotation triggers, and key interactive highlights.
+- **Secondary (#0D2B5B - Deep Municipal Navy):** Provides structural weight and institutional authority. Used across headers, navigation sidebars, table headers, and primary typography elements.
+- **Tertiary (#2E9E5B - Eco Sanitation Green):** Denotes verified compliance badges (GST, ISO), municipal approvals, in-stock availability, and eco-grade certifications.
+- **Neutral Main (#1A1A1A) & Neutral Muted (#6B7280):** High-contrast body text adhering strictly to WCAG AAA standards on base surfaces.
+- **Backgrounds & Borders (#F5F7FA, #FFFFFF, #E5E7EB):** Crisp, sterile layered surfaces that isolate dense product specification tables and RFQ forms without visual fatigue.
+
+## Typography
+The system deploys **Outfit** for structural headings and numerical product codes, paired with **Inter** for dense transactional UI, data grids, and contract copy.
+- Headline scaling guarantees readability down to mobile viewports while preventing text wrapping on industrial SKU names.
+- Label styles utilize distinct letter spacing and medium-to-bold weights to ensure regulatory tags (e.g., "GST VERIFIED", "ISO 9001:2015", "MUNICIPAL GRADE") stand out clearly against varied surface backgrounds.
+
+## Layout & Spacing
+The layout adheres to a fixed-max-width 12-column system (capped at 1440px) on desktop to optimize tabular data scanning and order sheet generation. On tablet screens (768px–1024px), columns compress to 8 with a 1.25rem gutter; on mobile screens (under 768px), the layout shifts to a single-column or dual-column stacked layout with 1rem margins.
+
+Spacers maintain an 8pt operational rhythm:
+- Component-level internal margins use strictly `space-xs` through `space-md`.
+- Structural module separation utilizes `space-lg` to `space-xl` to prevent high-density catalog pages from appearing cluttered.
+
+## Elevation & Depth
+Visual hierarchy relies on crisp borders combined with ambient, diffused depth rather than heavy drop shadows:
+- **Base Canvas:** Finished in `#F5F7FA`, providing a clean resting plane.
+- **Card Surfaces:** Cast with a pure white background `#FFFFFF`, bordered by a subtle `#E5E7EB` stroke (1px), elevated by a soft dual shadow: `0 1px 3px rgba(13, 43, 91, 0.04), 0 6px 16px rgba(13, 43, 91, 0.06)`.
+- **Floating Modals & RFQ Drawers:** Elevated with deep navy-tinted ambient occlusion (`0 12px 32px rgba(13, 43, 91, 0.12)`), establishing distinct contextual layers without darkening the entire screen aggressively.
+
+## Shapes
+Roundedness Level 2 (`0.5rem` / 8px baseline) governs the system, with `rounded-xl` (`1.5rem` / 24px) strictly allocated to major product showcase cards, dashboard panels, and modal containers. Interactive elements like buttons, input fields, and search selectors use uniform 8px radii, balancing modern software ergonomics with industrial firmness.
+
+## Components
+
+### Buttons
+- **Primary (Action):** Background `#F57C00`, text `#FFFFFF`, rounded 8px, font `label-lg`. Hover shifts to `#E06D00`. Focus ring: 2px offset with `#F57C00`.
+- **Secondary (Institutional):** Background `#0D2B5B`, text `#FFFFFF`, rounded 8px. Hover shifts to `#091F42`. Used for formal actions like "Download Tender Spec" or "Generate Quotation".
+- **Outline / Ghost:** Border 1px `#E5E7EB`, text `#0D2B5B`, background `#FFFFFF`.
+
+### Chips & Badges
+- **GST / Govt Supply Verified:** Background `rgba(46, 158, 91, 0.12)`, text `#2E9E5B`, border 1px `rgba(46, 158, 91, 0.25)`, font `label-sm`, rounded-full.
+- **B2B Bulk Badge:** Background `rgba(13, 43, 91, 0.08)`, text `#0D2B5B`, font `label-sm`, rounded 4px.
+- **Urgent / Out of Stock:** Background `rgba(245, 124, 0, 0.12)`, text `#C96500`, rounded 4px.
+
+### Input Fields & Selectors
+- Standard height 44px with a 1px `#E5E7EB` border, `#FFFFFF` surface, and 8px border radius. Placeholder rendered in `#6B7280`. Focused states show a 1px border in `#0D2B5B` with an ambient `#0D2B5B` glow (ring-2).
+
+### Product & Specification Cards
+- Styled with `rounded-xl` (1.5rem), `#FFFFFF` surface, 1px `#E5E7EB` border, and soft ambient navy shadow. Internal padding set to `space-lg`.
+- Clear compartmentalization separates equipment imagery, technical SKU data, minimum order quantities (MOQ), and inline quote-request triggers.
+
+### Tables & Data Lists
+- Data rows feature 48px heights with alternating subtle tinting on hover (`#F5F7FA`). Header cells use `#0D2B5B` text with `label-md` typography on an ultra-light slate base.
