@@ -43,13 +43,9 @@ export default function App() {
         }
       }
     } catch {
-      // fallback to defaults on corrupt storage
+      // fallback to empty cart on corrupt storage
     }
-    return [
-      { product: PRODUCTS[0], quantity: 5 },
-      { product: PRODUCTS[1], quantity: 4 },
-      { product: PRODUCTS[2], quantity: 2 },
-    ];
+    return [];
   });
 
   // Save cart to localStorage
