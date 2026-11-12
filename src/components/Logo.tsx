@@ -59,17 +59,17 @@ export const Logo: React.FC<LogoProps> = ({
       </svg>
 
       {/* Brand Text */}
-      <div className="flex flex-col justify-center leading-none">
-        <div className="flex items-center gap-1.5">
+      <div className="flex flex-col justify-center leading-none shrink-0">
+        <div className="flex items-center gap-1 sm:gap-1.5">
           <span
             style={{ color: textColor }}
-            className="text-base sm:text-lg font-black tracking-wider uppercase font-sans"
+            className="text-[15px] sm:text-lg font-black tracking-wider uppercase font-sans whitespace-nowrap"
           >
             KNR
           </span>
           <span
             style={{ color: textColor }}
-            className="text-[11px] sm:text-xs font-bold tracking-widest uppercase font-sans opacity-95"
+            className="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-sans opacity-95 whitespace-nowrap"
           >
             ENTERPRISES
           </span>

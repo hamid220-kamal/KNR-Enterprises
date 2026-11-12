@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Screen, Language, Product } from '../../types';
 import {
   ShieldCheck,
@@ -7,57 +7,42 @@ import {
   Headphones,
   ArrowRight,
   MessageCircle,
-  Check
+  Check,
+  ShoppingCart,
+  CheckCircle2
 } from 'lucide-react';
+import { getCatalogProducts, formatINR, CatalogItem } from '../../services/productService';
 
 interface HomeScreenProps {
   onNavigate: (screen: Screen) => void;
-  onAddToCart?: (product: Product) => void;
+  onAddToCart?: (product: Product | CatalogItem) => void;
   onSelectCategory: (category: string) => void;
   language?: Language;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
   onNavigate,
-  onSelectCategory,
+  onAddToCart,
 }) => {
+  const [products, setProducts] = useState<CatalogItem[]>(() => getCatalogProducts());
+
+  // Listen for admin live price updates
+  useEffect(() => {
+    const handlePriceUpdate = () => {
+      setProducts(getCatalogProducts());
+    };
+    window.addEventListener('knr_product_price_updated', handlePriceUpdate);
+    return () => {
+      window.removeEventListener('knr_product_price_updated', handlePriceUpdate);
+    };
+  }, []);
+
   const handleScrollToExplore = () => {
     const aboutElem = document.getElementById('about-section');
     if (aboutElem) {
       aboutElem.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const productCards = [
-    {
-      id: 'Disinfectants & Chemicals',
-      titleLine1: 'Disinfectants',
-      titleLine2: '& Chemicals',
-      image: '/product-card-chemicals.jpg',
-      category: 'Disinfectants & Chemicals',
-    },
-    {
-      id: 'Waste Management',
-      titleLine1: 'Commercial',
-      titleLine2: 'Waste Bins',
-      image: '/product-card-bins.jpg',
-      category: 'Waste Management',
-    },
-    {
-      id: 'Pest & Vector Control',
-      titleLine1: 'Pest & Vector',
-      titleLine2: 'Equipment',
-      image: '/product-card-foggers.jpg',
-      category: 'Pest & Vector Control',
-    },
-    {
-      id: 'Municipal Infrastructure',
-      titleLine1: 'Civic LED',
-      titleLine2: '& Infrastructure',
-      image: '/product-card-led.jpg',
-      category: 'Municipal Infrastructure',
-    },
-  ];
 
   const whyChoosePoints = [
     'High-Quality Products',
@@ -86,7 +71,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
+              <h1 className="text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
                 KNR <span className="text-orange-500">Enterprises</span>
               </h1>
 
@@ -157,49 +142,49 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           2. FLOATING TRUST / FEATURES PILL BAR (Overlapping Hero & About)
          ========================================================================= */}
       <div className="relative -mt-10 sm:-mt-12 z-20 max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="bg-[#0e1626]/95 backdrop-blur-md border border-slate-700/80 rounded-2xl sm:rounded-full py-4 sm:py-5 px-6 sm:px-8 shadow-2xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 items-center">
+        <div className="bg-[#0e1626]/95 backdrop-blur-md border border-slate-700/80 rounded-2xl sm:rounded-full py-4 sm:py-5 px-4 sm:px-8 shadow-2xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 items-center">
             {/* Feature 1: Premium Quality Guaranteed */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-5 h-5 text-orange-500" />
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               </div>
-              <div className="leading-tight">
-                <div className="text-white font-bold text-xs sm:text-sm">Premium Quality</div>
-                <div className="text-slate-400 text-[11px] sm:text-xs">Guaranteed</div>
+              <div className="leading-tight min-w-0">
+                <div className="text-white font-bold text-xs sm:text-sm truncate">Premium Quality</div>
+                <div className="text-slate-400 text-[10px] sm:text-xs">Guaranteed</div>
               </div>
             </div>
 
             {/* Feature 2: Trusted by Professionals */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
-                <Handshake className="w-5 h-5 text-orange-500" />
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                <Handshake className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               </div>
-              <div className="leading-tight">
-                <div className="text-white font-bold text-xs sm:text-sm">Trusted by</div>
-                <div className="text-slate-400 text-[11px] sm:text-xs">Professionals</div>
+              <div className="leading-tight min-w-0">
+                <div className="text-white font-bold text-xs sm:text-sm truncate">Trusted by</div>
+                <div className="text-slate-400 text-[10px] sm:text-xs">Professionals</div>
               </div>
             </div>
 
             {/* Feature 3: Reliable Supply On Time */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
-                <Truck className="w-5 h-5 text-orange-500" />
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               </div>
-              <div className="leading-tight">
-                <div className="text-white font-bold text-xs sm:text-sm">Reliable Supply</div>
-                <div className="text-slate-400 text-[11px] sm:text-xs">On Time</div>
+              <div className="leading-tight min-w-0">
+                <div className="text-white font-bold text-xs sm:text-sm truncate">Reliable Supply</div>
+                <div className="text-slate-400 text-[10px] sm:text-xs">On Time</div>
               </div>
             </div>
 
             {/* Feature 4: Dedicated Support Always */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
-                <Headphones className="w-5 h-5 text-orange-500" />
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                <Headphones className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               </div>
-              <div className="leading-tight">
-                <div className="text-white font-bold text-xs sm:text-sm">Dedicated Support</div>
-                <div className="text-slate-400 text-[11px] sm:text-xs">Always</div>
+              <div className="leading-tight min-w-0">
+                <div className="text-white font-bold text-xs sm:text-sm truncate">Dedicated Support</div>
+                <div className="text-slate-400 text-[10px] sm:text-xs">Always</div>
               </div>
             </div>
           </div>
@@ -260,64 +245,92 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       </section>
 
       {/* =========================================================================
-          4. PRODUCTS SECTION ("Explore Our Product Range")
+          4. PRODUCTS SECTION ("Explore Our Product Range" - Direct Add to Cart)
          ========================================================================= */}
-      <section className="bg-[#f8f9fc] py-16 sm:py-20">
+      <section className="bg-[#f8f9fc] py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
-            <div>
-              <div className="text-orange-500 font-bold text-xs sm:text-sm uppercase tracking-wider mb-1">
-                Our Products
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f172a] tracking-tight">
-                Explore Our Product Range
-              </h2>
-              <p className="text-slate-500 text-sm mt-1">
-                Premium quality products for your industrial needs
-              </p>
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+            <div className="text-orange-500 font-bold text-xs sm:text-sm uppercase tracking-wider mb-1.5">
+              Our Products
             </div>
-
-            <button
-              onClick={() => onNavigate('products')}
-              className="inline-flex items-center gap-1.5 border border-orange-400 text-orange-600 hover:bg-orange-500 hover:text-white px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer self-start sm:self-auto shrink-0"
-            >
-              <span>View All Products</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f172a] tracking-tight">
+              Explore Our Product Range
+            </h2>
+            <p className="text-slate-500 text-xs sm:text-sm mt-1.5">
+              Premium quality products for your industrial and operational needs
+            </p>
           </div>
 
-          {/* 4 Product Cards Grid matching reference layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {productCards.map((card) => (
+          {/* 4 Flagship Product Cards with Direct Add to Cart & Prices */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {products.slice(0, 4).map((product) => (
               <div
-                key={card.id}
-                onClick={() => onSelectCategory(card.category)}
-                className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-slate-900 border border-slate-800/80"
+                key={product.id}
+                className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between p-4 group"
               >
-                {/* Background Image */}
-                <img
-                  src={card.image}
-                  alt={`${card.titleLine1} ${card.titleLine2}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <div>
+                  {/* Image Container with 4:3 Aspect Ratio */}
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 mb-3.5 border border-slate-100">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/hero-knr-products.jpg';
+                      }}
+                    />
+                  </div>
 
-                {/* Dark Gradient Overlay for razor-sharp typography contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-5">
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <div className="text-white font-black text-sm sm:text-base leading-tight">
-                        {card.titleLine1}
-                      </div>
-                      <div className="text-white font-black text-sm sm:text-base leading-tight flex items-center gap-1.5">
-                        <span>{card.titleLine2}</span>
-                        <ArrowRight className="w-4 h-4 text-orange-400 group-hover:translate-x-1.5 transition-transform" />
-                      </div>
-                    </div>
+                  {/* Product Title */}
+                  <h3 className="text-sm sm:text-base font-bold text-[#0f172a] tracking-tight leading-snug">
+                    {product.name}
+                  </h3>
+
+                  {/* Product Description */}
+                  <p className="text-xs text-slate-500 line-clamp-2 mt-1 min-h-[32px] leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  {/* Dynamic Price in INR with Unit */}
+                  <div className="mt-2.5 flex items-baseline gap-1">
+                    <span className="text-base sm:text-lg font-black text-[#0f172a]">
+                      {formatINR(product.price)}
+                    </span>
+                    <span className="text-xs font-semibold text-slate-500">
+                      {product.unit}
+                    </span>
+                  </div>
+
+                  {/* Availability Indicator */}
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 mt-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 fill-emerald-100" />
+                    <span>In Stock</span>
                   </div>
                 </div>
+
+                {/* Direct Add to Cart Button */}
+                <button
+                  onClick={() => onAddToCart && onAddToCart(product)}
+                  className="w-full mt-3.5 min-h-[44px] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  <span>Add to Cart</span>
+                </button>
               </div>
             ))}
+          </div>
+
+          {/* Centered CTA below to explore all products */}
+          <div className="mt-10 sm:mt-12 text-center">
+            <button
+              onClick={() => onNavigate('products')}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-orange-500/25 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>Explore All Products</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </section>

@@ -52,10 +52,10 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* 1. Left: Brand Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center shrink-0">
               <Logo
                 variant="dark"
-                className="h-8 sm:h-9 w-auto"
+                className="h-7 sm:h-9 w-auto"
                 onClick={() => handleNavClick('home')}
               />
             </div>
@@ -155,17 +155,18 @@ export const Header: React.FC<HeaderProps> = ({
             </nav>
 
             {/* 3. Right: WhatsApp CTA "Contact Us" + Admin & Cart Controls */}
-            <div className="flex items-center space-x-2.5 sm:space-x-3">
-              {/* WhatsApp CTA Button: "Contact Us" */}
+            <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+              {/* WhatsApp CTA Button: "Contact Us" (Responsive text: "Chat" on <380px, "Contact Us" on 380px+) */}
               <a
                 href="https://wa.me/918886175855?text=Hello%20KNR%20Enterprises,%20I%20would%20like%20to%20enquire%20about%20your%20products%20and%20supplies"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm px-3.5 sm:px-5 py-2 rounded-full shadow-md shadow-orange-500/25 flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
+                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm px-2.5 sm:px-4 lg:px-5 py-1.5 sm:py-2 rounded-full shadow-md shadow-orange-500/25 flex items-center gap-1 sm:gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
                 title="Chat with KNR Enterprises on WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
-                <span>Contact Us</span>
+                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
+                <span className="hidden min-[380px]:inline">Contact Us</span>
+                <span className="min-[380px]:hidden">Chat</span>
               </a>
 
               {/* Language Switcher */}
@@ -182,7 +183,7 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Cart Drawer Button */}
               <button
                 onClick={onOpenCart}
-                className="relative p-2 text-slate-300 hover:text-orange-400 rounded-full hover:bg-slate-800/80 transition-colors cursor-pointer"
+                className="relative p-2 text-slate-300 hover:text-orange-400 rounded-full hover:bg-slate-800/80 transition-colors cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center"
                 title="View RFQ Cart"
                 aria-label="View RFQ Cart"
               >
@@ -194,10 +195,10 @@ export const Header: React.FC<HeaderProps> = ({
                 )}
               </button>
 
-              {/* Admin Portal Button */}
+              {/* Admin Portal Button (Desktop/Tablet top bar; on mobile, available in Mobile Menu) */}
               <button
                 onClick={() => setIsAdminModalOpen(true)}
-                className="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800/80 transition-colors cursor-pointer"
+                className="hidden sm:inline-flex p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800/80 transition-colors cursor-pointer"
                 title="Administrator Login"
                 aria-label="Admin Login"
               >
@@ -207,7 +208,7 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Mobile Hamburger Menu Toggle */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 text-slate-300 hover:text-white rounded-lg focus:outline-none"
+                className="md:hidden p-2 text-slate-300 hover:text-white rounded-lg focus:outline-none min-w-[40px] min-h-[40px] flex items-center justify-center cursor-pointer"
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

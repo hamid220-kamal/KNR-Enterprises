@@ -55,7 +55,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content (7 cols) */}
             <div className="lg:col-span-7 space-y-3 text-left">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+              <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
                 About <span className="text-orange-500">KNR Enterprises</span>
               </h1>
 
@@ -124,19 +124,19 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onNavigate }) => {
               </p>
 
               {/* Company Values - 4 Small Visual Items matching reference */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 pt-6 border-t border-slate-100 mt-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-3 pt-6 border-t border-slate-100 mt-6">
                 {values.map((val, idx) => {
                   const Icon = val.icon;
                   return (
-                    <div key={idx} className="flex items-center gap-2.5 sm:gap-2">
+                    <div key={idx} className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                       <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4 text-orange-500" />
                       </div>
-                      <div className="leading-tight">
-                        <div className="text-xs sm:text-sm font-bold text-slate-900">
+                      <div className="leading-tight min-w-0">
+                        <div className="text-xs sm:text-sm font-bold text-slate-900 truncate">
                           {val.titleLine1}
                         </div>
-                        <div className="text-xs sm:text-sm font-bold text-slate-900">
+                        <div className="text-xs sm:text-sm font-bold text-slate-900 truncate">
                           {val.titleLine2}
                         </div>
                       </div>

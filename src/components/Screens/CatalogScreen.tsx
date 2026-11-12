@@ -7,7 +7,8 @@ import {
   CheckCircle2,
   Handshake,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  ShoppingCart
 } from 'lucide-react';
 import {
   getCatalogProducts,
@@ -18,7 +19,7 @@ import { PRODUCTS } from '../../data/products';
 
 interface CatalogScreenProps {
   onNavigate: (screen: Screen) => void;
-  onAddToCart?: (product: Product) => void;
+  onAddToCart?: (product: Product | CatalogItem) => void;
   onOpenProforma?: () => void;
   selectedCategory?: string;
   onSelectCategory?: (category: string) => void;
@@ -109,7 +110,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
+              <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
                 Products That Support<br />
                 <span className="text-orange-500">Better Communities.</span>
               </h1>
@@ -219,7 +220,7 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
@@ -268,13 +269,13 @@ export const CatalogScreen: React.FC<CatalogScreenProps> = ({
                   </div>
                 </div>
 
-                {/* Enquire Now Action Button */}
+                {/* Add to Cart Action Button */}
                 <button
-                  onClick={() => handleEnquire(product)}
-                  className="w-full mt-3.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                  onClick={() => onAddToCart && onAddToCart(product)}
+                  className="w-full mt-3.5 min-h-[44px] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
                 >
-                  <Mail className="w-4 h-4" />
-                  <span>Enquire Now</span>
+                  <ShoppingCart className="w-4 h-4" />
+                  <span>Add to Cart</span>
                 </button>
               </div>
             ))}

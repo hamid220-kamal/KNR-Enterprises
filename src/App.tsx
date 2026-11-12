@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Screen, Language, CartItem, Product } from './types';
 import { PRODUCTS } from './data/products';
+import { CatalogItem, catalogItemToProduct } from './services/productService';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
@@ -103,17 +104,18 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (item: Product | CatalogItem) => {
+    const product: Product = 'hsnCode' in item ? item : catalogItemToProduct(item);
     setCartItems((prev) => {
-      const existing = prev.find((item) => item.product.id === product.id);
+      const existing = prev.find((entry) => entry.product.id === product.id);
       if (existing) {
-        return prev.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+        return prev.map((entry) =>
+          entry.product.id === product.id
+            ? { ...entry, quantity: entry.quantity + 1, product: { ...entry.product, price: product.price } }
+            : entry
         );
       }
-      return [...prev, { product, quantity: product.moq }];
+      return [...prev, { product, quantity: 1 }];
     });
     setIsCartOpen(true);
   };
@@ -157,7 +159,7 @@ export default function App() {
       />
 
       {/* Main Screen Views: Exactly 4 Public Pages */}
-      <main className="flex-1 pb-20 md:pb-0">
+      <main className="flex-1">
         {currentScreen === 'home' && (
           <HomeScreen
             onNavigate={handleNavigate}
@@ -204,11 +206,11 @@ export default function App() {
       />
 
       {/* Mobile Web Application App Bar (4 Public Pages + Cart) */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-[#0a0e17]/95 backdrop-blur-md border-t border-slate-800 md:hidden py-2 px-3 flex items-center justify-around shadow-2xl print:hidden text-white">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-[#0a0e17]/95 backdrop-blur-md border-t border-slate-800 md:hidden py-1.5 px-2 flex items-center justify-around shadow-2xl print:hidden text-white">
         {/* Home */}
         <button
           onClick={() => handleNavigate('home')}
-          className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
+          className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
             currentScreen === 'home' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
@@ -219,7 +221,7 @@ export default function App() {
         {/* About */}
         <button
           onClick={() => handleNavigate('about')}
-          className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
+          className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
             currentScreen === 'about' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
@@ -230,7 +232,7 @@ export default function App() {
         {/* Products */}
         <button
           onClick={() => handleNavigate('products')}
-          className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
+          className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
             currentScreen === 'products' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
@@ -241,7 +243,7 @@ export default function App() {
         {/* Contact */}
         <button
           onClick={() => handleNavigate('contact')}
-          className={`flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
+          className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center p-1 cursor-pointer transition-colors ${
             currentScreen === 'contact' ? 'text-orange-500 font-bold' : 'text-slate-400 hover:text-white'
           }`}
         >
@@ -252,7 +254,7 @@ export default function App() {
         {/* Cart */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="relative flex flex-col items-center justify-center p-1 cursor-pointer text-slate-400 hover:text-orange-500 transition-colors"
+          className="relative min-w-[44px] min-h-[44px] flex flex-col items-center justify-center p-1 cursor-pointer text-slate-400 hover:text-orange-500 transition-colors"
           aria-label="View RFQ Cart"
         >
           <ShoppingCart className="w-5 h-5" />

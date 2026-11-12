@@ -90,7 +90,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
+              <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
                 Let's Connect and<br />
                 Discuss <span className="text-orange-500">Your Requirements.</span>
               </h1>
@@ -170,7 +170,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = () => {
                   href={card.btnHref}
                   target={card.isExternal ? '_blank' : undefined}
                   rel={card.isExternal ? 'noopener noreferrer' : undefined}
-                  className="mt-5 w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                  className="mt-5 w-full min-h-[44px] bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
                 >
                   <BtnIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                   <span>{card.btnText}</span>

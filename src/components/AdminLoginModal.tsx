@@ -89,7 +89,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
       <div
-        className={`relative w-full ${isAuthenticated ? 'max-w-2xl' : 'max-w-md'} bg-slate-900 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl text-white transition-all max-h-[90vh] overflow-y-auto`}
+        className={`relative w-full ${isAuthenticated ? 'max-w-2xl' : 'max-w-md'} bg-slate-900 border border-slate-700/80 rounded-2xl p-4 sm:p-8 shadow-2xl text-white transition-all max-h-[90vh] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}

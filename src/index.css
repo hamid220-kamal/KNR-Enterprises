@@ -4,6 +4,14 @@
   --font-display: "Outfit", "Poppins", sans-serif;
   --font-sans: "Inter", sans-serif;
 
+  /* Approved KNR Brand Palette */
+  --color-brand-primary-navy: #101B32;
+  --color-brand-secondary-navy: #192943;
+  --color-brand-orange: #FF8A24;
+  --color-brand-graphite: #303846;
+  --color-brand-offwhite: #F5F6F8;
+  --color-brand-white: #FFFFFF;
+
   --color-primary: #F57C00;
   --color-primary-hover: #E06D00;
   --color-primary-light: #FFF3E0;
@@ -16,15 +24,100 @@
   --color-border: #E2E8F0;
 }
 
+/* =========================================================================
+   CRITICAL: Force Light Color Scheme & Prevent Browser Dark Mode Inversion
+   ========================================================================= */
+:root,
+html {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+}
+
+body {
+  color-scheme: light !important;
+}
+
+/* Enforce light scheme regardless of device or browser prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body {
+    color-scheme: light !important;
+    background-color: #FFFFFF !important;
+    color: #101B32 !important;
+  }
+}
+
+/* Protect high-contrast and forced-colors mode */
+@media (forced-colors: active) {
+  img,
+  svg,
+  picture,
+  video,
+  canvas {
+    forced-color-adjust: none !important;
+  }
+}
+
+/* Prevent image, vector and media inversion by browser forced dark modes */
+img,
+svg,
+picture,
+video,
+canvas {
+  forced-color-adjust: none !important;
+}
+
+/* Form controls, dropdowns, inputs, placeholders */
+input,
+select,
+textarea,
+button {
+  color-scheme: light !important;
+  forced-color-adjust: none;
+}
+
+select option {
+  background-color: #FFFFFF !important;
+  color: #101B32 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+}
+
+/* Prevent Chrome autofill from breaking dark-mode styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #101B32 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Text Selection */
+::selection {
+  background-color: rgba(255, 138, 36, 0.25);
+  color: #101B32;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
     font-family: var(--font-sans);
-    color: #1C1B1B;
+    color: #101B32;
     background-color: #FCF9F8;
     overflow-x: hidden;
+    min-width: 320px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6, .font-display {
     font-family: var(--font-display);

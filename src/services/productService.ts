@@ -1,3 +1,5 @@
+import { Product } from '../types';
+
 // Dynamic Product Data & Price Management Service
 // Reads product definitions, allows live administrative price overrides,
 // persists via storage, and provides Supabase-ready client bindings.
@@ -141,5 +143,32 @@ export function resetProductPrices(): void {
 // Format price in Indian Rupees
 export function formatINR(price: number): string {
   return '₹' + price.toLocaleString('en-IN');
+}
+
+// Convert CatalogItem to standard Product for Cart and RFQ flows
+export function catalogItemToProduct(item: CatalogItem): Product {
+  const cleanUnit = item.unit.replace(/^\//, '').trim() || 'Unit';
+  return {
+    id: item.id,
+    name: item.name,
+    teluguName: item.name,
+    category: item.category,
+    categoryTelugu: item.category,
+    badge: 'In Stock',
+    badgeColor: 'emerald',
+    image: item.image,
+    price: item.price,
+    originalPrice: item.price,
+    discountPercent: 0,
+    unit: cleanUnit,
+    moq: 1,
+    moqDescription: `1 ${cleanUnit}`,
+    hsnCode: '3808.91',
+    rating: 4.8,
+    reviewCount: 32,
+    inStock: item.inStock,
+    specifications: [item.description],
+    description: item.description,
+  };
 }
 
